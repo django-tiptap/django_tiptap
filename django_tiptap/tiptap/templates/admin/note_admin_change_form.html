@@ -1,38 +1,41 @@
 {% extends "admin/change_form.html" %}
 
-{% block  extrahead %}
+{% block extrahead %}
 
-<script> var docEditor = null </script>
+<script> var docEditor = null</script>
 <script type="module">
+  import { Editor } from 'https://cdn.skypack.dev/@tiptap/core?min'
+  import { defaultExtensions } from 'https://cdn.skypack.dev/@tiptap/starter-kit?min'
 
-    import { Editor } from 'https://cdn.skypack.dev/@tiptap/core?min'
-    import { defaultExtensions } from 'https://cdn.skypack.dev/@tiptap/starter-kit?min'
+  setTimeout(() => {
+    const div = document.querySelector('div[id$="-tiptap-editor"')
+    const tiptapData = div.getAttribute('data-tiptap')
+    console.log(tiptapData)
+
     const editor = new Editor({
-      element: document.querySelector('div[id$="-tiptap-editor"'),
+      element: document.querySelector('div[id$="tiptap-editor"'),
       extensions: defaultExtensions(),
-      content: '<p>Hello World!</p>',
-      onCreate({editor}) {
-        const div = document.querySelector('[id$="-tiptap-editor"')
-
-      },
+      content: tiptapData,
       onUpdate({ editor }) {
         const textArea = document.querySelector('textarea[id$="-tiptap-editor"')
         textArea.value = editor.getHTML()
+        docEditor = editor
       },
     })
+  }, 200);
 
-    docEditor= editor
 </script>
+
 {{ block.super }}
 
 {% endblock %}
 
 {% block submit_buttons_bottom %}
 
-    {{ block.super }}
+{{ block.super }}
 
-    <input id='jeet' type="submit">
-      Click me
-    </input>
+<input id='jeet' type="submit">
+Click me
+</input>
 
 {% endblock %}
