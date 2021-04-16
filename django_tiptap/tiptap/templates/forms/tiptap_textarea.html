@@ -1,0 +1,5 @@
+<textarea style="display: block;" name="{{ widget.name }}" id="{{ widget.name }}-tiptap-editor" {% include "django/forms/widgets/attrs.html" %}>
+    {% if widget.value %}{{ widget.value }}{% endif %}
+</textarea>
+
+<div name="{{ widget.name }}" id="{{ widget.name }}-tiptap-editor" widget-value="{{ widget.value }}"></div>

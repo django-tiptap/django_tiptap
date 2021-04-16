@@ -1,0 +1,38 @@
+{% extends "admin/change_form.html" %}
+
+{% block  extrahead %}
+
+<script> var docEditor = null </script>
+<script type="module">
+
+    import { Editor } from 'https://cdn.skypack.dev/@tiptap/core?min'
+    import { defaultExtensions } from 'https://cdn.skypack.dev/@tiptap/starter-kit?min'
+    const editor = new Editor({
+      element: document.querySelector('div[id$="-tiptap-editor"'),
+      extensions: defaultExtensions(),
+      content: '<p>Hello World!</p>',
+      onCreate({editor}) {
+        const div = document.querySelector('[id$="-tiptap-editor"')
+
+      },
+      onUpdate({ editor }) {
+        const textArea = document.querySelector('textarea[id$="-tiptap-editor"')
+        textArea.value = editor.getHTML()
+      },
+    })
+
+    docEditor= editor
+</script>
+{{ block.super }}
+
+{% endblock %}
+
+{% block submit_buttons_bottom %}
+
+    {{ block.super }}
+
+    <input id='jeet' type="submit">
+      Click me
+    </input>
+
+{% endblock %}

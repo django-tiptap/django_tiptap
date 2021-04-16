@@ -1,0 +1,10 @@
+<script type="module">
+  alert("Hello!")
+  import { Editor } from "https://cdn.skypack.dev/@tiptap/core?min";
+  import { defaultExtensions } from "https://cdn.skypack.dev/@tiptap/starter-kit?min";
+  const editor = new Editor({
+    element: document.querySelector('div[id$="-tiptap-editor"]'),
+    extensions: defaultExtensions(),
+    content: "<p>Hello World!</p>",
+  });
+</script>
