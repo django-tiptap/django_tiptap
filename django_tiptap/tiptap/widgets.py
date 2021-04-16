@@ -3,11 +3,10 @@ from django import forms
 
 class TipTapWidget(forms.Textarea):
     class Media:
-        js = (
-            # "//cdn.skypack.dev/@tiptap/core?min",
-            # "//cdn.skypack.dev/@tiptap/starter-kit?min",
-            # "js/tiptap-min.js",
-        )
+        css = {
+            'all': ('css/styles.min-min.css',)
+        }
+
 
     template_name = "forms/tiptap_textarea.html"
 
