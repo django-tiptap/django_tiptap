@@ -69,10 +69,13 @@
 .editor-content-rendered {
   max-height: 85vh;
   overflow-y: auto;
-  margin: 0 0 1rem 0;
 }
 
 .menubar {
+  display: none;
+}
+
+.menubar.show {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -272,23 +275,22 @@
 .ProseMirror h6 {
   line-height: 1.1;
 }
-.ProseMirror code {
-  background-color: rgba(97, 97, 97, 0.1);
-  color: #616161;
-}
+
 .ProseMirror pre {
-  background: #0d0d0d;
-  color: #fff;
-  font-family: 'JetBrainsMono', monospace;
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
+  background: #0d0d0d !important;
+  color: #fff !important;
+  font-family: 'JetBrainsMono', monospace !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 0.5rem !important;
 }
+
 .ProseMirror pre code {
-  color: inherit;
-  padding: 0;
-  background: none;
-  font-size: 0.8rem;
+  color: #fff !important;
+  padding: 0 !important;
+  background: none !important;
+  font-size: 0.8rem !important;
 }
+
 .ProseMirror img {
   max-width: 100%;
   height: auto;

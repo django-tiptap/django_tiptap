@@ -4,7 +4,7 @@
 </textarea>
 
 <div class="the-editor-area">
-    <div class="menubar">
+    <div class="menubar" id="{{ widget.name }}-menubar">
         <button id="{{ widget.name }}-bold">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="12" height="14"
                 viewBox="0 0 12 14">
@@ -247,37 +247,35 @@
 
     </div>
 
-    <div class="editor-content-rendered" name="{{ widget.name }}" id="{{ widget.name }}-tiptap-editor-div" data-tiptap="{{ widget.value }}">
+    <div class="editor-content-rendered" name="{{ widget.name }}" id="{{ widget.name }}-tiptap-editor-div"
+        data-tiptap="{{ widget.value }}">
     </div>
 </div>
 
 <script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="https://unpkg.com/tippy.js@6"></script>
-<script>
-    var docEditor = null
-</script>
 <script type="module">
-    {% comment %} MIT License
+    // MIT License
 
-    Copyright (c) 2020, überdosis GbR
+    // Copyright (c) 2020, überdosis GbR
 
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
+    // Permission is hereby granted, free of charge, to any person obtaining a copy
+    // of this software and associated documentation files (the "Software"), to deal
+    // in the Software without restriction, including without limitation the rights
+    // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    // copies of the Software, and to permit persons to whom the Software is
+    // furnished to do so, subject to the following conditions:
 
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
+    // The above copyright notice and this permission notice shall be included in all
+    // copies or substantial portions of the Software.
 
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE. {% endcomment %}
+    // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    // SOFTWARE.
 
     import { Editor, Extension } from 'https://cdn.skypack.dev/pin/@tiptap/core@v2.0.0-beta.29-ehyNSRjShPZE49ePTtXD/mode=imports,min/optimized/@tiptap/core.js'
     import { defaultExtensions } from 'https://cdn.skypack.dev/pin/@tiptap/starter-kit@v2.0.0-beta.25-JoiZSBGcBoccfWu5VKUa/mode=imports,min/optimized/@tiptap/starter-kit.js'
@@ -411,7 +409,7 @@
 
         addCommands() {
             return {
-                indent: () => ({ tr, state, dispatch }) => {
+                indent: () => ({ tr, state, dispatch, editor }) => {
                     const { selection } = state
                     tr = tr.setSelection(selection)
                     tr = updateIndentLevel(tr, IndentProps.more)
@@ -422,9 +420,11 @@
                         return true
                     }
 
+                    editor.chain().focus().run()
+
                     return false
                 },
-                outdent: () => ({ tr, state, dispatch }) => {
+                outdent: () => ({ tr, state, dispatch, editor }) => {
                     const { selection } = state
                     tr = tr.setSelection(selection)
                     tr = updateIndentLevel(tr, IndentProps.less)
@@ -434,6 +434,8 @@
                         dispatch && dispatch(tr)
                         return true
                     }
+
+                    editor.chain().focus().run()
 
                     return false
                 },
@@ -731,6 +733,8 @@
     const textArea = document.querySelector('#{{ widget.name }}-tiptap-editor-textarea')
     let initialEditorContent = marked(textArea.value.trim())
 
+    let showingMenubar = false
+
     const editor = new Editor({
         element: document.querySelector('#{{ widget.name }}-tiptap-editor-div'),
         extensions: [
@@ -753,7 +757,6 @@
         content: initialEditorContent,
         onUpdate({ editor }) {
             checkIsActive(editor)
-            docEditor = editor
             textArea.value = editor.getHTML().trim()
         },
         onCreate({ editor }) {
@@ -761,9 +764,14 @@
                 checkIsActive(editor)
             }, 100)
         },
-    })
+        onFocus() {
+            if (!showingMenubar) {
 
-    docEditor = editor
+                const menubar = document.querySelector('#{{ widget.name }}-menubar')
+                menubar.classList.add('show')
+            }
+        }
+    })
 
     const clickFocusKeyListener = () => {
         checkIsActive(editor)
@@ -814,6 +822,7 @@
         }
         const addTableButton = document.querySelector('.{{ widget.name }}-add-table-button')
         addTableButton.addEventListener('click', addTableButtonListener, { capture: true })
+
     }, 1000);
 
 
