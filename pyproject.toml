@@ -1,0 +1,11 @@
+[build-system]
+requires = ["flit_core >=2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.metadata]
+module = "django_tiptap"
+author = "Jeet Mandaliya & Max Patzelt"
+author-email = "weshouldregisteramail@nothereyet.com"
+classifiers = [ "License :: OSI Approved :: MIT License",]
+description-file = "README.md"
+
