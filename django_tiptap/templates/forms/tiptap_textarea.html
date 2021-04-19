@@ -94,6 +94,20 @@
 
         <div class="spacer"></div>
 
+        <button id="{{ widget.name }}-indent">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path d="M11,13H21V11H11M11,9H21V7H11M3,3V5H21V3M11,17H21V15H11M3,8V16L7,12M3,21H21V19H3V21Z" />
+            </svg>
+        </button>
+
+        <button id="{{ widget.name }}-outdent">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path d="M11,13H21V11H11M11,9H21V7H11M3,3V5H21V3M3,21H21V19H3M3,12L7,16V8M11,17H21V15H11V17Z" />
+            </svg>
+        </button>
+
+        <div class="spacer"></div>
+
         <button id="{{ widget.name }}-addTable">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                 <path
@@ -523,47 +537,48 @@
             isActiveCheck: [{ textAlign: 'left' }],
             command: (editor) => editor.chain().focus().setTextAlign('left').run(),
             canBeActive: true,
-            tooltip: 'Linksbündig | (ctrl + Umschalt) / (⌘ + Umschalt) + L',
+            tooltip: 'Linksbündig | (ctrl + Umschalt ⇧) / (⌘ + Umschalt ⇧) + L',
         },
         ['{{ widget.name }}-alignCenter']: {
             isActiveCheck: [{ textAlign: 'center' }],
             command: (editor) => editor.chain().focus().setTextAlign('center').run(),
             canBeActive: true,
-            tooltip: 'Zentriert | (ctrl + Umschalt) / (⌘ + Umschalt) + E',
+            tooltip: 'Zentriert | (ctrl + Umschalt ⇧) / (⌘ + Umschalt ⇧) + E',
         },
         ['{{ widget.name }}-alignRight']: {
             isActiveCheck: [{ textAlign: 'right' }],
             command: (editor) => editor.chain().focus().setTextAlign('right').run(),
             canBeActive: true,
-            tooltip: 'Rechtsbündig | (ctrl + Umschalt) / (⌘ + Umschalt) + R',
+            tooltip: 'Rechtsbündig | (ctrl + Umschalt ⇧) / (⌘ + Umschalt ⇧) + R',
         },
         ['{{ widget.name }}-alignJustify']: {
             isActiveCheck: [{ textAlign: 'justify' }],
             command: (editor) => editor.chain().focus().setTextAlign('justify').run(),
             canBeActive: true,
-            tooltip: 'Blocksatz | (ctrl + Umschalt) / (⌘ + Umschalt) + J',
+            tooltip: 'Blocksatz | (ctrl + Umschalt ⇧) / (⌘ + Umschalt ⇧) + J',
+        },
+        ['{{ widget.name }}-indent']: {
+            command: (editor) => editor.chain().focus().indent().run(),
+            canBeActive: false,
+            tooltip: 'Einrücken (Tab ↹)',
+        },
+        ['{{ widget.name }}-outdent']: {
+            command: (editor) => editor.chain().focus().outdent().run(),
+            canBeActive: false,
+            tooltip: 'Ausrücken (Umschalt ⇧ + Tab ↹)',
         },
 
         ['{{ widget.name }}-bulletList']: {
             isActiveCheck: ['bulletList'],
             command: (editor) => editor.chain().focus().toggleBulletList().run(),
             canBeActive: true,
-            tooltip: 'Aufzählungsliste | (ctrl + Umschalt) / (⌘ + Umschalt) + 8',
+            tooltip: 'Aufzählungsliste | (ctrl + Umschalt ⇧) / (⌘ + Umschalt ⇧) + 8',
         },
         ['{{ widget.name }}-orderedList']: {
             isActiveCheck: ['orderedList'],
             command: (editor) => editor.chain().focus().toggleOrderedList().run(),
             canBeActive: true,
-            tooltip: 'Nummerierte Liste | (ctrl + Umschalt) / (⌘ + Umschalt) + 7',
-        },
-
-        ['{{ widget.name }}-clearFormat']: {
-            command: (editor) => {
-                editor.chain().focus().unsetAllMarks().run()
-                clearFormat()
-            },
-            canBeActive: false,
-            tooltip: 'Formatierung entfernen',
+            tooltip: 'Nummerierte Liste | (ctrl + Umschalt ⇧) / (⌘ + Umschalt ⇧) + 7',
         },
 
         ['{{ widget.name }}-addTable']: {
@@ -644,6 +659,14 @@
             canBeActive: false,
             tooltip: 'Kopfzelle ein/auschalten',
             disabled: (editor) => !editor.can().toggleHeaderCell(),
+        },
+        ['{{ widget.name }}-clearFormat']: {
+            command: (editor) => {
+                editor.chain().focus().unsetAllMarks().run()
+                clearFormat()
+            },
+            canBeActive: false,
+            tooltip: 'Formatierung entfernen',
         },
     }
 
