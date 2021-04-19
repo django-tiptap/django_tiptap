@@ -117,16 +117,16 @@
             <div class="{{ widget.name }}-table-config table-config display-flex">
                 <div class="inputs-container display-flex flex-align-center flex-direction-column">
                     <div class="display-flex flex-content-space-between">
-                        <label for="x">Zeilen</label>
-                        <span>&nbsp;x&nbsp;</span>
-                        <label for="y">Spalten</label>
+                        <label for="x" class="text-black">Zeilen</label>
+                        <span class="text-black">&nbsp;x&nbsp;</span>
+                        <label for="y" class="text-black">Spalten</label>
                     </div>
                     <div>
                         <input type="number" name="X" id="{{ widget.name }}-x" placeholder="Zeilen" min="0" max="10"
-                            value="3">
+                            value="3" class="text-black table-dimension-input">
                         <span>x</span>
                         <input type="number" name="Y" id="{{ widget.name }}-y" placeholder="Spalten" min="0" max="10"
-                            value="3">
+                            value="3" class="text-black table-dimension-input">
                     </div>
                 </div>
                 <div class="{{ widget.name }}-add-table-button add-table-button">

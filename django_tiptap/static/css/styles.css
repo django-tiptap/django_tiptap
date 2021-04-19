@@ -1,3 +1,7 @@
+.text-black {
+  color: black;
+}
+
 .display-flex {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -37,13 +41,36 @@
   min-height: fit-content;
   max-height: 90vh;
   max-width: 65vw;
+  background: white;
+  color: black;
+  position: relative;
+}
+
+.the-editor-area::after {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' style='width:24px;height:24px' viewBox='0 0 24 24'%3E%3Cpath d='M22,22H20V20H22V22M22,18H20V16H22V18M18,22H16V20H18V22M18,18H16V16H18V18M14,22H12V20H14V22M22,14H20V12H22V14Z' /%3E%3C/svg%3E");
+  position: absolute;
+  color: white;
+  bottom: 0;
+  right: 0;
+  width: 1em;
+  height: 1em;
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(2) translate(-12px, -2px);
+  font-size: 1.3em;
+}
+
+.the-editor-area::-webkit-resizer {
+  transform: scale(3);
 }
 
 .editor-content-rendered {
   max-height: 85vh;
   overflow-y: auto;
+  margin: 0 0 1rem 0;
 }
-
 
 .menubar {
   display: -webkit-box;
@@ -67,11 +94,10 @@
   cursor: pointer;
 }
 
-.menubar button:not([id$="-addTable"]) {
+.menubar button:not([id$='-addTable']) {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .menubar button:hover {
@@ -92,7 +118,7 @@
   fill: white;
 }
 
-.menubar button[id$="-addTable"] svg {
+.menubar button[id$='-addTable'] svg {
   transform: translateY(2px);
 }
 
@@ -142,6 +168,10 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+.menubar button[id$='-addTable'] .table-config .inputs-container .table-dimension-input {
+  color: black;
+  background-color: white;
 }
 
 .ProseMirror {
