@@ -136,11 +136,8 @@
   align-items: center;
 }
 
-.editor-content-rendered {
-}
-
 .ProseMirror {
-  margin: 1rem 0 0 0;
+  margin: 0 0.25rem !important;
   color: black !important;
   padding: 1rem 1.5rem 1rem 1.5rem;
   outline: none !important;
