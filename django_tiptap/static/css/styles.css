@@ -32,11 +32,18 @@
   border: 1px solid grey;
   min-width: 600px;
   resize: both;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
   min-height: fit-content;
   max-height: 90vh;
   max-width: 65vw;
 }
+
+.editor-content-rendered {
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
 
 .menubar {
   display: -webkit-box;
