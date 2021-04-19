@@ -33,7 +33,7 @@
 .the-editor-area {
   display: flex;
   flex-direction: column;
-  border: 1px solid grey;
+  border: 2px solid grey;
   min-width: 600px;
   resize: both;
   overflow-x: auto;
@@ -83,8 +83,8 @@
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   justify-content: center;
-  border-bottom: 1px solid grey;
-  padding: 0.5rem;
+  border-bottom: 2px solid grey;
+  padding: 1rem 0.5rem;
 }
 .menubar button {
   margin: 0 4px 2px 2px;
@@ -157,7 +157,7 @@
 .menubar button[id$='-addTable'] .table-config input {
   height: 1.5rem;
   border-radius: 6px;
-  border: 1px solid grey;
+  border: 2px solid grey;
   font-size: 1.2rem;
   min-width: 100px;
   padding: 4px;
