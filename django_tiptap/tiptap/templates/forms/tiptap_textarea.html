@@ -98,7 +98,7 @@
                 d="M12.35 20H10V17H12.09C12.21 16.28 12.46 15.61 12.81 15H10V12H14V13.54C14.58 13 15.25 12.61 16 12.35V12H20V12.35C20.75 12.61 21.42 13 22 13.54V5C22 3.9 21.1 3 20 3H4C2.9 3 2 3.9 2 5V20C2 21.1 2.9 22 4 22H13.54C13 21.42 12.61 20.75 12.35 20M16 7H20V10H16V7M10 7H14V10H10V7M8 20H4V17H8V20M8 15H4V12H8V15M8 10H4V7H8V10M17 14H19V17H22V19H19V22H17V19H14V17H17V14" />
         </svg>
 
-        <div class="table-config display-flex">
+        <div class="{{ widget.name }}-table-config table-config display-flex">
             <div class="inputs-container display-flex flex-align-center flex-direction-column">
                 <div class="display-flex flex-content-space-between">
                     <label for="x">Zeilen</label>
@@ -106,12 +106,12 @@
                     <label for="y">Spalten</label>
                 </div>
                 <div>
-                    <input type="number" name="X" id="x" placeholder="Zeilen" min="0" max="10" value="3">
+                    <input type="number" name="X" id="{{ widget.name }}-x" placeholder="Zeilen" min="0" max="10" value="3">
                     <span>x</span>
-                    <input type="number" name="Y" id="y" placeholder="Spalten" min="0" max="10" value="3">
+                    <input type="number" name="Y" id="{{ widget.name }}-y" placeholder="Spalten" min="0" max="10" value="3">
                 </div>
             </div>
-            <div class="add-table-button">
+            <div class="{{ widget.name }}-add-table-button add-table-button">
                 Hinzufügen
             </div>
         </div>
@@ -229,7 +229,7 @@
 
 </div>
 
-<div name="{{ widget.name }}" id="{{ widget.name }}-tiptap-editor-div" data-tiptap="{{ widget.value }}"></div>
+<div class="editor-content-rendered" name="{{ widget.name }}" id="{{ widget.name }}-tiptap-editor-div" data-tiptap="{{ widget.value }}"></div>
 
 <script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="https://unpkg.com/tippy.js@6"></script>
@@ -592,12 +592,12 @@
             e.preventDefault()
             e.stopPropagation()
         }
-        const tableConfig = document.querySelector('.table-config')
+        const tableConfig = document.querySelector('.{{ widget.name }}-table-config')
         tableConfig.addEventListener('click', tableConfigListener)
 
         const addTableButtonListener = () => {
-            const xInput = document.querySelector('#x').value
-            const yInput = document.querySelector('#y').value
+            const xInput = document.querySelector('#{{ widget.name }}-x').value
+            const yInput = document.querySelector('#{{ widget.name }}-y').value
 
             if (xInput && yInput) {
                 buttonsConfig['{{ widget.name }}-addTable'].command(editor, { rows: xInput, cols: yInput, withHeaderRow: true })
