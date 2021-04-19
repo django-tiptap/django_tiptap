@@ -600,11 +600,11 @@
             const yInput = document.querySelector('#y').value
 
             if (xInput && yInput) {
-                buttonsConfig['addTable'].command(editor, { rows: xInput, cols: yInput, withHeaderRow: true })
+                buttonsConfig['{{ widget.name }}-addTable'].command(editor, { rows: xInput, cols: yInput, withHeaderRow: true })
             }
         }
-        const addTableButton = document.querySelector('.add-table-button')
-        addTableButton.addEventListener('click', addTableButtonListener)
+        const addTableButton = document.querySelector('.{{ widget.name }}-add-table-button')
+        addTableButton.addEventListener('click', addTableButtonListener, {capture: true})
     }, 1000);
 
 
