@@ -8,4 +8,4 @@ from django_tiptap.tiptap.models import Note
 
 @admin.register(Note)
 class NoteAdmin(admin.ModelAdmin):
-    change_form_template = "admin/note_admin_change_form.html"
+    pass
