@@ -44,6 +44,7 @@
   background: white;
   color: black;
   position: relative;
+  border-radius: 6px;
 }
 
 .the-editor-area::after {
