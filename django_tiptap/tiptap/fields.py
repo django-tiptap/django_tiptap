@@ -1,7 +1,6 @@
 from django.db import models
 from django.forms import fields
-
-from django_tiptap.tiptap.widgets import TipTapWidget
+from tiptap.widgets import TipTapWidget
 
 
 class TipTapTextFormField(fields.CharField):

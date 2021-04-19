@@ -1,6 +1,5 @@
 from django.db import models
-
-from django_tiptap.tiptap.fields import TipTapTextField
+from tiptap.fields import TipTapTextField
 
 
 # Create your models here.
