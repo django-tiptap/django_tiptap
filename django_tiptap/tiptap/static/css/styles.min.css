@@ -61,7 +61,7 @@
 .menubar button.is-active svg {
   fill: white;
 }
-.menubar button#addTable:hover .table-config {
+.menubar button[id$="-addTable"]:hover .table-config {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -71,7 +71,7 @@
   flex-direction: column;
   cursor: initial;
 }
-.menubar button#addTable:hover .table-config .add-table-button {
+.menubar button[id$="-addTable"]:hover .table-config .add-table-button {
   font-size: 1.2rem;
   margin: 5px 0 5px 0;
   background: grey;
@@ -80,7 +80,7 @@
   color: white;
   padding: 4px;
 }
-.menubar button#addTable .table-config {
+.menubar button[id$="-addTable"] .table-config {
   display: none;
   position: absolute;
   background-color: white;
@@ -89,7 +89,7 @@
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.3);
   padding: 1em;
 }
-.menubar button#addTable .table-config input {
+.menubar button[id$="-addTable"] .table-config input {
   height: 1.5rem;
   border-radius: 6px;
   border: 1px solid grey;
@@ -97,13 +97,13 @@
   min-width: 100px;
   padding: 4px;
 }
-.menubar button#addTable .table-config input:first-of-type {
+.menubar button[id$="-addTable"] .table-config input:first-of-type {
   margin-right: 4px;
 }
-.menubar button#addTable .table-config input:last-of-type {
+.menubar button[id$="-addTable"] .table-config input:last-of-type {
   margin-left: 4px;
 }
-.menubar button#addTable .table-config .inputs-container {
+.menubar button[id$="-addTable"] .table-config .inputs-container {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
