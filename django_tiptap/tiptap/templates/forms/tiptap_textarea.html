@@ -578,15 +578,15 @@
             }
         })
 
-        const proseMirror = document.querySelector('.ProseMirror')
-        proseMirror.addEventListener('focus', clickFocusKeyListener)
-        proseMirror.addEventListener('blur', clickFocusKeyListener)
-        proseMirror.addEventListener('selectionchange', clickFocusKeyListener)
-        proseMirror.addEventListener('mousedown', clickFocusKeyListener)
-        proseMirror.addEventListener('mouseup', clickFocusKeyListener)
-        proseMirror.addEventListener('keydown', clickFocusKeyListener)
-        proseMirror.addEventListener('keypress', clickFocusKeyListener)
-        proseMirror.addEventListener('keyup', clickFocusKeyListener)
+        const editorContentRendered = document.querySelector('#{{ widget.name }}-tiptap-editor-div')
+        editorContentRendered.addEventListener('focus', clickFocusKeyListener)
+        editorContentRendered.addEventListener('blur', clickFocusKeyListener)
+        editorContentRendered.addEventListener('selectionchange', clickFocusKeyListener)
+        editorContentRendered.addEventListener('mousedown', clickFocusKeyListener)
+        editorContentRendered.addEventListener('mouseup', clickFocusKeyListener)
+        editorContentRendered.addEventListener('keydown', clickFocusKeyListener)
+        editorContentRendered.addEventListener('keypress', clickFocusKeyListener)
+        editorContentRendered.addEventListener('keyup', clickFocusKeyListener)
 
         const tableConfigListener = (e) => {
             e.preventDefault()
