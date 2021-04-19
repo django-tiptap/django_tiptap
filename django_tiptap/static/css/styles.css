@@ -25,13 +25,27 @@
   -ms-flex-pack: justify;
   justify-content: space-between;
 }
+
+.the-editor-area {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid grey;
+  min-width: 600px;
+  resize: both;
+  overflow: auto;
+  min-height: fit-content;
+  max-height: 90vh;
+  max-width: 65vw;
+}
+
 .menubar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 5rem;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  border-bottom: 1px solid grey;
+  padding: 0.5rem;
 }
 .menubar button {
   margin: 0 4px 2px 2px;
@@ -44,6 +58,14 @@
   outline: none;
   cursor: pointer;
 }
+
+.menubar button:not([id$="-addTable"]) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
 .menubar button:hover {
   background-color: rgba(87, 87, 87, 0.199);
   -webkit-transition: none;
@@ -61,6 +83,11 @@
 .menubar button.is-active svg {
   fill: white;
 }
+
+.menubar button[id$="-addTable"] svg {
+  transform: translateY(2px);
+}
+
 .menubar button[id$='-addTable']:hover .table-config {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -110,16 +137,9 @@
 }
 
 .editor-content-rendered {
-  min-width: 800px;
-  resize: both;
-  overflow: auto;
-  min-height: fit-content;
-  max-height: 90vh;
-  max-width: 70vw;
 }
 
 .ProseMirror {
-  border: 1px solid grey;
   margin: 1rem 0 0 0;
   color: black !important;
   padding: 1rem 1.5rem 1rem 1.5rem;
@@ -129,6 +149,9 @@
 }
 .ProseMirror * {
   color: black !important;
+}
+.ProseMirror p {
+  font-size: 16px !important;
 }
 .ProseMirror ul {
   margin: 0;
@@ -271,6 +294,10 @@
   text-align: left;
   background-color: #f1f3f5;
 }
+.ProseMirror tr {
+  background-color: white !important;
+}
+
 .ProseMirror table .selectedCell:after {
   z-index: 2;
   position: absolute;

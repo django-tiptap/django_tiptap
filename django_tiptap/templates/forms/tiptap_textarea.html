@@ -1,235 +1,241 @@
-<textarea style="display: none;" name="{{ widget.name }}" id="{{ widget.name }}-tiptap-editor-textarea" {% include "django/forms/widgets/attrs.html" %}>
+<textarea style="display: none;" name="{{ widget.name }}" id="{{ widget.name }}-tiptap-editor-textarea" {%
+    include "django/forms/widgets/attrs.html" %}>
     {% if widget.value %}{{ widget.value }}{% endif %}
 </textarea>
 
-<div class="menubar">
-    <button id="{{ widget.name }}-bold">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="12" height="14"
-            viewBox="0 0 12 14">
-            <path
-                d="M10.52 7.438c-.353-.547-.823-1.003-1.375-1.336.277-.575.422-1.206.422-1.85C9.567 1.907 7.67 0 5.339 0H0v14h6.972c2.331 0 4.228-1.907 4.228-4.252 0-.823-.235-1.621-.68-2.31zM2.991 5.496V3.008H5.34c.682 0 1.237.558 1.237 1.244 0 .686-.555 1.244-1.237 1.244H2.99zM8.21 9.748c0 .686-.555 1.244-1.237 1.244h-3.98V8.504h3.98c.682 0 1.237.558 1.237 1.244z" />
-        </svg>
-    </button>
+<div class="the-editor-area">
+    <div class="menubar">
+        <button id="{{ widget.name }}-bold">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="12" height="14"
+                viewBox="0 0 12 14">
+                <path
+                    d="M10.52 7.438c-.353-.547-.823-1.003-1.375-1.336.277-.575.422-1.206.422-1.85C9.567 1.907 7.67 0 5.339 0H0v14h6.972c2.331 0 4.228-1.907 4.228-4.252 0-.823-.235-1.621-.68-2.31zM2.991 5.496V3.008H5.34c.682 0 1.237.558 1.237 1.244 0 .686-.555 1.244-1.237 1.244H2.99zM8.21 9.748c0 .686-.555 1.244-1.237 1.244h-3.98V8.504h3.98c.682 0 1.237.558 1.237 1.244z" />
+            </svg>
+        </button>
 
-    <button id="{{ widget.name }}-italic">
-        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="14" viewBox="0 0 10 14">
-            <path
-                d="M4.758 0L4.758 2.325 6.754 2.325 4.962 11.675 2.8 11.675 2.8 14 9.242 14 9.242 11.675 7.246 11.675 9.038 2.325 11.2 2.325 11.2 0z"
-                transform="translate(-2)" />
-        </svg>
-    </button>
+        <button id="{{ widget.name }}-italic">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="14" viewBox="0 0 10 14">
+                <path
+                    d="M4.758 0L4.758 2.325 6.754 2.325 4.962 11.675 2.8 11.675 2.8 14 9.242 14 9.242 11.675 7.246 11.675 9.038 2.325 11.2 2.325 11.2 0z"
+                    transform="translate(-2)" />
+            </svg>
+        </button>
 
-    <button id="{{ widget.name }}-underline">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-            <path
-                d="M16.666 15.758V18H.9v-2.242h15.766zM5.392 0v2.24H4.266v4.518c0 2.49 2.027 4.516 4.517 4.516S13.3 9.248 13.3 6.758V2.24h-1.126V0h4.492v2.24h-1.125v4.518c0 3.732-3.026 6.757-6.758 6.757l-.237-.004c-3.622-.125-6.52-3.1-6.52-6.753V2.24H.9V0h4.492z"
-                transform="translate(-230 -694) translate(214 628) translate(1 50) translate(15 16)" />
-        </svg>
-    </button>
+        <button id="{{ widget.name }}-underline">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                <path
+                    d="M16.666 15.758V18H.9v-2.242h15.766zM5.392 0v2.24H4.266v4.518c0 2.49 2.027 4.516 4.517 4.516S13.3 9.248 13.3 6.758V2.24h-1.126V0h4.492v2.24h-1.125v4.518c0 3.732-3.026 6.757-6.758 6.757l-.237-.004c-3.622-.125-6.52-3.1-6.52-6.753V2.24H.9V0h4.492z"
+                    transform="translate(-230 -694) translate(214 628) translate(1 50) translate(15 16)" />
+            </svg>
+        </button>
 
-    <button id="{{ widget.name }}-strike">
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path
-                d="M23,12V14H18.61C19.61,16.14 19.56,22 12.38,22C4.05,22.05 4.37,15.5 4.37,15.5L8.34,15.55C8.37,18.92 11.5,18.92 12.12,18.88C12.76,18.83 15.15,18.84 15.34,16.5C15.42,15.41 14.32,14.58 13.12,14H1V12H23M19.41,7.89L15.43,7.86C15.43,7.86 15.6,5.09 12.15,5.08C8.7,5.06 9,7.28 9,7.56C9.04,7.84 9.34,9.22 12,9.88H5.71C5.71,9.88 2.22,3.15 10.74,2C19.45,0.8 19.43,7.91 19.41,7.89Z" />
-        </svg>
-    </button>
+        <button id="{{ widget.name }}-strike">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path
+                    d="M23,12V14H18.61C19.61,16.14 19.56,22 12.38,22C4.05,22.05 4.37,15.5 4.37,15.5L8.34,15.55C8.37,18.92 11.5,18.92 12.12,18.88C12.76,18.83 15.15,18.84 15.34,16.5C15.42,15.41 14.32,14.58 13.12,14H1V12H23M19.41,7.89L15.43,7.86C15.43,7.86 15.6,5.09 12.15,5.08C8.7,5.06 9,7.28 9,7.56C9.04,7.84 9.34,9.22 12,9.88H5.71C5.71,9.88 2.22,3.15 10.74,2C19.45,0.8 19.43,7.91 19.41,7.89Z" />
+            </svg>
+        </button>
 
-    <div class="spacer"></div>
+        <div class="spacer"></div>
 
-    <button id="{{ widget.name }}-h1">
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M14,18V16H16V6.31L13.5,7.75V5.44L16,4H18V16H20V18H14Z" />
-        </svg>
-    </button>
+        <button id="{{ widget.name }}-h1">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M14,18V16H16V6.31L13.5,7.75V5.44L16,4H18V16H20V18H14Z" />
+            </svg>
+        </button>
 
-    <button id="{{ widget.name }}-h2">
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path
-                d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M21,18H15A2,2 0 0,1 13,16C13,15.47 13.2,15 13.54,14.64L18.41,9.41C18.78,9.05 19,8.55 19,8A2,2 0 0,0 17,6A2,2 0 0,0 15,8H13A4,4 0 0,1 17,4A4,4 0 0,1 21,8C21,9.1 20.55,10.1 19.83,10.83L15,16H21V18Z" />
-        </svg>
-    </button>
+        <button id="{{ widget.name }}-h2">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path
+                    d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M21,18H15A2,2 0 0,1 13,16C13,15.47 13.2,15 13.54,14.64L18.41,9.41C18.78,9.05 19,8.55 19,8A2,2 0 0,0 17,6A2,2 0 0,0 15,8H13A4,4 0 0,1 17,4A4,4 0 0,1 21,8C21,9.1 20.55,10.1 19.83,10.83L15,16H21V18Z" />
+            </svg>
+        </button>
 
-    <button id="{{ widget.name }}-h3">
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path
-                d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M15,4H19A2,2 0 0,1 21,6V16A2,2 0 0,1 19,18H15A2,2 0 0,1 13,16V15H15V16H19V12H15V10H19V6H15V7H13V6A2,2 0 0,1 15,4Z" />
-        </svg>
-    </button>
+        <button id="{{ widget.name }}-h3">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path
+                    d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M15,4H19A2,2 0 0,1 21,6V16A2,2 0 0,1 19,18H15A2,2 0 0,1 13,16V15H15V16H19V12H15V10H19V6H15V7H13V6A2,2 0 0,1 15,4Z" />
+            </svg>
+        </button>
 
-    <div class="spacer"></div>
+        <div class="spacer"></div>
 
-    <button id="{{ widget.name }}-alignLeft">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14"
-            viewBox="0 0 14 14">
-            <path
-                d="M13.59 10.544c.226 0 .41.183.41.41v2.636c0 .226-.184.41-.41.41H.41c-.226 0-.41-.184-.41-.41v-2.636c0-.227.184-.41.41-.41zM7 5.272c.227 0 .41.184.41.41v2.636c0 .226-.183.41-.41.41H.41c-.226 0-.41-.184-.41-.41V5.682c0-.226.184-.41.41-.41zM13.59 0c.226 0 .41.184.41.41v2.636c0 .227-.184.41-.41.41H.41c-.226 0-.41-.183-.41-.41V.41C0 .184.184 0 .41 0z" />
-        </svg>
+        <button id="{{ widget.name }}-alignLeft">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14"
+                viewBox="0 0 14 14">
+                <path
+                    d="M13.59 10.544c.226 0 .41.183.41.41v2.636c0 .226-.184.41-.41.41H.41c-.226 0-.41-.184-.41-.41v-2.636c0-.227.184-.41.41-.41zM7 5.272c.227 0 .41.184.41.41v2.636c0 .226-.183.41-.41.41H.41c-.226 0-.41-.184-.41-.41V5.682c0-.226.184-.41.41-.41zM13.59 0c.226 0 .41.184.41.41v2.636c0 .227-.184.41-.41.41H.41c-.226 0-.41-.183-.41-.41V.41C0 .184.184 0 .41 0z" />
+            </svg>
 
-    </button>
+        </button>
 
-    <button id="{{ widget.name }}-alignCenter">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="15"
-            viewBox="0 0 14 15">
-            <path
-                d="M13.595 10.542c.227 0 .41.184.41.41v2.638c0 .226-.183.41-.41.41H.41c-.226 0-.41-.184-.41-.41v-2.637c0-.227.184-.41.41-.41zm-3.091-5.27c.227 0 .41.183.41.41v2.636c0 .227-.183.41-.41.41H3.912c-.227 0-.41-.183-.41-.41V5.682c0-.227.183-.41.41-.41zM13.595 0c.227 0 .41.184.41.41v2.637c0 .227-.183.41-.41.41H.41c-.226 0-.41-.183-.41-.41V.41C0 .184.184 0 .41 0z" />
-        </svg>
-    </button>
-    <button id="{{ widget.name }}-alignRight">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14"
-            viewBox="0 0 14 14">
-            <path
-                d="M13.59 10.544c.226 0 .41.183.41.41v2.636c0 .226-.184.41-.41.41H.41c-.226 0-.41-.184-.41-.41v-2.636c0-.227.184-.41.41-.41zm0-5.272c.226 0 .41.184.41.41v2.636c0 .226-.184.41-.41.41H7c-.227 0-.41-.184-.41-.41V5.682c0-.226.183-.41.41-.41zm0-5.272c.226 0 .41.184.41.41v2.636c0 .227-.184.41-.41.41H.41c-.226 0-.41-.183-.41-.41V.41C0 .184.184 0 .41 0z" />
-        </svg>
-    </button>
+        <button id="{{ widget.name }}-alignCenter">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="15"
+                viewBox="0 0 14 15">
+                <path
+                    d="M13.595 10.542c.227 0 .41.184.41.41v2.638c0 .226-.183.41-.41.41H.41c-.226 0-.41-.184-.41-.41v-2.637c0-.227.184-.41.41-.41zm-3.091-5.27c.227 0 .41.183.41.41v2.636c0 .227-.183.41-.41.41H3.912c-.227 0-.41-.183-.41-.41V5.682c0-.227.183-.41.41-.41zM13.595 0c.227 0 .41.184.41.41v2.637c0 .227-.183.41-.41.41H.41c-.226 0-.41-.183-.41-.41V.41C0 .184.184 0 .41 0z" />
+            </svg>
+        </button>
+        <button id="{{ widget.name }}-alignRight">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14"
+                viewBox="0 0 14 14">
+                <path
+                    d="M13.59 10.544c.226 0 .41.183.41.41v2.636c0 .226-.184.41-.41.41H.41c-.226 0-.41-.184-.41-.41v-2.636c0-.227.184-.41.41-.41zm0-5.272c.226 0 .41.184.41.41v2.636c0 .226-.184.41-.41.41H7c-.227 0-.41-.184-.41-.41V5.682c0-.226.183-.41.41-.41zm0-5.272c.226 0 .41.184.41.41v2.636c0 .227-.184.41-.41.41H.41c-.226 0-.41-.183-.41-.41V.41C0 .184.184 0 .41 0z" />
+            </svg>
+        </button>
 
-    <button id="{{ widget.name }}-alignJustify">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="15"
-            viewBox="0 0 14 15">
-            <path
-                d="M13.59 10.538c.226 0 .41.184.41.41v2.636c0 .227-.184.41-.41.41H.41c-.226 0-.41-.183-.41-.41V10.95c0-.227.184-.41.41-.41zm0-5.269c.226 0 .41.184.41.41v2.636c0 .227-.184.41-.41.41H.41c-.226 0-.41-.183-.41-.41V5.68c0-.226.184-.41.41-.41zm0-5.269c.226 0 .41.184.41.41v2.636c0 .227-.184.41-.41.41H.41c-.226 0-.41-.183-.41-.41V.41C0 .184.184 0 .41 0z" />
-        </svg>
-    </button>
+        <button id="{{ widget.name }}-alignJustify">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="15"
+                viewBox="0 0 14 15">
+                <path
+                    d="M13.59 10.538c.226 0 .41.184.41.41v2.636c0 .227-.184.41-.41.41H.41c-.226 0-.41-.183-.41-.41V10.95c0-.227.184-.41.41-.41zm0-5.269c.226 0 .41.184.41.41v2.636c0 .227-.184.41-.41.41H.41c-.226 0-.41-.183-.41-.41V5.68c0-.226.184-.41.41-.41zm0-5.269c.226 0 .41.184.41.41v2.636c0 .227-.184.41-.41.41H.41c-.226 0-.41-.183-.41-.41V.41C0 .184.184 0 .41 0z" />
+            </svg>
+        </button>
 
-    <div class="spacer"></div>
+        <div class="spacer"></div>
 
-    <button id="{{ widget.name }}-addTable">
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path
-                d="M12.35 20H10V17H12.09C12.21 16.28 12.46 15.61 12.81 15H10V12H14V13.54C14.58 13 15.25 12.61 16 12.35V12H20V12.35C20.75 12.61 21.42 13 22 13.54V5C22 3.9 21.1 3 20 3H4C2.9 3 2 3.9 2 5V20C2 21.1 2.9 22 4 22H13.54C13 21.42 12.61 20.75 12.35 20M16 7H20V10H16V7M10 7H14V10H10V7M8 20H4V17H8V20M8 15H4V12H8V15M8 10H4V7H8V10M17 14H19V17H22V19H19V22H17V19H14V17H17V14" />
-        </svg>
+        <button id="{{ widget.name }}-addTable">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path
+                    d="M12.35 20H10V17H12.09C12.21 16.28 12.46 15.61 12.81 15H10V12H14V13.54C14.58 13 15.25 12.61 16 12.35V12H20V12.35C20.75 12.61 21.42 13 22 13.54V5C22 3.9 21.1 3 20 3H4C2.9 3 2 3.9 2 5V20C2 21.1 2.9 22 4 22H13.54C13 21.42 12.61 20.75 12.35 20M16 7H20V10H16V7M10 7H14V10H10V7M8 20H4V17H8V20M8 15H4V12H8V15M8 10H4V7H8V10M17 14H19V17H22V19H19V22H17V19H14V17H17V14" />
+            </svg>
 
-        <div class="{{ widget.name }}-table-config table-config display-flex">
-            <div class="inputs-container display-flex flex-align-center flex-direction-column">
-                <div class="display-flex flex-content-space-between">
-                    <label for="x">Zeilen</label>
-                    <span>&nbsp;x&nbsp;</span>
-                    <label for="y">Spalten</label>
+            <div class="{{ widget.name }}-table-config table-config display-flex">
+                <div class="inputs-container display-flex flex-align-center flex-direction-column">
+                    <div class="display-flex flex-content-space-between">
+                        <label for="x">Zeilen</label>
+                        <span>&nbsp;x&nbsp;</span>
+                        <label for="y">Spalten</label>
+                    </div>
+                    <div>
+                        <input type="number" name="X" id="{{ widget.name }}-x" placeholder="Zeilen" min="0" max="10"
+                            value="3">
+                        <span>x</span>
+                        <input type="number" name="Y" id="{{ widget.name }}-y" placeholder="Spalten" min="0" max="10"
+                            value="3">
+                    </div>
                 </div>
-                <div>
-                    <input type="number" name="X" id="{{ widget.name }}-x" placeholder="Zeilen" min="0" max="10" value="3">
-                    <span>x</span>
-                    <input type="number" name="Y" id="{{ widget.name }}-y" placeholder="Spalten" min="0" max="10" value="3">
+                <div class="{{ widget.name }}-add-table-button add-table-button">
+                    Hinzufügen
                 </div>
             </div>
-            <div class="{{ widget.name }}-add-table-button add-table-button">
-                Hinzufügen
-            </div>
-        </div>
-    </button>
+        </button>
 
-    <button id="{{ widget.name }}-deleteTable">
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path
-                d="M12.35 20H10V17H12.09C12.21 16.28 12.46 15.61 12.81 15H10V12H14V13.54C14.58 13 15.25 12.61 16 12.35V12H20V12.35C20.75 12.61 21.42 13 22 13.54V5C22 3.9 21.1 3 20 3H4C2.9 3 2 3.9 2 5V20C2 21.1 2.9 22 4 22H13.54C13 21.42 12.61 20.75 12.35 20M16 7H20V10H16V7M10 7H14V10H10V7M8 20H4V17H8V20M8 15H4V12H8V15M8 10H4V7H8V10M14.46 15.88L15.88 14.46L18 16.59L20.12 14.46L21.54 15.88L19.41 18L21.54 20.12L20.12 21.54L18 19.41L15.88 21.54L14.46 20.12L16.59 18L14.46 15.88" />
-        </svg>
-    </button>
+        <button id="{{ widget.name }}-deleteTable">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path
+                    d="M12.35 20H10V17H12.09C12.21 16.28 12.46 15.61 12.81 15H10V12H14V13.54C14.58 13 15.25 12.61 16 12.35V12H20V12.35C20.75 12.61 21.42 13 22 13.54V5C22 3.9 21.1 3 20 3H4C2.9 3 2 3.9 2 5V20C2 21.1 2.9 22 4 22H13.54C13 21.42 12.61 20.75 12.35 20M16 7H20V10H16V7M10 7H14V10H10V7M8 20H4V17H8V20M8 15H4V12H8V15M8 10H4V7H8V10M14.46 15.88L15.88 14.46L18 16.59L20.12 14.46L21.54 15.88L19.41 18L21.54 20.12L20.12 21.54L18 19.41L15.88 21.54L14.46 20.12L16.59 18L14.46 15.88" />
+            </svg>
+        </button>
 
-    <button id="{{ widget.name }}-addColumnBefore">
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path
-                d="M13,2A2,2 0 0,0 11,4V20A2,2 0 0,0 13,22H22V2H13M20,10V14H13V10H20M20,16V20H13V16H20M20,4V8H13V4H20M9,11H6V8H4V11H1V13H4V16H6V13H9V11Z" />
-        </svg>
-    </button>
+        <button id="{{ widget.name }}-addColumnBefore">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path
+                    d="M13,2A2,2 0 0,0 11,4V20A2,2 0 0,0 13,22H22V2H13M20,10V14H13V10H20M20,16V20H13V16H20M20,4V8H13V4H20M9,11H6V8H4V11H1V13H4V16H6V13H9V11Z" />
+            </svg>
+        </button>
 
-    <button id="{{ widget.name }}-addColumnAfter">
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path
-                d="M11,2A2,2 0 0,1 13,4V20A2,2 0 0,1 11,22H2V2H11M4,10V14H11V10H4M4,16V20H11V16H4M4,4V8H11V4H4M15,11H18V8H20V11H23V13H20V16H18V13H15V11Z" />
-        </svg>
-    </button>
+        <button id="{{ widget.name }}-addColumnAfter">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path
+                    d="M11,2A2,2 0 0,1 13,4V20A2,2 0 0,1 11,22H2V2H11M4,10V14H11V10H4M4,16V20H11V16H4M4,4V8H11V4H4M15,11H18V8H20V11H23V13H20V16H18V13H15V11Z" />
+            </svg>
+        </button>
 
-    <button id="{{ widget.name }}-deleteColumn">
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path
-                d="M4,2H11A2,2 0 0,1 13,4V20A2,2 0 0,1 11,22H4A2,2 0 0,1 2,20V4A2,2 0 0,1 4,2M4,10V14H11V10H4M4,16V20H11V16H4M4,4V8H11V4H4M17.59,12L15,9.41L16.41,8L19,10.59L21.59,8L23,9.41L20.41,12L23,14.59L21.59,16L19,13.41L16.41,16L15,14.59L17.59,12Z" />
-        </svg>
-    </button>
+        <button id="{{ widget.name }}-deleteColumn">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path
+                    d="M4,2H11A2,2 0 0,1 13,4V20A2,2 0 0,1 11,22H4A2,2 0 0,1 2,20V4A2,2 0 0,1 4,2M4,10V14H11V10H4M4,16V20H11V16H4M4,4V8H11V4H4M17.59,12L15,9.41L16.41,8L19,10.59L21.59,8L23,9.41L20.41,12L23,14.59L21.59,16L19,13.41L16.41,16L15,14.59L17.59,12Z" />
+            </svg>
+        </button>
 
-    <button id="{{ widget.name }}-addRowBefore">
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path
-                d="M22,14A2,2 0 0,0 20,12H4A2,2 0 0,0 2,14V21H4V19H8V21H10V19H14V21H16V19H20V21H22V14M4,14H8V17H4V14M10,14H14V17H10V14M20,14V17H16V14H20M11,10H13V7H16V5H13V2H11V5H8V7H11V10Z" />
-        </svg>
-    </button>
+        <button id="{{ widget.name }}-addRowBefore">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path
+                    d="M22,14A2,2 0 0,0 20,12H4A2,2 0 0,0 2,14V21H4V19H8V21H10V19H14V21H16V19H20V21H22V14M4,14H8V17H4V14M10,14H14V17H10V14M20,14V17H16V14H20M11,10H13V7H16V5H13V2H11V5H8V7H11V10Z" />
+            </svg>
+        </button>
 
-    <button id="{{ widget.name }}-addRowAfter">
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path
-                d="M22,10A2,2 0 0,1 20,12H4A2,2 0 0,1 2,10V3H4V5H8V3H10V5H14V3H16V5H20V3H22V10M4,10H8V7H4V10M10,10H14V7H10V10M20,10V7H16V10H20M11,14H13V17H16V19H13V22H11V19H8V17H11V14Z" />
-        </svg>
-    </button>
+        <button id="{{ widget.name }}-addRowAfter">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path
+                    d="M22,10A2,2 0 0,1 20,12H4A2,2 0 0,1 2,10V3H4V5H8V3H10V5H14V3H16V5H20V3H22V10M4,10H8V7H4V10M10,10H14V7H10V10M20,10V7H16V10H20M11,14H13V17H16V19H13V22H11V19H8V17H11V14Z" />
+            </svg>
+        </button>
 
-    <button id="{{ widget.name }}-deleteRow">
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path
-                d="M9.41,13L12,15.59L14.59,13L16,14.41L13.41,17L16,19.59L14.59,21L12,18.41L9.41,21L8,19.59L10.59,17L8,14.41L9.41,13M22,9A2,2 0 0,1 20,11H4A2,2 0 0,1 2,9V6A2,2 0 0,1 4,4H20A2,2 0 0,1 22,6V9M4,9H8V6H4V9M10,9H14V6H10V9M16,9H20V6H16V9Z" />
-        </svg>
-    </button>
+        <button id="{{ widget.name }}-deleteRow">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path
+                    d="M9.41,13L12,15.59L14.59,13L16,14.41L13.41,17L16,19.59L14.59,21L12,18.41L9.41,21L8,19.59L10.59,17L8,14.41L9.41,13M22,9A2,2 0 0,1 20,11H4A2,2 0 0,1 2,9V6A2,2 0 0,1 4,4H20A2,2 0 0,1 22,6V9M4,9H8V6H4V9M10,9H14V6H10V9M16,9H20V6H16V9Z" />
+            </svg>
+        </button>
 
-    <button id="{{ widget.name }}-mergeCells">
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path
-                d="M5,10H3V4H11V6H5V10M19,18H13V20H21V14H19V18M5,18V14H3V20H11V18H5M21,4H13V6H19V10H21V4M8,13V15L11,12L8,9V11H3V13H8M16,11V9L13,12L16,15V13H21V11H16Z" />
-        </svg>
-    </button>
+        <button id="{{ widget.name }}-mergeCells">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path
+                    d="M5,10H3V4H11V6H5V10M19,18H13V20H21V14H19V18M5,18V14H3V20H11V18H5M21,4H13V6H19V10H21V4M8,13V15L11,12L8,9V11H3V13H8M16,11V9L13,12L16,15V13H21V11H16Z" />
+            </svg>
+        </button>
 
-    <button id="{{ widget.name }}-splitCells">
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path
-                d="M19 14H21V20H3V14H5V18H19V14M3 4V10H5V6H19V10H21V4H3M11 11V13H8V15L5 12L8 9V11H11M16 11V9L19 12L16 15V13H13V11H16Z" />
-        </svg>
-    </button>
+        <button id="{{ widget.name }}-splitCells">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path
+                    d="M19 14H21V20H3V14H5V18H19V14M3 4V10H5V6H19V10H21V4H3M11 11V13H8V15L5 12L8 9V11H11M16 11V9L19 12L16 15V13H13V11H16Z" />
+            </svg>
+        </button>
 
-    <button id="{{ widget.name }}-toggleHeaderColumn">
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path
-                d="M8,2H16A2,2 0 0,1 18,4V20A2,2 0 0,1 16,22H8A2,2 0 0,1 6,20V4A2,2 0 0,1 8,2M8,10V14H16V10H8M8,16V20H16V16H8M8,4V8H16V4H8Z" />
-        </svg>
-    </button>
+        <button id="{{ widget.name }}-toggleHeaderColumn">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path
+                    d="M8,2H16A2,2 0 0,1 18,4V20A2,2 0 0,1 16,22H8A2,2 0 0,1 6,20V4A2,2 0 0,1 8,2M8,10V14H16V10H8M8,16V20H16V16H8M8,4V8H16V4H8Z" />
+            </svg>
+        </button>
 
-    <button id="{{ widget.name }}-toggleHeaderRow">
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path
-                d="M22,14A2,2 0 0,1 20,16H4A2,2 0 0,1 2,14V10A2,2 0 0,1 4,8H20A2,2 0 0,1 22,10V14M4,14H8V10H4V14M10,14H14V10H10V14M16,14H20V10H16V14Z" />
-        </svg>
-    </button>
+        <button id="{{ widget.name }}-toggleHeaderRow">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path
+                    d="M22,14A2,2 0 0,1 20,16H4A2,2 0 0,1 2,14V10A2,2 0 0,1 4,8H20A2,2 0 0,1 22,10V14M4,14H8V10H4V14M10,14H14V10H10V14M16,14H20V10H16V14Z" />
+            </svg>
+        </button>
 
-    <button id="{{ widget.name }}-toggleHeaderCell">
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path
-                d="M21,19A1,1 0 0,1 20,20H19V18H21V19M15,20V18H17V20H15M11,20V18H13V20H11M7,20V18H9V20H7M4,20A1,1 0 0,1 3,19V18H5V20H4M19,4H5A2,2 0 0,0 3,6V8H5L11,8H13L19,8H21V6C21,4.89 20.11,4 19,4M5,14H3V16H5V14M5,10H3V12H5V10M21,10H19V12H21V10M21,14H19V16H21V14M11,16V14H13V16H11M11,12V10H13V12H11" />
-        </svg>
-    </button>
+        <button id="{{ widget.name }}-toggleHeaderCell">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path
+                    d="M21,19A1,1 0 0,1 20,20H19V18H21V19M15,20V18H17V20H15M11,20V18H13V20H11M7,20V18H9V20H7M4,20A1,1 0 0,1 3,19V18H5V20H4M19,4H5A2,2 0 0,0 3,6V8H5L11,8H13L19,8H21V6C21,4.89 20.11,4 19,4M5,14H3V16H5V14M5,10H3V12H5V10M21,10H19V12H21V10M21,14H19V16H21V14M11,16V14H13V16H11M11,12V10H13V12H11" />
+            </svg>
+        </button>
 
-    <div class="spacer"></div>
+        <div class="spacer"></div>
 
-    <button id="{{ widget.name }}-bulletList">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
-            <path
-                d="M13.59 10.542c.198 0 .363.141.402.328l.008.083v2.637c0 .198-.14.363-.327.402L13.59 14H5.31c-.198 0-.364-.14-.402-.328L4.9 13.59v-2.637c0-.199.14-.364.327-.402l.083-.009h8.28zm-10.5 0c.198 0 .363.141.402.328l.008.083v2.637c0 .198-.14.363-.328.402L3.09 14H.41c-.198 0-.363-.14-.402-.328L0 13.59v-2.637c0-.199.14-.364.327-.402l.083-.009h2.68zm10.5-5.27c.198 0 .363.14.402.327l.008.083v2.636c0 .199-.14.364-.327.402l-.083.009H5.31c-.198 0-.364-.14-.402-.328L4.9 8.318V5.682c0-.199.14-.364.327-.402l.083-.009h8.28zm-10.5 0c.198 0 .363.14.402.327l.008.083v2.636c0 .199-.14.364-.328.402l-.082.009H.41c-.198 0-.363-.14-.402-.328L0 8.318V5.682c0-.199.14-.364.327-.402L.41 5.27h2.68zM13.59 0c.198 0 .363.14.402.328L14 .41v2.637c0 .199-.14.364-.327.402l-.083.009H5.31c-.198 0-.364-.141-.402-.328L4.9 3.047V.41c0-.198.14-.363.327-.402L5.31 0h8.28zM3.09 0c.198 0 .363.14.402.328L3.5.41v2.637c0 .199-.14.364-.328.402l-.082.009H.41c-.198 0-.363-.141-.402-.328L0 3.047V.41C0 .212.14.047.327.008L.41 0h2.68z" />
-        </svg>
-    </button>
+        <button id="{{ widget.name }}-bulletList">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+                <path
+                    d="M13.59 10.542c.198 0 .363.141.402.328l.008.083v2.637c0 .198-.14.363-.327.402L13.59 14H5.31c-.198 0-.364-.14-.402-.328L4.9 13.59v-2.637c0-.199.14-.364.327-.402l.083-.009h8.28zm-10.5 0c.198 0 .363.141.402.328l.008.083v2.637c0 .198-.14.363-.328.402L3.09 14H.41c-.198 0-.363-.14-.402-.328L0 13.59v-2.637c0-.199.14-.364.327-.402l.083-.009h2.68zm10.5-5.27c.198 0 .363.14.402.327l.008.083v2.636c0 .199-.14.364-.327.402l-.083.009H5.31c-.198 0-.364-.14-.402-.328L4.9 8.318V5.682c0-.199.14-.364.327-.402l.083-.009h8.28zm-10.5 0c.198 0 .363.14.402.327l.008.083v2.636c0 .199-.14.364-.328.402l-.082.009H.41c-.198 0-.363-.14-.402-.328L0 8.318V5.682c0-.199.14-.364.327-.402L.41 5.27h2.68zM13.59 0c.198 0 .363.14.402.328L14 .41v2.637c0 .199-.14.364-.327.402l-.083.009H5.31c-.198 0-.364-.141-.402-.328L4.9 3.047V.41c0-.198.14-.363.327-.402L5.31 0h8.28zM3.09 0c.198 0 .363.14.402.328L3.5.41v2.637c0 .199-.14.364-.328.402l-.082.009H.41c-.198 0-.363-.141-.402-.328L0 3.047V.41C0 .212.14.047.327.008L.41 0h2.68z" />
+            </svg>
+        </button>
 
-    <button id="{{ widget.name }}-orderedList">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
-            <path
-                d="M13.59 10.542c.198 0 .363.141.402.328l.008.083v2.637c0 .198-.14.363-.327.402L13.59 14H3.91c-.198 0-.363-.14-.402-.328L3.5 13.59v-2.637c0-.199.14-.364.327-.402l.083-.009h9.68zm-12.546.003c.294 0 .537.065.702.19.234.174.349.405.349.708.002.088-.011.414-.288.625-.04.031-.078.056-.119.078.156.07.345.191.423.523.067.26.016.65-.251.922-.273.27-.716.31-.957.31-.16 0-.319-.018-.457-.05-.076-.015-.111-.024-.164-.045-.08-.03-.135-.1-.15-.181l-.003-.063.011-.14c.006-.074.045-.141.107-.182.062-.042.14-.052.21-.028.3.099.561.1.725-.006.125-.082.185-.194.181-.341 0-.14-.053-.234-.171-.309-.046-.028-.165-.078-.418-.078-.111 0-.206-.075-.235-.177l-.009-.064v-.106c0-.13.104-.238.234-.241.162-.006.449-.038.554-.202.044-.07.052-.22.013-.303-.054-.118-.154-.186-.305-.207-.043-.007-.08-.01-.117-.01-.104 0-.218.023-.357.073-.071.025-.15.016-.214-.026-.047-.031-.082-.077-.098-.13l-.01-.056-.01-.142c-.007-.111.064-.214.172-.246.204-.062.436-.096.652-.096zM13.59 5.27c.198 0 .363.14.402.328l.008.083v2.636c0 .199-.14.364-.327.402l-.083.009H3.91c-.198 0-.363-.14-.402-.328L3.5 8.318V5.682c0-.199.14-.364.327-.402l.083-.009h9.68zm-12.456-.02c.2 0 .37.034.503.102.239.126.39.335.44.604.123.6-.24 1.112-.691 1.67-.082.103-.155.192-.217.265l-.06.067h.77c.112 0 .205.076.234.178l.008.064v.125c0 .111-.075.205-.177.233l-.064.009H.41c-.11 0-.204-.076-.232-.178l-.01-.064V8.09c0-.068.03-.133.08-.179.037-.034.083-.082.143-.15l.066-.076.403-.482c.523-.63.52-.922.46-1.106-.04-.103-.118-.171-.232-.197-.16-.04-.28-.014-.47.085-.071.038-.156.037-.227-.001C.338 5.954.3 5.907.28 5.85l-.013-.058-.016-.16c-.01-.11.056-.214.16-.25.239-.086.496-.133.724-.133zM13.59 0c.198 0 .363.14.402.328L14 .41v2.637c0 .199-.14.364-.327.402l-.083.009H3.91c-.198 0-.363-.141-.402-.328L3.5 3.047V.41c0-.198.14-.363.327-.402L3.91 0h9.68zM1.122 0c.11 0 .204.075.232.177l.009.064v2.794c0 .11-.075.204-.177.233l-.064.008h-.25c-.11 0-.204-.075-.232-.177l-.009-.064V.946l-.147.129c-.051.045-.12.066-.187.058C.25 1.127.209 1.109.174 1.08l-.046-.05-.084-.12c-.06-.084-.057-.195 0-.277L.084.59.71.058c.03-.025.064-.043.1-.051L.866 0h.256z" />
-        </svg>
+        <button id="{{ widget.name }}-orderedList">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+                <path
+                    d="M13.59 10.542c.198 0 .363.141.402.328l.008.083v2.637c0 .198-.14.363-.327.402L13.59 14H3.91c-.198 0-.363-.14-.402-.328L3.5 13.59v-2.637c0-.199.14-.364.327-.402l.083-.009h9.68zm-12.546.003c.294 0 .537.065.702.19.234.174.349.405.349.708.002.088-.011.414-.288.625-.04.031-.078.056-.119.078.156.07.345.191.423.523.067.26.016.65-.251.922-.273.27-.716.31-.957.31-.16 0-.319-.018-.457-.05-.076-.015-.111-.024-.164-.045-.08-.03-.135-.1-.15-.181l-.003-.063.011-.14c.006-.074.045-.141.107-.182.062-.042.14-.052.21-.028.3.099.561.1.725-.006.125-.082.185-.194.181-.341 0-.14-.053-.234-.171-.309-.046-.028-.165-.078-.418-.078-.111 0-.206-.075-.235-.177l-.009-.064v-.106c0-.13.104-.238.234-.241.162-.006.449-.038.554-.202.044-.07.052-.22.013-.303-.054-.118-.154-.186-.305-.207-.043-.007-.08-.01-.117-.01-.104 0-.218.023-.357.073-.071.025-.15.016-.214-.026-.047-.031-.082-.077-.098-.13l-.01-.056-.01-.142c-.007-.111.064-.214.172-.246.204-.062.436-.096.652-.096zM13.59 5.27c.198 0 .363.14.402.328l.008.083v2.636c0 .199-.14.364-.327.402l-.083.009H3.91c-.198 0-.363-.14-.402-.328L3.5 8.318V5.682c0-.199.14-.364.327-.402l.083-.009h9.68zm-12.456-.02c.2 0 .37.034.503.102.239.126.39.335.44.604.123.6-.24 1.112-.691 1.67-.082.103-.155.192-.217.265l-.06.067h.77c.112 0 .205.076.234.178l.008.064v.125c0 .111-.075.205-.177.233l-.064.009H.41c-.11 0-.204-.076-.232-.178l-.01-.064V8.09c0-.068.03-.133.08-.179.037-.034.083-.082.143-.15l.066-.076.403-.482c.523-.63.52-.922.46-1.106-.04-.103-.118-.171-.232-.197-.16-.04-.28-.014-.47.085-.071.038-.156.037-.227-.001C.338 5.954.3 5.907.28 5.85l-.013-.058-.016-.16c-.01-.11.056-.214.16-.25.239-.086.496-.133.724-.133zM13.59 0c.198 0 .363.14.402.328L14 .41v2.637c0 .199-.14.364-.327.402l-.083.009H3.91c-.198 0-.363-.141-.402-.328L3.5 3.047V.41c0-.198.14-.363.327-.402L3.91 0h9.68zM1.122 0c.11 0 .204.075.232.177l.009.064v2.794c0 .11-.075.204-.177.233l-.064.008h-.25c-.11 0-.204-.075-.232-.177l-.009-.064V.946l-.147.129c-.051.045-.12.066-.187.058C.25 1.127.209 1.109.174 1.08l-.046-.05-.084-.12c-.06-.084-.057-.195 0-.277L.084.59.71.058c.03-.025.064-.043.1-.051L.866 0h.256z" />
+            </svg>
 
-    </button>
+        </button>
 
-    <div class="spacer"></div>
+        <div class="spacer"></div>
 
-    <button id="{{ widget.name }}-clearFormat">
-        <svg style="width:18px;height:18px" viewBox="0 0 24 24">
-            <path
-                d="M6,5V5.18L8.82,8H11.22L10.5,9.68L12.6,11.78L14.21,8H20V5H6M3.27,5L2,6.27L8.97,13.24L6.5,19H9.5L11.07,15.34L16.73,21L18,19.73L3.55,5.27L3.27,5Z" />
-        </svg>
-    </button>
+        <button id="{{ widget.name }}-clearFormat">
+            <svg style="width:18px;height:18px" viewBox="0 0 24 24">
+                <path
+                    d="M6,5V5.18L8.82,8H11.22L10.5,9.68L12.6,11.78L14.21,8H20V5H6M3.27,5L2,6.27L8.97,13.24L6.5,19H9.5L11.07,15.34L16.73,21L18,19.73L3.55,5.27L3.27,5Z" />
+            </svg>
+        </button>
 
+    </div>
+
+    <div class="editor-content-rendered" name="{{ widget.name }}" id="{{ widget.name }}-tiptap-editor-div"
+        data-tiptap="{{ widget.value }}"></div>
 </div>
-
-<div class="editor-content-rendered" name="{{ widget.name }}" id="{{ widget.name }}-tiptap-editor-div" data-tiptap="{{ widget.value }}"></div>
 
 <script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="https://unpkg.com/tippy.js@6"></script>
@@ -237,7 +243,7 @@
     var docEditor = null
 </script>
 <script type="module">
-    import { Editor } from 'https://cdn.skypack.dev/pin/@tiptap/core@v2.0.0-beta.29-ehyNSRjShPZE49ePTtXD/mode=imports,min/optimized/@tiptap/core.js'
+    import { Editor, Extension } from 'https://cdn.skypack.dev/pin/@tiptap/core@v2.0.0-beta.29-ehyNSRjShPZE49ePTtXD/mode=imports,min/optimized/@tiptap/core.js'
     import { defaultExtensions } from 'https://cdn.skypack.dev/pin/@tiptap/starter-kit@v2.0.0-beta.25-JoiZSBGcBoccfWu5VKUa/mode=imports,min/optimized/@tiptap/starter-kit.js'
     import Underline from 'https://cdn.skypack.dev/pin/@tiptap/extension-underline@v2.0.0-beta.2-Bwx8MOdHexDd8mwGpRGe/mode=imports,min/optimized/@tiptap/extension-underline.js'
     import TextAlign from 'https://cdn.skypack.dev/pin/@tiptap/extension-text-align@v2.0.0-beta.5-d0qdTjuu0dEHQLjeV1wc/mode=imports,min/optimized/@tiptap/extension-text-align.js'
@@ -246,9 +252,166 @@
     import TableRow from 'https://cdn.skypack.dev/pin/@tiptap/extension-table-row@v2.0.0-beta.1-ISyZjpsUhzXYezHc2nqF/mode=imports,min/optimized/@tiptap/extension-table-row.js'
     import TableCell from 'https://cdn.skypack.dev/pin/@tiptap/extension-table-cell@v2.0.0-beta.1-43K75BjUzkr5bXQcZq2T/mode=imports,min/optimized/@tiptap/extension-table-cell.js'
     import Gapcursor from 'https://cdn.skypack.dev/pin/@tiptap/extension-gapcursor@v2.0.0-beta.5-bZHFI5ZlZOfCuacFqx8s/mode=imports,min/optimized/@tiptap/extension-gapcursor.js'
-    import { liftTarget } from 'https://cdn.skypack.dev/-/prosemirror-transform@v1.3.2-Kbq8ngdeq6IjA55jMbCW/dist=es2020,mode=imports,min/optimized/prosemirror-transform.js'
+    import { liftTarget } from 'https://cdn.skypack.dev/pin/prosemirror-transform@v1.3.2-Kbq8ngdeq6IjA55jMbCW/mode=imports,min/optimized/prosemirror-transform.js'
     import Typography from 'https://cdn.skypack.dev/pin/@tiptap/extension-typography@v2.0.0-beta.2-A24UYlFtSPG2vkOMR48X/mode=imports,min/optimized/@tiptap/extension-typography.js'
     import Placeholder from 'https://cdn.skypack.dev/pin/@tiptap/extension-placeholder@v2.0.0-beta.5-jcQBuFZmvIclnnMCvzlK/mode=imports,min/optimized/@tiptap/extension-placeholder.js'
+    import { TextSelection, AllSelection } from 'https://cdn.skypack.dev/pin/prosemirror-state@v1.3.4-IDkNn9vITybMM5NJ8cUx/mode=imports,min/optimized/prosemirror-state.js'
+    import marked from 'https://cdn.skypack.dev/pin/marked@v2.0.3-qfnC6uYDZMsP0gC4iyi0/mode=imports,min/optimized/marked.js'
+
+    export const clamp = (val, min, max) => {
+        if (val < min) {
+            return min
+        }
+        if (val > max) {
+            return max
+        }
+        return val
+    }
+
+    const IndentProps = {
+        min: 0,
+        max: 210,
+
+        more: 30,
+        less: -30
+    }
+
+    export function isBulletListNode(node) {
+        return node.type.name === 'bullet_list'
+    }
+
+    export function isOrderedListNode(node) {
+        return node.type.name === 'order_list'
+    }
+
+    export function isTodoListNode(node) {
+        return node.type.name === 'todo_list'
+    }
+
+    export function isListNode(node) {
+        return isBulletListNode(node) ||
+            isOrderedListNode(node) ||
+            isTodoListNode(node)
+    }
+
+    function setNodeIndentMarkup(tr, pos, delta) {
+        if (!tr.doc) return tr
+
+        const node = tr.doc.nodeAt(pos)
+        if (!node) return tr
+
+        const minIndent = IndentProps.min
+        const maxIndent = IndentProps.max
+
+        const indent = clamp(
+            (node.attrs.indent || 0) + delta,
+            minIndent,
+            maxIndent,
+        )
+
+        if (indent === node.attrs.indent) return tr
+
+        const nodeAttrs = {
+            ...node.attrs,
+            indent,
+        }
+
+        return tr.setNodeMarkup(pos, node.type, nodeAttrs, node.marks)
+    }
+
+    const updateIndentLevel = (tr, delta) => {
+        const { doc, selection } = tr
+
+        if (!doc || !selection) return tr
+
+        if (!(selection instanceof TextSelection || selection instanceof AllSelection)) {
+            return tr
+        }
+
+        const { from, to } = selection
+
+        doc.nodesBetween(from, to, (node, pos) => {
+            const nodeType = node.type
+
+            if (nodeType.name === 'paragraph' || nodeType.name === 'heading') {
+                tr = setNodeIndentMarkup(tr, pos, delta)
+                return false
+            } if (isListNode(node)) {
+                return false
+            }
+            return true
+        })
+
+        return tr
+    }
+
+    export const Indent = Extension.create({
+        name: 'indent',
+
+        defaultOptions: {
+            types: ['heading', 'paragraph'],
+            indentLevels: [0, 30, 60, 90, 120, 150, 180, 210],
+            defaultIndentLevel: 0,
+        },
+
+        addGlobalAttributes() {
+            return [
+                {
+                    types: this.options.types,
+                    attributes: {
+                        indent: {
+                            default: this.options.defaultIndentLevel,
+                            renderHTML: attributes => ({
+                                style: `margin-left: ${attributes.indent}px!important;`
+                            }),
+                            parseHTML: element => ({
+                                indent: parseInt(element.style.marginLeft) || this.options.defaultIndentLevel,
+                            }),
+                        },
+                    },
+                },
+            ]
+        },
+
+        addCommands() {
+            return {
+                indent: () => ({ tr, state, dispatch }) => {
+                    const { selection } = state
+                    tr = tr.setSelection(selection)
+                    tr = updateIndentLevel(tr, IndentProps.more)
+
+                    if (tr.docChanged) {
+                        // eslint-disable-next-line no-unused-expressions
+                        dispatch && dispatch(tr)
+                        return true
+                    }
+
+                    return false
+                },
+                outdent: () => ({ tr, state, dispatch }) => {
+                    const { selection } = state
+                    tr = tr.setSelection(selection)
+                    tr = updateIndentLevel(tr, IndentProps.less)
+
+                    if (tr.docChanged) {
+                        // eslint-disable-next-line no-unused-expressions
+                        dispatch && dispatch(tr)
+                        return true
+                    }
+
+                    return false
+                },
+            }
+        },
+
+        addKeyboardShortcuts() {
+            return {
+                Tab: () => this.editor.commands.indent(),
+                'Shift-Tab': () => this.editor.commands.outdent()
+            }
+        },
+    })
+
 
     function isTextSelected(editor) {
         const state = editor.state
@@ -521,7 +684,7 @@
     }
 
     const textArea = document.querySelector('#{{ widget.name }}-tiptap-editor-textarea')
-    const initialEditorContent = textArea.value
+    let initialEditorContent = marked(textArea.value.trim())
 
     const editor = new Editor({
         element: document.querySelector('#{{ widget.name }}-tiptap-editor-div'),
@@ -540,12 +703,13 @@
             Placeholder.configure({
                 placeholder: 'Hier schreiben...',
             }),
+            Indent
         ],
         content: initialEditorContent,
         onUpdate({ editor }) {
             checkIsActive(editor)
             docEditor = editor
-            textArea.value = editor.getHTML()
+            textArea.value = editor.getHTML().trim()
         },
         onCreate({ editor }) {
             setTimeout(() => {
@@ -604,7 +768,7 @@
             }
         }
         const addTableButton = document.querySelector('.{{ widget.name }}-add-table-button')
-        addTableButton.addEventListener('click', addTableButtonListener, {capture: true})
+        addTableButton.addEventListener('click', addTableButtonListener, { capture: true })
     }, 1000);
 
 
