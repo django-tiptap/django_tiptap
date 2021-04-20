@@ -245,6 +245,11 @@
             </svg>
         </button>
 
+        <div class="spacer"></div>
+
+        <span class="not-saved-text" id="{{ widget.name }}-not-saved-warning"> 
+            Speichern nicht vergessen!
+        </span>
     </div>
 
     <div class="editor-content-rendered" name="{{ widget.name }}" id="{{ widget.name }}-tiptap-editor-div"
@@ -757,7 +762,14 @@
         content: initialEditorContent,
         onUpdate({ editor }) {
             checkIsActive(editor)
-            textArea.value = editor.getHTML().trim()
+            const currentEditorContent = editor.getHTML().trim()
+            textArea.value = currentEditorContent
+            const notSavedWarningSpan = document.querySelector('#{{ widget.name }}-not-saved-warning')
+            if (currentEditorContent === initialEditorContent) {
+                notSavedWarningSpan.classList.remove('show')
+            } else {
+                notSavedWarningSpan.classList.add('show')
+            }
         },
         onCreate({ editor }) {
             setTimeout(() => {

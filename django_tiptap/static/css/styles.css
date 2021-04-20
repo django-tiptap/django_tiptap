@@ -177,6 +177,18 @@
   color: black;
   background-color: white;
 }
+.not-saved-text {
+  display: none;
+}
+
+.not-saved-text.show {
+  display: inline;
+  color: #ee0e29;
+  font-weight: bold;
+  font-size: 1.3em;
+  height: 100%;
+  align-self: center;
+}
 
 .ProseMirror {
   color: black !important;
