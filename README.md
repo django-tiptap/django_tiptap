@@ -1,13 +1,11 @@
 # django_tiptap
 
-https://user-images.githubusercontent.com/45892659/115373320-0d17dc80-a1cc-11eb-89da-c5f723a19c63.mov
-
-
-
 Django admin TipTap integration. Provides a `TipTapTextField` and `TipTapWidget` that
 allow you to use TipTap in your Django forms and admin pages.
 
 For more information about TipTap, check out [tiptap.dev](https://www.tiptap.dev/).
+
+https://user-images.githubusercontent.com/45892659/115373320-0d17dc80-a1cc-11eb-89da-c5f723a19c63.mov
 
 # Installation
 
