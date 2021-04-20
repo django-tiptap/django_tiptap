@@ -245,7 +245,7 @@
             </svg>
         </button>
 
-        <div class="spacer"></div>
+        <div class="spacer not-saved-text-spacer" id="{{ widget.name }}-not-saved-warning-spacer"></div>
 
         <span class="not-saved-text" id="{{ widget.name }}-not-saved-warning"> 
             Speichern nicht vergessen!
@@ -765,10 +765,13 @@
             const currentEditorContent = editor.getHTML().trim()
             textArea.value = currentEditorContent
             const notSavedWarningSpan = document.querySelector('#{{ widget.name }}-not-saved-warning')
+            const notSavedWarningSpacer = document.querySelector('#{{ widget.name }}-not-saved-warning-spacer')
             if (currentEditorContent === initialEditorContent) {
                 notSavedWarningSpan.classList.remove('show')
+                notSavedWarningSpacer.classList.remove('show')
             } else {
                 notSavedWarningSpan.classList.add('show')
+                notSavedWarningSpacer.classList.add('show')
             }
         },
         onCreate({ editor }) {
