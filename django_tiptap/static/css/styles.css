@@ -207,6 +207,9 @@
 .ProseMirror * {
   color: black !important;
 }
+.ProseMirror ol li::marker {
+  font-size: 16px;
+}
 .ProseMirror p {
   font-size: 16px !important;
 }
