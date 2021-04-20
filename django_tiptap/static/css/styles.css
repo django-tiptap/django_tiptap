@@ -1,3 +1,7 @@
+.text-black {
+  color: black;
+}
+
 .display-flex {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -25,13 +29,62 @@
   -ms-flex-pack: justify;
   justify-content: space-between;
 }
+
+.the-editor-area {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid grey;
+  min-width: 600px;
+  resize: both;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-height: fit-content;
+  max-height: 90vh;
+  max-width: 65vw;
+  background: white;
+  color: black;
+  position: relative;
+  border-radius: 6px;
+}
+
+.the-editor-area::after {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' style='width:24px;height:24px' viewBox='0 0 24 24'%3E%3Cpath d='M22,22H20V20H22V22M22,18H20V16H22V18M18,22H16V20H18V22M18,18H16V16H18V18M14,22H12V20H14V22M22,14H20V12H22V14Z' /%3E%3C/svg%3E");
+  position: absolute;
+  color: white;
+  bottom: 0;
+  right: 0;
+  width: 1em;
+  height: 1em;
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(2) translate(-12px, -2px);
+  font-size: 1.3em;
+}
+
+.the-editor-area::-webkit-resizer {
+  transform: scale(3);
+}
+
+.editor-content-rendered {
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
 .menubar {
+  display: none;
+}
+
+.menubar.show {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 5rem;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  justify-content: center;
+  border-bottom: 2px solid grey;
+  padding: 1rem 0.5rem;
 }
 .menubar button {
   margin: 0 4px 2px 2px;
@@ -44,6 +97,13 @@
   outline: none;
   cursor: pointer;
 }
+
+.menubar button:not([id$='-addTable']) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .menubar button:hover {
   background-color: rgba(87, 87, 87, 0.199);
   -webkit-transition: none;
@@ -61,6 +121,11 @@
 .menubar button.is-active svg {
   fill: white;
 }
+
+.menubar button[id$='-addTable'] svg {
+  transform: translateY(2px);
+}
+
 .menubar button[id$='-addTable']:hover .table-config {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -92,7 +157,7 @@
 .menubar button[id$='-addTable'] .table-config input {
   height: 1.5rem;
   border-radius: 6px;
-  border: 1px solid grey;
+  border: 2px solid grey;
   font-size: 1.2rem;
   min-width: 100px;
   padding: 4px;
@@ -108,27 +173,42 @@
   -ms-flex-align: center;
   align-items: center;
 }
-
-.editor-content-rendered {
-  min-width: 800px;
-  resize: both;
-  overflow: auto;
-  min-height: fit-content;
-  max-height: 90vh;
-  max-width: 70vw;
+.menubar button[id$='-addTable'] .table-config .inputs-container .table-dimension-input {
+  color: black;
+  background-color: white;
+}
+.not-saved-text {
+  display: none;
+}
+.not-saved-text.show {
+  display: inline;
+  color: #ee0e29;
+  font-weight: bold;
+  font-size: 1.3em;
+  height: 100%;
+  align-self: center;
+  margin: 0 0 0 0.5rem;
+}
+.not-saved-text-spacer {
+  display: none;
+}
+.not-saved-text-spacer.show {
+  display: block;
 }
 
 .ProseMirror {
-  border: 1px solid grey;
-  margin: 1rem 0 0 0;
   color: black !important;
-  padding: 1rem 1.5rem 1rem 1.5rem;
+  padding: 1rem 1.75rem;
   outline: none !important;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
     'Helvetica Neue', sans-serif;
+  margin: 0 !important;
 }
 .ProseMirror * {
   color: black !important;
+}
+.ProseMirror p {
+  font-size: 16px !important;
 }
 .ProseMirror ul {
   margin: 0;
@@ -214,23 +294,22 @@
 .ProseMirror h6 {
   line-height: 1.1;
 }
-.ProseMirror code {
-  background-color: rgba(97, 97, 97, 0.1);
-  color: #616161;
-}
+
 .ProseMirror pre {
-  background: #0d0d0d;
-  color: #fff;
-  font-family: 'JetBrainsMono', monospace;
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
+  background: #0d0d0d !important;
+  color: #fff !important;
+  font-family: 'JetBrainsMono', monospace !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 0.5rem !important;
 }
+
 .ProseMirror pre code {
-  color: inherit;
-  padding: 0;
-  background: none;
-  font-size: 0.8rem;
+  color: #fff !important;
+  padding: 0 !important;
+  background: none !important;
+  font-size: 0.8rem !important;
 }
+
 .ProseMirror img {
   max-width: 100%;
   height: auto;
@@ -271,6 +350,10 @@
   text-align: left;
   background-color: #f1f3f5;
 }
+.ProseMirror tr {
+  background-color: white !important;
+}
+
 .ProseMirror table .selectedCell:after {
   z-index: 2;
   position: absolute;
