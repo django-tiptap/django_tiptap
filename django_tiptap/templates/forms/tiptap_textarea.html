@@ -3,7 +3,7 @@
     {% if widget.value %}{{ widget.value }}{% endif %}
 </textarea>
 
-<div class="the-editor-area">
+<div class="the-editor-area" style="min-width: {{ widget.config.width }}; min-height: {{ widget.config.height }}">
     <div class="menubar" id="{{ widget.name }}-menubar">
         <button id="{{ widget.name }}-bold">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="12" height="14"
@@ -259,7 +259,7 @@
 
         <div class="spacer not-saved-text-spacer" id="{{ widget.name }}-not-saved-warning-spacer"></div>
 
-        <span class="not-saved-text" id="{{ widget.name }}-not-saved-warning"> 
+        <span class="not-saved-text" id="{{ widget.name }}-not-saved-warning">
             Speichern nicht vergessen!
         </span>
     </div>
@@ -308,6 +308,8 @@
     import Placeholder from 'https://cdn.skypack.dev/pin/@tiptap/extension-placeholder@v2.0.0-beta.5-jcQBuFZmvIclnnMCvzlK/mode=imports,min/optimized/@tiptap/extension-placeholder.js'
     import { TextSelection, AllSelection } from 'https://cdn.skypack.dev/pin/prosemirror-state@v1.3.4-IDkNn9vITybMM5NJ8cUx/mode=imports,min/optimized/prosemirror-state.js'
     import marked from 'https://cdn.skypack.dev/pin/marked@v2.0.3-qfnC6uYDZMsP0gC4iyi0/mode=imports,min/optimized/marked.js'
+
+    console.log("{{widget.config}}")
 
     export const clamp = (val, min, max) => {
         if (val < min) {
