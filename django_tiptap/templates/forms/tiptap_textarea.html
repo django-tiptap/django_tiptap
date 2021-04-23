@@ -343,34 +343,74 @@
     // SOFTWARE.
 
     import { Editor, Extension } from 'https://cdn.skypack.dev/pin/@tiptap/core@v2.0.0-beta.29-ehyNSRjShPZE49ePTtXD/mode=imports,min/optimized/@tiptap/core.js'
-    import { defaultExtensions } from 'https://cdn.skypack.dev/pin/@tiptap/starter-kit@v2.0.0-beta.25-JoiZSBGcBoccfWu5VKUa/mode=imports,min/optimized/@tiptap/starter-kit.js'
     import Dropcursor from 'https://cdn.skypack.dev/pin/@tiptap/extension-dropcursor@v2.0.0-beta.5-C97NmfHRe5pOo6Aihjq9/mode=imports,min/optimized/@tiptap/extension-dropcursor.js';
     import Gapcursor from 'https://cdn.skypack.dev/pin/@tiptap/extension-gapcursor@v2.0.0-beta.9-BovFPBqWSl9imddHM7w2/mode=imports,min/optimized/@tiptap/extension-gapcursor.js'
     import History from 'https://cdn.skypack.dev/pin/@tiptap/extension-history@v2.0.0-beta.4-TOmiSTyfwfMT5fqb39Ef/mode=imports,min/optimized/@tiptap/extension-history.js'
     import Document from 'https://cdn.skypack.dev/pin/@tiptap/extension-document@v2.0.0-beta.4-t3JGL334a0RchNMLmMRn/mode=imports,min/optimized/@tiptap/extension-document.js'
     import Paragraph from 'https://cdn.skypack.dev/pin/@tiptap/extension-paragraph@v2.0.0-beta.6-TFPmMMszPSwnRFam3tvz/mode=imports,min/optimized/@tiptap/extension-paragraph.js'
     import Text from 'https://cdn.skypack.dev/pin/@tiptap/extension-text@v2.0.0-beta.4-ldV3FSqFsG1jpgTLhNR0/mode=imports,min/optimized/@tiptap/extension-text.js'
+
+    // {% if 'bold' in widget.config.extensions %}
     import Bold from 'https://cdn.skypack.dev/pin/@tiptap/extension-bold@v2.0.0-beta.5-7EqUDbfeE9XbiY86Esti/mode=imports,min/optimized/@tiptap/extension-bold.js'
+    // {% endif %}
+
+    // {% if 'italic' in widget.config.extensions %}
     import Italic from 'https://cdn.skypack.dev/pin/@tiptap/extension-italic@v2.0.0-beta.5-dm0pBezsfPK5aWZ5VlK0/mode=imports,min/optimized/@tiptap/extension-italic.js'
-    import Code from 'https://cdn.skypack.dev/pin/@tiptap/extension-code@v2.0.0-beta.5-hyttgnc1tFe8F5m0ahjW/mode=imports,min/optimized/@tiptap/extension-code.js'
-    import CodeBlock from 'https://cdn.skypack.dev/pin/@tiptap/extension-code-block@v2.0.0-beta.7-x2YOXBIEn8LMoz5Gfubj/mode=imports,min/optimized/@tiptap/extension-code-block.js'
+    // {% endif %}
+
+    // import Code from 'https://cdn.skypack.dev/pin/@tiptap/extension-code@v2.0.0-beta.5-hyttgnc1tFe8F5m0ahjW/mode=imports,min/optimized/@tiptap/extension-code.js'
+    // import CodeBlock from 'https://cdn.skypack.dev/pin/@tiptap/extension-code-block@v2.0.0-beta.7-x2YOXBIEn8LMoz5Gfubj/mode=imports,min/optimized/@tiptap/extension-code-block.js'
+
+    // {% if 'h1' in widget.config.extensions or 'h2' in widget.config.extensions or 'h3' in widget.config.extensions or 'h4' in widget.config.extensions or 'h5' in widget.config.extensions or 'h6' in widget.config.extensions %}
     import Heading from 'https://cdn.skypack.dev/pin/@tiptap/extension-heading@v2.0.0-beta.5-OI4KQsaFGbY9F2uHIxTE/mode=imports,min/optimized/@tiptap/extension-heading.js'
-    import HardBreak from 'https://cdn.skypack.dev/pin/@tiptap/extension-hard-break@v2.0.0-beta.5-ufKRg62UW9emFfMAb39p/mode=imports,min/optimized/@tiptap/extension-hard-break.js'
+    // {% endif %}
+
+    // import HardBreak from 'https://cdn.skypack.dev/pin/@tiptap/extension-hard-break@v2.0.0-beta.5-ufKRg62UW9emFfMAb39p/mode=imports,min/optimized/@tiptap/extension-hard-break.js'
+
+    // {% if 'strikethrough' in widget.config.extensions %}
     import Strike from 'https://cdn.skypack.dev/pin/@tiptap/extension-strike@v2.0.0-beta.6-60bipnlRANz4oioT5ZHX/mode=imports,min/optimized/@tiptap/extension-strike.js'
-    import Blockquote from 'https://cdn.skypack.dev/pin/@tiptap/extension-blockquote@v2.0.0-beta.5-iGwAq7KloHyiqTrmoBFu/mode=imports,min/optimized/@tiptap/extension-blockquote.js'
-    import HorizontalRule from 'https://cdn.skypack.dev/pin/@tiptap/extension-horizontal-rule@v2.0.0-beta.6-VhsEhfu8PSpAnUEbsQN0/mode=imports,min/optimized/@tiptap/extension-horizontal-rule.js'
+    // {% endif %}
+
+    // import Blockquote from 'https://cdn.skypack.dev/pin/@tiptap/extension-blockquote@v2.0.0-beta.5-iGwAq7KloHyiqTrmoBFu/mode=imports,min/optimized/@tiptap/extension-blockquote.js'
+    // import HorizontalRule from 'https://cdn.skypack.dev/pin/@tiptap/extension-horizontal-rule@v2.0.0-beta.6-VhsEhfu8PSpAnUEbsQN0/mode=imports,min/optimized/@tiptap/extension-horizontal-rule.js'
+
+    // {% if 'bulletList' in widget.config.extensions or 'orderedList' in widget.config.extensions %}
     import ListItem from 'https://cdn.skypack.dev/pin/@tiptap/extension-list-item@v2.0.0-beta.5-SeqWvvKnsC9aVvD30WbJ/mode=imports,min/optimized/@tiptap/extension-list-item.js'
+    // {% endif %}
+
+    // {% if 'bulletList' in widget.config.extensions %}
     import BulletList from 'https://cdn.skypack.dev/pin/@tiptap/extension-bullet-list@v2.0.0-beta.5-GjyeRKM9c9ByMxhbs8fQ/mode=imports,min/optimized/@tiptap/extension-bullet-list.js'
+    // {% endif %}
+
+    // {% if 'orderedList' in widget.config.extensions %}
     import OrderedList from 'https://cdn.skypack.dev/pin/@tiptap/extension-ordered-list@v2.0.0-beta.5-tTl2rBIUVaDHTIODeR3C/mode=imports,min/optimized/@tiptap/extension-ordered-list.js'
+    // {% endif %}
+
+    // {% if 'underline' in widget.config.extensions %}
     import Underline from 'https://cdn.skypack.dev/pin/@tiptap/extension-underline@v2.0.0-beta.2-Bwx8MOdHexDd8mwGpRGe/mode=imports,min/optimized/@tiptap/extension-underline.js'
+    // {% endif %}
+
+    // {% if 'textAlign' in widget.config.extensions %}
     import TextAlign from 'https://cdn.skypack.dev/pin/@tiptap/extension-text-align@v2.0.0-beta.5-d0qdTjuu0dEHQLjeV1wc/mode=imports,min/optimized/@tiptap/extension-text-align.js'
+    // {% endif %}
+
+    // {% if 'table' in widget.config.extensions%}
     import Table from 'https://cdn.skypack.dev/pin/@tiptap/extension-table@v2.0.0-beta.6-lnSsJdqh6cwcDDyOmjei/mode=imports,min/optimized/@tiptap/extension-table.js'
     import TableHeader from 'https://cdn.skypack.dev/pin/@tiptap/extension-table-header@v2.0.0-beta.3-59VQuwfzDgnND38KmBHa/mode=imports,min/optimized/@tiptap/extension-table-header.js'
     import TableRow from 'https://cdn.skypack.dev/pin/@tiptap/extension-table-row@v2.0.0-beta.1-ISyZjpsUhzXYezHc2nqF/mode=imports,min/optimized/@tiptap/extension-table-row.js'
     import TableCell from 'https://cdn.skypack.dev/pin/@tiptap/extension-table-cell@v2.0.0-beta.1-43K75BjUzkr5bXQcZq2T/mode=imports,min/optimized/@tiptap/extension-table-cell.js'
+    // {% endif %}
+
     import { liftTarget } from 'https://cdn.skypack.dev/pin/prosemirror-transform@v1.3.2-Kbq8ngdeq6IjA55jMbCW/mode=imports,min/optimized/prosemirror-transform.js'
+
+    // {% if 'typography' in widget.config.extensions%}
     import Typography from 'https://cdn.skypack.dev/pin/@tiptap/extension-typography@v2.0.0-beta.2-A24UYlFtSPG2vkOMR48X/mode=imports,min/optimized/@tiptap/extension-typography.js'
+    // {% endif %}
+
+    // {% if widget.config.placeholderText %}
     import Placeholder from 'https://cdn.skypack.dev/pin/@tiptap/extension-placeholder@v2.0.0-beta.5-jcQBuFZmvIclnnMCvzlK/mode=imports,min/optimized/@tiptap/extension-placeholder.js'
+    // {% endif %}
+
     import { TextSelection, AllSelection } from 'https://cdn.skypack.dev/pin/prosemirror-state@v1.3.4-IDkNn9vITybMM5NJ8cUx/mode=imports,min/optimized/prosemirror-state.js'
     import marked from 'https://cdn.skypack.dev/pin/marked@v2.0.3-qfnC6uYDZMsP0gC4iyi0/mode=imports,min/optimized/marked.js'
 
