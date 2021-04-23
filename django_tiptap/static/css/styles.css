@@ -296,6 +296,8 @@
 .ProseMirror h5,
 .ProseMirror h6 {
   line-height: 1.1;
+  text-transform: none;
+  padding: 0;
 }
 
 .ProseMirror pre {
