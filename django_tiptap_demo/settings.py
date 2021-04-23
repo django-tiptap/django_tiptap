@@ -119,3 +119,30 @@ STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+DJANGO_TIPTAP_CONFIG = {
+    "width": "500px",
+    "height": "500px",
+    "extensions": [
+        "bold",
+        "italic",
+        "underline",
+        "strikethrough",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "textAlign",
+        "indent",
+        "table",
+        "bulletList",
+        "orderedList",
+        "typography",
+        "clearFormat"
+    ],
+    "placeholderText": "Begin typing here...",  # set None to skip display
+    "unsavedChangesWarningText": "You have unsaved changes",  # set None to skip display
+}
