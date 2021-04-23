@@ -44,7 +44,7 @@
         </button>
         {% endif %}
 
-        {% if 'strikethrough' or 'underline' or 'italic' or 'bold' in widget.config.extensions %}
+        {% if 'strikethrough' in widget.config.extensions or 'underline' in widget.config.extensions or 'italic' in widget.config.extensions or 'bold' in widget.config.extensions %}
         <div class="spacer"></div>
         {% endif %}
 
@@ -77,7 +77,8 @@
         {% if 'h4' in widget.config.extensions %}
         <button id="{{ widget.name }}-h4">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                <path d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M18,18V13H13V11L18,4H20V11H21V13H20V18H18M18,11V7.42L15.45,11H18Z" />
+                <path
+                    d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M18,18V13H13V11L18,4H20V11H21V13H20V18H18M18,11V7.42L15.45,11H18Z" />
             </svg>
         </button>
         {% endif %}
@@ -85,7 +86,8 @@
         {% if 'h5' in widget.config.extensions %}
         <button id="{{ widget.name }}-h5">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                <path d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M15,4H20V6H15V10H17A4,4 0 0,1 21,14A4,4 0 0,1 17,18H15A2,2 0 0,1 13,16V15H15V16H17A2,2 0 0,0 19,14A2,2 0 0,0 17,12H15A2,2 0 0,1 13,10V6A2,2 0 0,1 15,4Z" />
+                <path
+                    d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M15,4H20V6H15V10H17A4,4 0 0,1 21,14A4,4 0 0,1 17,18H15A2,2 0 0,1 13,16V15H15V16H17A2,2 0 0,0 19,14A2,2 0 0,0 17,12H15A2,2 0 0,1 13,10V6A2,2 0 0,1 15,4Z" />
             </svg>
         </button>
         {% endif %}
@@ -93,12 +95,13 @@
         {% if 'h6' in widget.config.extensions %}
         <button id="{{ widget.name }}-h6">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                <path d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M15,4H19A2,2 0 0,1 21,6V7H19V6H15V10H19A2,2 0 0,1 21,12V16A2,2 0 0,1 19,18H15A2,2 0 0,1 13,16V6A2,2 0 0,1 15,4M15,12V16H19V12H15Z" />
+                <path
+                    d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M15,4H19A2,2 0 0,1 21,6V7H19V6H15V10H19A2,2 0 0,1 21,12V16A2,2 0 0,1 19,18H15A2,2 0 0,1 13,16V6A2,2 0 0,1 15,4M15,12V16H19V12H15Z" />
             </svg>
         </button>
         {% endif %}
 
-        {% if 'h1' or 'h2' or 'h3' or 'h4' or 'h5' or 'h6' in widget.config.extensions %}
+        {% if 'h1' in widget.config.extensions or 'h2' in widget.config.extensions or 'h3' in widget.config.extensions or 'h4' in widget.config.extensions or 'h5' in widget.config.extensions or 'h6' in widget.config.extensions %}
         <div class="spacer"></div>
         {% endif %}
 
@@ -286,7 +289,7 @@
         </button>
         {% endif %}
 
-        {% if 'orderedList' or 'bulletList' in widget.config.extensions %}
+        {% if 'orderedList' in widget.config.extensions or 'bulletList' in widget.config.extensions %}
         <div class="spacer"></div>
         {% endif %}
 
@@ -340,22 +343,78 @@
     // SOFTWARE.
 
     import { Editor, Extension } from 'https://cdn.skypack.dev/pin/@tiptap/core@v2.0.0-beta.29-ehyNSRjShPZE49ePTtXD/mode=imports,min/optimized/@tiptap/core.js'
-    import { defaultExtensions } from 'https://cdn.skypack.dev/pin/@tiptap/starter-kit@v2.0.0-beta.25-JoiZSBGcBoccfWu5VKUa/mode=imports,min/optimized/@tiptap/starter-kit.js'
+    import Dropcursor from 'https://cdn.skypack.dev/pin/@tiptap/extension-dropcursor@v2.0.0-beta.5-C97NmfHRe5pOo6Aihjq9/mode=imports,min/optimized/@tiptap/extension-dropcursor.js';
+    import Gapcursor from 'https://cdn.skypack.dev/pin/@tiptap/extension-gapcursor@v2.0.0-beta.9-BovFPBqWSl9imddHM7w2/mode=imports,min/optimized/@tiptap/extension-gapcursor.js'
+    import History from 'https://cdn.skypack.dev/pin/@tiptap/extension-history@v2.0.0-beta.4-TOmiSTyfwfMT5fqb39Ef/mode=imports,min/optimized/@tiptap/extension-history.js'
+    import Document from 'https://cdn.skypack.dev/pin/@tiptap/extension-document@v2.0.0-beta.4-t3JGL334a0RchNMLmMRn/mode=imports,min/optimized/@tiptap/extension-document.js'
+    import Paragraph from 'https://cdn.skypack.dev/pin/@tiptap/extension-paragraph@v2.0.0-beta.6-TFPmMMszPSwnRFam3tvz/mode=imports,min/optimized/@tiptap/extension-paragraph.js'
+    import Text from 'https://cdn.skypack.dev/pin/@tiptap/extension-text@v2.0.0-beta.4-ldV3FSqFsG1jpgTLhNR0/mode=imports,min/optimized/@tiptap/extension-text.js'
+
+    // {% if 'bold' in widget.config.extensions %}
+    import Bold from 'https://cdn.skypack.dev/pin/@tiptap/extension-bold@v2.0.0-beta.5-7EqUDbfeE9XbiY86Esti/mode=imports,min/optimized/@tiptap/extension-bold.js'
+    // {% endif %}
+
+    // {% if 'italic' in widget.config.extensions %}
+    import Italic from 'https://cdn.skypack.dev/pin/@tiptap/extension-italic@v2.0.0-beta.5-dm0pBezsfPK5aWZ5VlK0/mode=imports,min/optimized/@tiptap/extension-italic.js'
+    // {% endif %}
+
+    // import Code from 'https://cdn.skypack.dev/pin/@tiptap/extension-code@v2.0.0-beta.5-hyttgnc1tFe8F5m0ahjW/mode=imports,min/optimized/@tiptap/extension-code.js'
+    // import CodeBlock from 'https://cdn.skypack.dev/pin/@tiptap/extension-code-block@v2.0.0-beta.7-x2YOXBIEn8LMoz5Gfubj/mode=imports,min/optimized/@tiptap/extension-code-block.js'
+
+    // {% if 'h1' in widget.config.extensions or 'h2' in widget.config.extensions or 'h3' in widget.config.extensions or 'h4' in widget.config.extensions or 'h5' in widget.config.extensions or 'h6' in widget.config.extensions %}
+    import Heading from 'https://cdn.skypack.dev/pin/@tiptap/extension-heading@v2.0.0-beta.5-OI4KQsaFGbY9F2uHIxTE/mode=imports,min/optimized/@tiptap/extension-heading.js'
+    // {% endif %}
+
+    // import HardBreak from 'https://cdn.skypack.dev/pin/@tiptap/extension-hard-break@v2.0.0-beta.5-ufKRg62UW9emFfMAb39p/mode=imports,min/optimized/@tiptap/extension-hard-break.js'
+
+    // {% if 'strikethrough' in widget.config.extensions %}
+    import Strike from 'https://cdn.skypack.dev/pin/@tiptap/extension-strike@v2.0.0-beta.6-60bipnlRANz4oioT5ZHX/mode=imports,min/optimized/@tiptap/extension-strike.js'
+    // {% endif %}
+
+    // import Blockquote from 'https://cdn.skypack.dev/pin/@tiptap/extension-blockquote@v2.0.0-beta.5-iGwAq7KloHyiqTrmoBFu/mode=imports,min/optimized/@tiptap/extension-blockquote.js'
+    // import HorizontalRule from 'https://cdn.skypack.dev/pin/@tiptap/extension-horizontal-rule@v2.0.0-beta.6-VhsEhfu8PSpAnUEbsQN0/mode=imports,min/optimized/@tiptap/extension-horizontal-rule.js'
+
+    // {% if 'bulletList' in widget.config.extensions or 'orderedList' in widget.config.extensions %}
+    import ListItem from 'https://cdn.skypack.dev/pin/@tiptap/extension-list-item@v2.0.0-beta.5-SeqWvvKnsC9aVvD30WbJ/mode=imports,min/optimized/@tiptap/extension-list-item.js'
+    // {% endif %}
+
+    // {% if 'bulletList' in widget.config.extensions %}
+    import BulletList from 'https://cdn.skypack.dev/pin/@tiptap/extension-bullet-list@v2.0.0-beta.5-GjyeRKM9c9ByMxhbs8fQ/mode=imports,min/optimized/@tiptap/extension-bullet-list.js'
+    // {% endif %}
+
+    // {% if 'orderedList' in widget.config.extensions %}
+    import OrderedList from 'https://cdn.skypack.dev/pin/@tiptap/extension-ordered-list@v2.0.0-beta.5-tTl2rBIUVaDHTIODeR3C/mode=imports,min/optimized/@tiptap/extension-ordered-list.js'
+    // {% endif %}
+
+    // {% if 'underline' in widget.config.extensions %}
     import Underline from 'https://cdn.skypack.dev/pin/@tiptap/extension-underline@v2.0.0-beta.2-Bwx8MOdHexDd8mwGpRGe/mode=imports,min/optimized/@tiptap/extension-underline.js'
+    // {% endif %}
+
+    // {% if 'textAlign' in widget.config.extensions %}
     import TextAlign from 'https://cdn.skypack.dev/pin/@tiptap/extension-text-align@v2.0.0-beta.5-d0qdTjuu0dEHQLjeV1wc/mode=imports,min/optimized/@tiptap/extension-text-align.js'
+    // {% endif %}
+
+    // {% if 'table' in widget.config.extensions%}
     import Table from 'https://cdn.skypack.dev/pin/@tiptap/extension-table@v2.0.0-beta.6-lnSsJdqh6cwcDDyOmjei/mode=imports,min/optimized/@tiptap/extension-table.js'
     import TableHeader from 'https://cdn.skypack.dev/pin/@tiptap/extension-table-header@v2.0.0-beta.3-59VQuwfzDgnND38KmBHa/mode=imports,min/optimized/@tiptap/extension-table-header.js'
     import TableRow from 'https://cdn.skypack.dev/pin/@tiptap/extension-table-row@v2.0.0-beta.1-ISyZjpsUhzXYezHc2nqF/mode=imports,min/optimized/@tiptap/extension-table-row.js'
     import TableCell from 'https://cdn.skypack.dev/pin/@tiptap/extension-table-cell@v2.0.0-beta.1-43K75BjUzkr5bXQcZq2T/mode=imports,min/optimized/@tiptap/extension-table-cell.js'
-    import Gapcursor from 'https://cdn.skypack.dev/pin/@tiptap/extension-gapcursor@v2.0.0-beta.5-bZHFI5ZlZOfCuacFqx8s/mode=imports,min/optimized/@tiptap/extension-gapcursor.js'
+    // {% endif %}
+
     import { liftTarget } from 'https://cdn.skypack.dev/pin/prosemirror-transform@v1.3.2-Kbq8ngdeq6IjA55jMbCW/mode=imports,min/optimized/prosemirror-transform.js'
+
+    // {% if 'typography' in widget.config.extensions%}
     import Typography from 'https://cdn.skypack.dev/pin/@tiptap/extension-typography@v2.0.0-beta.2-A24UYlFtSPG2vkOMR48X/mode=imports,min/optimized/@tiptap/extension-typography.js'
+    // {% endif %}
+
+    // {% if widget.config.placeholderText %}
     import Placeholder from 'https://cdn.skypack.dev/pin/@tiptap/extension-placeholder@v2.0.0-beta.5-jcQBuFZmvIclnnMCvzlK/mode=imports,min/optimized/@tiptap/extension-placeholder.js'
+    // {% endif %}
+
     import { TextSelection, AllSelection } from 'https://cdn.skypack.dev/pin/prosemirror-state@v1.3.4-IDkNn9vITybMM5NJ8cUx/mode=imports,min/optimized/prosemirror-state.js'
     import marked from 'https://cdn.skypack.dev/pin/marked@v2.0.3-qfnC6uYDZMsP0gC4iyi0/mode=imports,min/optimized/marked.js'
 
-    console.log("{{widget.config}}")
-
+    // {% if 'indent' in widget.config.extensions%}
     export const clamp = (val, min, max) => {
         if (val < min) {
             return min
@@ -513,6 +572,7 @@
             }
         },
     })
+    // {% endif %}
 
 
     function isTextSelected(editor) {
@@ -778,17 +838,21 @@
 
     const setToolTips = () => {
         for (const id in buttonsConfig) {
-            tippy(`#${id}`, {
-                content: buttonsConfig[id].tooltip,
-            })
+            const element = document.querySelector(`#${id}`)
+            if (element) {
+                tippy(`#${id}`, {
+                    content: buttonsConfig[id].tooltip,
+                })
+            }
         }
     }
 
     const checkIsActive = (editor) => {
         Object.keys(buttonsConfig).forEach((key) => {
             const featureButton = document.querySelector(`#${key}`)
-            if (buttonsConfig[key].hasOwnProperty('disabled')) {
-                if (buttonsConfig[key].disabled(editor) && featureButton) {
+
+            if (buttonsConfig[key].hasOwnProperty('disabled') && featureButton) {
+                if (buttonsConfig[key].disabled(editor)) {
                     featureButton.classList.add('disabled')
                     return
                 }
@@ -817,26 +881,115 @@
 
     let showingMenubar = false
 
+    const headingLevels = []
+    // {% if 'h1' in widget.config.extensions  %}
+    headingLevels.push(1)
+    // {% endif %}
+    // {% if 'h2' in widget.config.extensions  %}
+    headingLevels.push(2)
+    // {% endif %}
+    // {% if 'h3' in widget.config.extensions  %}
+    headingLevels.push(3)
+    // {% endif %}
+    // {% if 'h4' in widget.config.extensions  %}
+    headingLevels.push(4)
+    // {% endif %}
+    // {% if 'h5' in widget.config.extensions  %}
+    headingLevels.push(5)
+    // {% endif %}
+    // {% if 'h6' in widget.config.extensions  %}
+    headingLevels.push(6)
+    // {% endif %}
+
+
     const editor = new Editor({
         element: document.querySelector('#{{ widget.name }}-tiptap-editor-div'),
         extensions: [
-            ...defaultExtensions(),
+            Document,
+
+            Paragraph,
+
+            Text,
+
+            Dropcursor,
+
+            Gapcursor,
+
+            History,
+
+            // {% if 'bold' in widget.config.extensions %}
+            Bold,
+            // {% endif %}
+
+            // {% if 'italic' in widget.config.extensions %}
+            Italic,
+            // {% endif %}
+
+            // {% if 'underline' in widget.config.extensions %}
             Underline,
+            // {% endif %}
+
+            // {% if 'strikethrough' in widget.config.extensions %}
+            Strike,
+            // {% endif %}
+
+            // Code,
+
+            // CodeBlock,
+
+            // {% if 'h1' in widget.config.extensions or 'h2' in widget.config.extensions or 'h3' in widget.config.extensions or 'h4' in widget.config.extensions or 'h5' in widget.config.extensions or 'h6' in widget.config.extensions %}
+            Heading.configure({
+                levels: headingLevels,
+            }),
+            // {% endif %}
+
+            // HardBreak,
+
+            // Blockquote,
+
+            // HorizontalRule,
+
+            // {% if 'bulletList' in widget.config.extensions or 'orderedList' in widget.config.extensions %}
+            ListItem,
+            // {% endif %}
+
+            // {% if 'bulletList' in widget.config.extensions %}
+            BulletList,
+            // {% endif %}
+
+            // {% if 'orderedList' in widget.config.extensions %}
+            OrderedList,
+            // {% endif %}
+
+            // {% if 'textAlign' in widget.config.extensions %}
             TextAlign,
+            // {% endif %}
+
+            // {% if 'table' in widget.config.extensions%}
             Table.configure({
                 resizable: true,
             }),
+
             TableRow,
+
             TableCell,
+
             TableHeader,
-            Gapcursor,
+            // {% endif %}
+
+            // {% if 'typography' in widget.config.extensions%}
             Typography,
-            {% if widget.config.placeholderText %}
+            // {% endif %}
+
+            // {% if widget.config.placeholderText %}
             Placeholder.configure({
                 placeholder: "{{ widget.config.placeholderText}}",
             }),
-            {% endif %}
+            // {% endif %}
+
+            // {% if 'indent' in widget.config.extensions%}
             Indent
+            // {% endif %}
         ],
         content: initialEditorContent,
         onUpdate({ editor }) {
@@ -845,12 +998,14 @@
             textArea.value = currentEditorContent
             const notSavedWarningSpan = document.querySelector('#{{ widget.name }}-not-saved-warning')
             const notSavedWarningSpacer = document.querySelector('#{{ widget.name }}-not-saved-warning-spacer')
-            if (currentEditorContent === initialEditorContent) {
-                notSavedWarningSpan.classList.remove('show')
-                notSavedWarningSpacer.classList.remove('show')
-            } else {
-                notSavedWarningSpan.classList.add('show')
-                notSavedWarningSpacer.classList.add('show')
+            if (notSavedWarningSpacer && notSavedWarningSpan) {
+                if (currentEditorContent === initialEditorContent) {
+                    notSavedWarningSpan.classList.remove('show')
+                    notSavedWarningSpacer.classList.remove('show')
+                } else {
+                    notSavedWarningSpan.classList.add('show')
+                    notSavedWarningSpacer.classList.add('show')
+                }
             }
         },
         onCreate({ editor }) {
@@ -862,7 +1017,7 @@
             if (!showingMenubar) {
 
                 const menubar = document.querySelector('#{{ widget.name }}-menubar')
-                menubar.classList.add('show')
+                if (menubar) menubar.classList.add('show')
             }
         }
     })
@@ -904,7 +1059,7 @@
             e.stopPropagation()
         }
         const tableConfig = document.querySelector('.{{ widget.name }}-table-config')
-        tableConfig.addEventListener('click', tableConfigListener)
+        if (tableConfig) tableConfig.addEventListener('click', tableConfigListener)
 
         const addTableButtonListener = () => {
             const xInput = document.querySelector('#{{ widget.name }}-x').value
@@ -915,8 +1070,7 @@
             }
         }
         const addTableButton = document.querySelector('.{{ widget.name }}-add-table-button')
-        addTableButton.addEventListener('click', addTableButtonListener, { capture: true })
-
+        if (addTableButton) addTableButton.addEventListener('click', addTableButtonListener, { capture: true })
     }, 1000);
 
 
