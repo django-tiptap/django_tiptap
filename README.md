@@ -78,6 +78,7 @@ DJANGO_TIPTAP_CONFIG = {
     "width": "500px",
     "height": "500px",
     "extensions": [
+        # to see what each extension does, refer to [tiptap.dev](https://www.tiptap.dev/)
         "bold",
         "italic",
         "underline",
