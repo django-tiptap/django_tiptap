@@ -260,9 +260,12 @@
 
         <div class="spacer not-saved-text-spacer" id="{{ widget.name }}-not-saved-warning-spacer"></div>
 
+        {% if widget.config.unsavedChangesWarningText %}
         <span class="not-saved-text" id="{{ widget.name }}-not-saved-warning">
             {{ widget.config.unsavedChangesWarningText }}
         </span>
+        {% endif %}
+
     </div>
 
     <div class="editor-content-rendered" name="{{ widget.name }}" id="{{ widget.name }}-tiptap-editor-div"
@@ -781,9 +784,11 @@
             TableHeader,
             Gapcursor,
             Typography,
+            {% if widget.config.placeholderText %}
             Placeholder.configure({
                 placeholder: "{{ widget.config.placeholderText}}",
             }),
+            {% endif %}
             Indent
         ],
         content: initialEditorContent,

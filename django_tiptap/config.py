@@ -18,5 +18,5 @@ TIPTAP_DEFAULT_CONFIG = {
         "typography",
     ],
     "placeholderText": "Begin typing here...",
-    "unsavedChangesWarningText": "You have unsaved changes",
+    "unsavedChangesWarningText": "You have unsaved changes!",
 }
