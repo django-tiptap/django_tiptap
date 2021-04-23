@@ -69,6 +69,35 @@ class NoteAdmin(admin.ModelAdmin):
 admin.site.register(Note, NoteAdminForm)
 ```
 
+## Configuration
+
+You can configure some of the editor behaviour by modifying the `DJANGO_TIPTAP_CONFIG` dict in `settings.py`.
+
+```python
+DJANGO_TIPTAP_CONFIG = {
+    "width": "500px",
+    "height": "500px",
+    "extensions": [
+        "bold",
+        "italic",
+        "underline",
+        "strikethrough",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "textAlign",
+        "indent",
+        "table",
+        "typography",
+    ],
+    "placeholderText": "Begin typing here...",
+    "unsavedChangesWarningText": "You have unsaved changes",
+}
+```
+
 # Contributing
 
 This project is a very rough draft of what a TipTap Editor experience in Django could
