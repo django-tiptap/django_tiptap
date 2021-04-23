@@ -58,6 +58,18 @@
             </svg>
         </button>
 
+        <button id="{{ widget.name }}-h4">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M18,18V13H13V11L18,4H20V11H21V13H20V18H18M18,11V7.42L15.45,11H18Z" />
+            </svg>
+        </button>
+
+        <button id="{{ widget.name }}-h5">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M15,4H20V6H15V10H17A4,4 0 0,1 21,14A4,4 0 0,1 17,18H15A2,2 0 0,1 13,16V15H15V16H17A2,2 0 0,0 19,14A2,2 0 0,0 17,12H15A2,2 0 0,1 13,10V6A2,2 0 0,1 15,4Z" />
+            </svg>
+        </button>
+
         <div class="spacer"></div>
 
         <button id="{{ widget.name }}-alignLeft">
@@ -560,6 +572,18 @@
             command: (editor) => onHeadingButtonClicked(3, editor),
             canBeActive: true,
             tooltip: 'Überschrift 3 | (ctrl + alt) / (⌘ + ⌥) + 3',
+        },
+        ['{{ widget.name }}-h4']: {
+            isActiveCheck: ['heading', { level: 4 }],
+            command: (editor) => onHeadingButtonClicked(4, editor),
+            canBeActive: true,
+            tooltip: 'Überschrift 4 | (ctrl + alt) / (⌘ + ⌥) + 4',
+        },
+        ['{{ widget.name }}-h5']: {
+            isActiveCheck: ['heading', { level: 5 }],
+            command: (editor) => onHeadingButtonClicked(5, editor),
+            canBeActive: true,
+            tooltip: 'Überschrift 5 | (ctrl + alt) / (⌘ + ⌥) + 5',
         },
 
         ['{{ widget.name }}-alignLeft']: {
