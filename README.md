@@ -91,7 +91,10 @@ DJANGO_TIPTAP_CONFIG = {
         "textAlign",
         "indent",
         "table",
+        "bulletList",
+        "orderedList",
         "typography",
+        "clearFormat"
     ],
     "placeholderText": "Begin typing here...",  # set None to skip display
     "unsavedChangesWarningText": "You have unsaved changes",  # set None to skip display
