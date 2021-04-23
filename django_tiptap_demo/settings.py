@@ -140,6 +140,6 @@ DJANGO_TIPTAP_CONFIG = {
         "table",
         "typography",
     ],
-    "placeholderText": "Begin typing here...",  # set None to not display
-    "unsavedChangesWarningText": "You have unsaved changes",  # set None to not display
+    "placeholderText": "Begin typing here...",  # set None to skip display
+    "unsavedChangesWarningText": "You have unsaved changes",  # set None to skip display
 }
