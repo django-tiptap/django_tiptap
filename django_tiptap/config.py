@@ -18,8 +18,8 @@ TIPTAP_DEFAULT_CONFIG = {
         "bulletList",
         "orderedList",
         "typography",
-        "clearFormat"
+        "clearFormat",
     ],
     "placeholderText": "Begin typing here...",
-    "unsavedChangesWarningText": "You have unsaved changes!",
+    "unsavedChangesWarningText": None,
 }

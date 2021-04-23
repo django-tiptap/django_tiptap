@@ -18,6 +18,8 @@ class TipTapWidget(forms.Textarea):
 
     @staticmethod
     def set_config(config: dict = None) -> dict:
+        # Take default config and update it with the user config from settings.py.
+
         config = config.copy() if config else TIPTAP_DEFAULT_CONFIG.copy()
         django_settings_config = getattr(settings, "DJANGO_TIPTAP_CONFIG", {})
         config.update(django_settings_config)
