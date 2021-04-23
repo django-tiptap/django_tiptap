@@ -104,10 +104,7 @@ DJANGO_TIPTAP_CONFIG = {
 # Contributing
 
 This project is a very rough draft of what a TipTap Editor experience in Django could
-look like. Currently, we enabled/disabled Editor extensions based on our own needs and
-do not provide any configuration options yet.
-
-If you're missing a feature and want to contribute to this project you are more than
+look like. If you're missing a feature and want to contribute to this project you are more than
 welcome to!
 
 ## Development
