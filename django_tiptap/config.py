@@ -15,7 +15,10 @@ TIPTAP_DEFAULT_CONFIG = {
         "textAlign",
         "indent",
         "table",
+        "bulletList",
+        "orderedList",
         "typography",
+        "clearFormat"
     ],
     "placeholderText": "Begin typing here...",
     "unsavedChangesWarningText": "You have unsaved changes!",

@@ -5,6 +5,7 @@
 
 <div class="the-editor-area" style="min-width: {{ widget.config.width }}; min-height: {{ widget.config.height }}">
     <div class="menubar" id="{{ widget.name }}-menubar">
+        {% if 'bold' in widget.config.extensions %}
         <button id="{{ widget.name }}-bold">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="12" height="14"
                 viewBox="0 0 12 14">
@@ -12,7 +13,9 @@
                     d="M10.52 7.438c-.353-.547-.823-1.003-1.375-1.336.277-.575.422-1.206.422-1.85C9.567 1.907 7.67 0 5.339 0H0v14h6.972c2.331 0 4.228-1.907 4.228-4.252 0-.823-.235-1.621-.68-2.31zM2.991 5.496V3.008H5.34c.682 0 1.237.558 1.237 1.244 0 .686-.555 1.244-1.237 1.244H2.99zM8.21 9.748c0 .686-.555 1.244-1.237 1.244h-3.98V8.504h3.98c.682 0 1.237.558 1.237 1.244z" />
             </svg>
         </button>
+        {% endif %}
 
+        {% if 'italic' in widget.config.extensions %}
         <button id="{{ widget.name }}-italic">
             <svg xmlns="http://www.w3.org/2000/svg" width="10" height="14" viewBox="0 0 10 14">
                 <path
@@ -20,7 +23,9 @@
                     transform="translate(-2)" />
             </svg>
         </button>
+        {% endif %}
 
+        {% if 'underline' in widget.config.extensions %}
         <button id="{{ widget.name }}-underline">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
                 <path
@@ -28,57 +33,82 @@
                     transform="translate(-230 -694) translate(214 628) translate(1 50) translate(15 16)" />
             </svg>
         </button>
+        {% endif %}
 
+        {% if 'strikethrough' in widget.config.extensions %}
         <button id="{{ widget.name }}-strike">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                 <path
                     d="M23,12V14H18.61C19.61,16.14 19.56,22 12.38,22C4.05,22.05 4.37,15.5 4.37,15.5L8.34,15.55C8.37,18.92 11.5,18.92 12.12,18.88C12.76,18.83 15.15,18.84 15.34,16.5C15.42,15.41 14.32,14.58 13.12,14H1V12H23M19.41,7.89L15.43,7.86C15.43,7.86 15.6,5.09 12.15,5.08C8.7,5.06 9,7.28 9,7.56C9.04,7.84 9.34,9.22 12,9.88H5.71C5.71,9.88 2.22,3.15 10.74,2C19.45,0.8 19.43,7.91 19.41,7.89Z" />
             </svg>
         </button>
+        {% endif %}
 
+        {% if 'strikethrough' or 'underline' or 'italic' or 'bold' in widget.config.extensions %}
         <div class="spacer"></div>
+        {% endif %}
 
+        {% if 'h1' in widget.config.extensions %}
         <button id="{{ widget.name }}-h1">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                 <path d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M14,18V16H16V6.31L13.5,7.75V5.44L16,4H18V16H20V18H14Z" />
             </svg>
         </button>
+        {% endif %}
 
+        {% if 'h2' in widget.config.extensions %}
         <button id="{{ widget.name }}-h2">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                 <path
                     d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M21,18H15A2,2 0 0,1 13,16C13,15.47 13.2,15 13.54,14.64L18.41,9.41C18.78,9.05 19,8.55 19,8A2,2 0 0,0 17,6A2,2 0 0,0 15,8H13A4,4 0 0,1 17,4A4,4 0 0,1 21,8C21,9.1 20.55,10.1 19.83,10.83L15,16H21V18Z" />
             </svg>
         </button>
+        {% endif %}
 
+        {% if 'h3' in widget.config.extensions %}
         <button id="{{ widget.name }}-h3">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                 <path
                     d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M15,4H19A2,2 0 0,1 21,6V16A2,2 0 0,1 19,18H15A2,2 0 0,1 13,16V15H15V16H19V12H15V10H19V6H15V7H13V6A2,2 0 0,1 15,4Z" />
             </svg>
         </button>
+        {% endif %}
 
+        {% if 'h4' in widget.config.extensions %}
         <button id="{{ widget.name }}-h4">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                 <path d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M18,18V13H13V11L18,4H20V11H21V13H20V18H18M18,11V7.42L15.45,11H18Z" />
             </svg>
         </button>
+        {% endif %}
 
+        {% if 'h5' in widget.config.extensions %}
         <button id="{{ widget.name }}-h5">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                 <path d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M15,4H20V6H15V10H17A4,4 0 0,1 21,14A4,4 0 0,1 17,18H15A2,2 0 0,1 13,16V15H15V16H17A2,2 0 0,0 19,14A2,2 0 0,0 17,12H15A2,2 0 0,1 13,10V6A2,2 0 0,1 15,4Z" />
             </svg>
         </button>
+        {% endif %}
 
+        {% if 'h6' in widget.config.extensions %}
+        <button id="{{ widget.name }}-h6">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M15,4H19A2,2 0 0,1 21,6V7H19V6H15V10H19A2,2 0 0,1 21,12V16A2,2 0 0,1 19,18H15A2,2 0 0,1 13,16V6A2,2 0 0,1 15,4M15,12V16H19V12H15Z" />
+            </svg>
+        </button>
+        {% endif %}
+
+        {% if 'h1' or 'h2' or 'h3' or 'h4' or 'h5' or 'h6' in widget.config.extensions %}
         <div class="spacer"></div>
+        {% endif %}
 
+        {% if 'textAlign' in widget.config.extensions %}
         <button id="{{ widget.name }}-alignLeft">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14"
                 viewBox="0 0 14 14">
                 <path
                     d="M13.59 10.544c.226 0 .41.183.41.41v2.636c0 .226-.184.41-.41.41H.41c-.226 0-.41-.184-.41-.41v-2.636c0-.227.184-.41.41-.41zM7 5.272c.227 0 .41.184.41.41v2.636c0 .226-.183.41-.41.41H.41c-.226 0-.41-.184-.41-.41V5.682c0-.226.184-.41.41-.41zM13.59 0c.226 0 .41.184.41.41v2.636c0 .227-.184.41-.41.41H.41c-.226 0-.41-.183-.41-.41V.41C0 .184.184 0 .41 0z" />
             </svg>
-
         </button>
 
         <button id="{{ widget.name }}-alignCenter">
@@ -105,13 +135,14 @@
         </button>
 
         <div class="spacer"></div>
+        {% endif %}
+
         {% if 'indent' in widget.config.extensions%}
         <button id="{{ widget.name }}-indent">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                 <path d="M11,13H21V11H11M11,9H21V7H11M3,3V5H21V3M11,17H21V15H11M3,8V16L7,12M3,21H21V19H3V21Z" />
             </svg>
         </button>
-        {% endif %}
 
         <button id="{{ widget.name }}-outdent">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
@@ -120,7 +151,9 @@
         </button>
 
         <div class="spacer"></div>
+        {% endif %}
 
+        {% if 'table' in widget.config.extensions%}
         <button id="{{ widget.name }}-addTable">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                 <path
@@ -233,30 +266,38 @@
         </button>
 
         <div class="spacer"></div>
+        {% endif %}
 
+        {% if 'bulletList' in widget.config.extensions %}
         <button id="{{ widget.name }}-bulletList">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
                 <path
                     d="M13.59 10.542c.198 0 .363.141.402.328l.008.083v2.637c0 .198-.14.363-.327.402L13.59 14H5.31c-.198 0-.364-.14-.402-.328L4.9 13.59v-2.637c0-.199.14-.364.327-.402l.083-.009h8.28zm-10.5 0c.198 0 .363.141.402.328l.008.083v2.637c0 .198-.14.363-.328.402L3.09 14H.41c-.198 0-.363-.14-.402-.328L0 13.59v-2.637c0-.199.14-.364.327-.402l.083-.009h2.68zm10.5-5.27c.198 0 .363.14.402.327l.008.083v2.636c0 .199-.14.364-.327.402l-.083.009H5.31c-.198 0-.364-.14-.402-.328L4.9 8.318V5.682c0-.199.14-.364.327-.402l.083-.009h8.28zm-10.5 0c.198 0 .363.14.402.327l.008.083v2.636c0 .199-.14.364-.328.402l-.082.009H.41c-.198 0-.363-.14-.402-.328L0 8.318V5.682c0-.199.14-.364.327-.402L.41 5.27h2.68zM13.59 0c.198 0 .363.14.402.328L14 .41v2.637c0 .199-.14.364-.327.402l-.083.009H5.31c-.198 0-.364-.141-.402-.328L4.9 3.047V.41c0-.198.14-.363.327-.402L5.31 0h8.28zM3.09 0c.198 0 .363.14.402.328L3.5.41v2.637c0 .199-.14.364-.328.402l-.082.009H.41c-.198 0-.363-.141-.402-.328L0 3.047V.41C0 .212.14.047.327.008L.41 0h2.68z" />
             </svg>
         </button>
+        {% endif %}
 
+        {% if 'orderedList' in widget.config.extensions %}
         <button id="{{ widget.name }}-orderedList">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
                 <path
                     d="M13.59 10.542c.198 0 .363.141.402.328l.008.083v2.637c0 .198-.14.363-.327.402L13.59 14H3.91c-.198 0-.363-.14-.402-.328L3.5 13.59v-2.637c0-.199.14-.364.327-.402l.083-.009h9.68zm-12.546.003c.294 0 .537.065.702.19.234.174.349.405.349.708.002.088-.011.414-.288.625-.04.031-.078.056-.119.078.156.07.345.191.423.523.067.26.016.65-.251.922-.273.27-.716.31-.957.31-.16 0-.319-.018-.457-.05-.076-.015-.111-.024-.164-.045-.08-.03-.135-.1-.15-.181l-.003-.063.011-.14c.006-.074.045-.141.107-.182.062-.042.14-.052.21-.028.3.099.561.1.725-.006.125-.082.185-.194.181-.341 0-.14-.053-.234-.171-.309-.046-.028-.165-.078-.418-.078-.111 0-.206-.075-.235-.177l-.009-.064v-.106c0-.13.104-.238.234-.241.162-.006.449-.038.554-.202.044-.07.052-.22.013-.303-.054-.118-.154-.186-.305-.207-.043-.007-.08-.01-.117-.01-.104 0-.218.023-.357.073-.071.025-.15.016-.214-.026-.047-.031-.082-.077-.098-.13l-.01-.056-.01-.142c-.007-.111.064-.214.172-.246.204-.062.436-.096.652-.096zM13.59 5.27c.198 0 .363.14.402.328l.008.083v2.636c0 .199-.14.364-.327.402l-.083.009H3.91c-.198 0-.363-.14-.402-.328L3.5 8.318V5.682c0-.199.14-.364.327-.402l.083-.009h9.68zm-12.456-.02c.2 0 .37.034.503.102.239.126.39.335.44.604.123.6-.24 1.112-.691 1.67-.082.103-.155.192-.217.265l-.06.067h.77c.112 0 .205.076.234.178l.008.064v.125c0 .111-.075.205-.177.233l-.064.009H.41c-.11 0-.204-.076-.232-.178l-.01-.064V8.09c0-.068.03-.133.08-.179.037-.034.083-.082.143-.15l.066-.076.403-.482c.523-.63.52-.922.46-1.106-.04-.103-.118-.171-.232-.197-.16-.04-.28-.014-.47.085-.071.038-.156.037-.227-.001C.338 5.954.3 5.907.28 5.85l-.013-.058-.016-.16c-.01-.11.056-.214.16-.25.239-.086.496-.133.724-.133zM13.59 0c.198 0 .363.14.402.328L14 .41v2.637c0 .199-.14.364-.327.402l-.083.009H3.91c-.198 0-.363-.141-.402-.328L3.5 3.047V.41c0-.198.14-.363.327-.402L3.91 0h9.68zM1.122 0c.11 0 .204.075.232.177l.009.064v2.794c0 .11-.075.204-.177.233l-.064.008h-.25c-.11 0-.204-.075-.232-.177l-.009-.064V.946l-.147.129c-.051.045-.12.066-.187.058C.25 1.127.209 1.109.174 1.08l-.046-.05-.084-.12c-.06-.084-.057-.195 0-.277L.084.59.71.058c.03-.025.064-.043.1-.051L.866 0h.256z" />
             </svg>
-
         </button>
+        {% endif %}
 
+        {% if 'orderedList' or 'bulletList' in widget.config.extensions %}
         <div class="spacer"></div>
+        {% endif %}
 
+        {% if 'clearFormat' in widget.config.extensions %}
         <button id="{{ widget.name }}-clearFormat">
             <svg style="width:18px;height:18px" viewBox="0 0 24 24">
                 <path
                     d="M6,5V5.18L8.82,8H11.22L10.5,9.68L12.6,11.78L14.21,8H20V5H6M3.27,5L2,6.27L8.97,13.24L6.5,19H9.5L11.07,15.34L16.73,21L18,19.73L3.55,5.27L3.27,5Z" />
             </svg>
         </button>
+        {% endif %}
 
         <div class="spacer not-saved-text-spacer" id="{{ widget.name }}-not-saved-warning-spacer"></div>
 
@@ -590,6 +631,12 @@
             command: (editor) => onHeadingButtonClicked(5, editor),
             canBeActive: true,
             tooltip: 'Überschrift 5 | (ctrl + alt) / (⌘ + ⌥) + 5',
+        },
+        ['{{ widget.name }}-h6']: {
+            isActiveCheck: ['heading', { level: 6 }],
+            command: (editor) => onHeadingButtonClicked(6, editor),
+            canBeActive: true,
+            tooltip: 'Überschrift 6 | (ctrl + alt) / (⌘ + ⌥) + 6',
         },
 
         ['{{ widget.name }}-alignLeft']: {
