@@ -98,6 +98,43 @@ DJANGO_TIPTAP_CONFIG = {
     ],
     "placeholderText": "Begin typing here...",  # set None to skip display
     "unsavedChangesWarningText": "You have unsaved changes",  # set None to skip display
+    "lang": "EN" # if you want to use default tooltips, use this. Valid Options => EN/DE
+    "tooltips": { 
+        # if you want to use your custom tooltips(maybe because you don't prefer default or the language you want isn't there)
+        # you don't need to set the "lang" if you choose to have your own tooltips
+        "bold": "Bold | (ctrl / ⌘) + B",
+        "italic": "Italic | (ctrl / ⌘) + I",
+        "underline": "Underline | (ctrl / ⌘) + U",
+        "strike": "Strikethrough | (ctrl / ⌘) + shift + X",
+        "h1": "Header 1 | (ctrl + alt) / (⌘ + ⌥) + 1",
+        "h2": "Header 2 | (ctrl + alt) / (⌘ + ⌥) + 2",
+        "h3": "Header 3 | (ctrl + alt) / (⌘ + ⌥) + 3",
+        "h4": "Header 4 | (ctrl + alt) / (⌘ + ⌥) + 4",
+        "h5": "Header 5 | (ctrl + alt) / (⌘ + ⌥) + 5",
+        "h6": "Header 6 | (ctrl + alt) / (⌘ + ⌥) + 6",
+        "alignLeft": "Align Left | (ctrl + shift ⇧) / (⌘ + shift ⇧) + L",
+        "alignCenter": "Align Center | (ctrl + shift ⇧) / (⌘ + shift ⇧) + E",
+        "alignRight": "Align Right | (ctrl + shift ⇧) / (⌘ + shift ⇧) + R",
+        "alignJustify": "Justify | (ctrl + shift ⇧) / (⌘ + shift ⇧) + J",
+        "indent": "Indent (Tab ↹)",
+        "outdent": "Outdent (shift ⇧ + Tab ↹)",
+        "bulletList": "Bullet List | (ctrl + shift ⇧) / (⌘ + shift ⇧) + 8",
+        "orderedList": "Numbered List | (ctrl + shift ⇧) / (⌘ + shift ⇧) + 7",
+        "addTable": "Add Table",
+        "deleteTable": "Delete Table",
+        "addColumnBefore": "Add Column Before",
+        "addColumnAfter": "Add Column After",
+        "deleteColumn": "Delete Column",
+        "addRowBefore": "Add Row Before",
+        "addRowAfter": "Add Row After",
+        "deleteRow": "Delete Row",
+        "mergeCells": "Merge Cells",
+        "splitCell": "Split Cell",
+        "toggleHeaderColumn": "Toggle Header Column",
+        "toggleHeaderRow": "Toggle Header Row",
+        "toggleHeaderCell": "Toggle Header Cell",
+        "clearFormat": "Clear Format",
+    }
 }
 ```
 
