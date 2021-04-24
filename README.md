@@ -155,8 +155,8 @@ welcome to!
 1.  We use black and isort to auto-format the code base. Both are set up as pre-commit hooks and in the tox testmatrix.
 
     ```bash
-    pip install black isort
-    pre-commit pre-commit install
+    pip install black isort pre-commit 
+    pre-commit install
     ```
 
 2.  For development purposes it is encouraged to add the `django_tiptap` and
