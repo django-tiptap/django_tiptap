@@ -99,10 +99,9 @@ DJANGO_TIPTAP_CONFIG = {
     ],
     "placeholderText": "Begin typing here...",  # set None to skip display
     "unsavedChangesWarningText": "You have unsaved changes",  # set None to skip display
-    "lang": "EN" # if you want to use default tooltips, use this. Valid Options => EN/DE
+    "lang": "EN" # if you want to use default tooltips and translations, use this. Valid Options => EN/DE(for now)
     "tooltips": { 
         # if you want to use your custom tooltips(maybe because you don't prefer default or the language you want isn't there)
-        # you don't need to set the "lang" if you choose to have your own tooltips
         "bold": "Bold | (ctrl / ⌘) + B",
         "italic": "Italic | (ctrl / ⌘) + I",
         "underline": "Underline | (ctrl / ⌘) + U",
@@ -135,6 +134,12 @@ DJANGO_TIPTAP_CONFIG = {
         "toggleHeaderRow": "Toggle Header Row",
         "toggleHeaderCell": "Toggle Header Cell",
         "clearFormat": "Clear Format",
+    },
+    "translations": {
+        # if the lang you defined exists in the default langs, then no need to define translations
+        "row": "Row",
+        "column": "Column",
+        "add": "Add"
     }
 }
 ```

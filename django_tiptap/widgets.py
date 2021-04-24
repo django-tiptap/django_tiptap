@@ -3,8 +3,7 @@ from typing import Any, Dict
 from django import forms
 from django.conf import settings
 
-from .config import TIPTAP_DEFAULT_CONFIG, TIPTAP_DEFAULT_TOOLTIPS
-
+from .config import TIPTAP_DEFAULT_CONFIG, TIPTAP_DEFAULT_TOOLTIPS, TIPTAP_DEFAULT_TRANSLATIONS
 
 class TipTapWidget(forms.Textarea):
     class Media:
@@ -43,5 +42,18 @@ class TipTapWidget(forms.Textarea):
                 print('\n *** The language given to django_tiptap was not found, using english as default. *** \n')
         else: 
             context["widget"]["config"]["tooltips"] = TIPTAP_DEFAULT_TOOLTIPS.copy()["EN"]
+
+        if (context["widget"]["config"].get("translations")):
+            return context
+        elif (context["widget"]["config"].get("lang")):
+            langs: list = ["EN", "DE"]
+            givenLang: str = context["widget"]["config"].get("lang")
+
+            if (givenLang.upper() in langs):
+                context["widget"]["config"]["translations"] = TIPTAP_DEFAULT_TRANSLATIONS.copy()[givenLang.upper()]
+            else:
+                context["widget"]["config"]["translations"] = TIPTAP_DEFAULT_TRANSLATIONS.copy()["EN"]
+        else: 
+            context["widget"]["config"]["translations"] = TIPTAP_DEFAULT_TRANSLATIONS.copy()["EN"]
 
         return context

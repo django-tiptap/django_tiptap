@@ -166,9 +166,15 @@
             <div class="{{ widget.name }}-table-config table-config display-flex">
                 <div class="inputs-container display-flex flex-align-center flex-direction-column">
                     <div class="display-flex flex-content-space-between">
-                        <label for="x" class="text-black">Zeilen</label>
-                        <span class="text-black">&nbsp;x&nbsp;</span>
-                        <label for="y" class="text-black">Spalten</label>
+                        <label for="x" class="text-black">
+                            {{ widget.config.translations.row }}
+                        </label>
+                        <span class="text-black">
+                            &nbsp;x&nbsp;
+                        </span>
+                        <label for="y" class="text-black">
+                            {{ widget.config.translations.column }}
+                        </label>
                     </div>
                     <div>
                         <input type="number" name="X" id="{{ widget.name }}-x" placeholder="Zeilen" min="0" max="10"
@@ -179,7 +185,7 @@
                     </div>
                 </div>
                 <div class="{{ widget.name }}-add-table-button add-table-button">
-                    Hinzufügen
+                    {{ widget.config.translations.add }}
                 </div>
             </div>
         </button>

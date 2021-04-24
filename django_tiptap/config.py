@@ -95,3 +95,8 @@ TIPTAP_DEFAULT_TOOLTIPS = {
         "clearFormat": "Formatierung entfernen",
     },
 }
+
+TIPTAP_DEFAULT_TRANSLATIONS = {
+    "EN": {"row": "Row", "column": "Column", "add": "Add"},
+    "DE": {"row": "Zeile", "column": "Spalte", "add": "Hinzufügen"},
+}
