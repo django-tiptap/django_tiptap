@@ -29,7 +29,7 @@ class TipTapWidget(forms.Textarea):
         context = super().get_context(*args, **kwargs)
         context["widget"]["config"] = self.config
 
-        if (context["widget"]["config"].get("tooltips")):
+        if "tooltips" in context["widget"]["config"]:
             return context
         elif (context["widget"]["config"].get("lang")):
             langs: list = ["EN", "DE"]
