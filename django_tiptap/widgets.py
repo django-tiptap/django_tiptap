@@ -8,7 +8,7 @@ from .config import TIPTAP_DEFAULT_CONFIG
 
 class TipTapWidget(forms.Textarea):
     class Media:
-        css = {"all": ("css/styles-min.css",)}
+        css = {"all": ("django_tiptap/css/styles-min.css",)}
 
     template_name = "forms/tiptap_textarea.html"
 
