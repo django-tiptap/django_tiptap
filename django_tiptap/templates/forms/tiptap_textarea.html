@@ -935,7 +935,7 @@
         },
         ['{{ widget.name }}-jinja-highlight']: {
             command: (editor) => {
-                const proseMirror = document.querySelector('.editor-content-rendered')
+                const proseMirror = document.querySelector('#{{ widget.name }}-tiptap-editor-div')
                 const jinjaSyntaxHighlightButton = document.querySelector('#{{ widget.name }}-jinja-highlight')
 
                 if (isJinjaActive) {
