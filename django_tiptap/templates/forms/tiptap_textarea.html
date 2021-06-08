@@ -3,7 +3,7 @@
     {% if widget.value %}{{ widget.value }}{% endif %}
 </textarea>
 
-<div class="the-editor-area" style="min-width: {{ widget.config.width }}; min-height: {{ widget.config.height }}">
+<div class="the-editor-area " style="min-width: {{ widget.config.width }}; min-height: {{ widget.config.height }}">
     <div class="menubar" id="{{ widget.name }}-menubar">
         {% if 'bold' in widget.config.extensions %}
         <button id="{{ widget.name }}-bold">
@@ -302,8 +302,15 @@
         {% if 'clearFormat' in widget.config.extensions %}
         <button id="{{ widget.name }}-clearFormat">
             <svg style="width:18px;height:18px" viewBox="0 0 24 24">
-                <path
-                    d="M6,5V5.18L8.82,8H11.22L10.5,9.68L12.6,11.78L14.21,8H20V5H6M3.27,5L2,6.27L8.97,13.24L6.5,19H9.5L11.07,15.34L16.73,21L18,19.73L3.55,5.27L3.27,5Z" />
+                <path d="M6,5V5.18L8.82,8H11.22L10.5,9.68L12.6,11.78L14.21,8H20V5H6M3.27,5L2,6.27L8.97,13.24L6.5,19H9.5L11.07,15.34L16.73,21L18,19.73L3.55,5.27L3.27,5Z" />
+            </svg>
+        </button>
+        {% endif %}
+
+        {% if 'jinjaSyntaxHighlight' in widget.config.extensions %}
+        <button id="{{ widget.name }}-jinja-highlight" class="is-active">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path d="M8,3A2,2 0 0,0 6,5V9A2,2 0 0,1 4,11H3V13H4A2,2 0 0,1 6,15V19A2,2 0 0,0 8,21H10V19H8V14A2,2 0 0,0 6,12A2,2 0 0,0 8,10V5H10V3M16,3A2,2 0 0,1 18,5V9A2,2 0 0,0 20,11H21V13H20A2,2 0 0,0 18,15V19A2,2 0 0,1 16,21H14V19H16V14A2,2 0 0,1 18,12A2,2 0 0,1 16,10V5H14V3H16Z" />
             </svg>
         </button>
         {% endif %}
@@ -318,7 +325,7 @@
 
     </div>
 
-    <div class="editor-content-rendered" name="{{ widget.name }}" id="{{ widget.name }}-tiptap-editor-div"
+    <div class="editor-content-rendered {% if 'jinjaSyntaxHighlight' in widget.config.extensions %} jinjaSyntaxHighlightActivated {% endif %}" name="{{ widget.name }}" id="{{ widget.name }}-tiptap-editor-div"
         data-tiptap="{{ widget.value }}">
     </div>
 </div>
@@ -417,7 +424,11 @@
     import Placeholder from 'https://cdn.skypack.dev/pin/@tiptap/extension-placeholder@v2.0.0-beta.5-jcQBuFZmvIclnnMCvzlK/mode=imports,min/optimized/@tiptap/extension-placeholder.js'
     // {% endif %}
 
-    import { TextSelection, AllSelection } from 'https://cdn.skypack.dev/pin/prosemirror-state@v1.3.4-IDkNn9vITybMM5NJ8cUx/mode=imports,min/optimized/prosemirror-state.js'
+    import { TextSelection, AllSelection, Plugin, PluginKey } from 'https://cdn.skypack.dev/pin/prosemirror-state@v1.3.4-IDkNn9vITybMM5NJ8cUx/mode=imports,min/optimized/prosemirror-state.js'
+
+    // {% if 'jinjaSyntaxHighlight' in widget.config.extensions%}
+    import { Decoration, DecorationSet } from "https://cdn.skypack.dev/pin/prosemirror-view@v1.18.7-Oooie68ouAI0drFC4VJg/mode=imports,min/optimized/prosemirror-view.js"
+    // {% endif %}
     import marked from 'https://cdn.skypack.dev/pin/marked@v2.0.3-qfnC6uYDZMsP0gC4iyi0/mode=imports,min/optimized/marked.js'
 
     // {% if 'indent' in widget.config.extensions%}
@@ -580,6 +591,86 @@
     })
     // {% endif %}
 
+    // {% if 'jinjaSyntaxHighlight' in widget.config.extensions%}
+    function runAllLinterPlugins(doc, plugins) {
+        const decorations = [];
+        const results = plugins.map(LinterPlugin => new LinterPlugin(doc).scan().getResults()).flat();
+        results.forEach(issue => {
+            decorations.push(Decoration.inline(issue.from, issue.to, { class: issue.class }));
+        });
+        return DecorationSet.create(doc, decorations);
+    }
+
+    const Linter = Extension.create({
+        name: 'linter',
+        defaultOptions: {
+            plugins: [],
+        },
+        addProseMirrorPlugins() {
+            const { plugins } = this.options;
+            return [
+                new Plugin({
+                    key: new PluginKey('linter'),
+                    state: {
+                        init(_, { doc }) {
+                            return runAllLinterPlugins(doc, plugins);
+                        },
+                        apply(transaction, oldState) {
+                            return transaction.docChanged
+                                ? runAllLinterPlugins(transaction.doc, plugins)
+                                : oldState;
+                        },
+                    },
+                    props: {
+                        decorations(state) {
+                            return this.getState(state);
+                        },
+                    },
+                }),
+            ];
+        },
+    });
+
+    class LinterPlugin {
+        constructor(doc) {
+            this.results = [];
+            this.doc = doc;
+        }
+        record(from, to, className) {
+            this.results.push({
+                from,
+                to,
+                class: className
+            });
+        }
+        getResults() {
+            return this.results;
+        }
+    }
+
+    class JinjaHighlight extends LinterPlugin {
+        constructor() {
+            super(...arguments);
+            this.regex = /(\{\{[^{}]+\}\})|(\{\%[^{}]+\%\})|(\[\%[^{}]+\%\])/g;
+            this.className = 'jinja-syntax';
+        }
+        scan() {
+            this.doc.descendants((node, position) => {
+                if (!node.isText) {
+                    return;
+                }
+                let match;
+                do {
+                    match = this.regex.exec(node.text);
+                    if (match) {
+                        this.record(position + match.index, position + match.index + match[0].length, this.className);
+                    }
+                } while (match);
+            });
+            return this;
+        }
+    }
+    // {% endif %}
 
     function isTextSelected(editor) {
         const state = editor.state
@@ -641,6 +732,8 @@
         clearFormat(editor)
         editor.chain().focus().toggleHeading({ level }).run()
     }
+
+    let isJinjaActive = true
 
     const buttonsConfig = {
         ['{{ widget.name }}-bold']: {
@@ -840,6 +933,24 @@
             canBeActive: false,
             tooltip: '{{ widget.config.tooltips.clearFormat }}',
         },
+        ['{{ widget.name }}-jinja-highlight']: {
+            command: (editor) => {
+                const proseMirror = document.querySelector('.editor-content-rendered')
+                const jinjaSyntaxHighlightButton = document.querySelector('#{{ widget.name }}-jinja-highlight')
+
+                if (isJinjaActive) {
+                    isJinjaActive = false
+                    proseMirror.classList.remove('jinjaSyntaxHighlightActivated')
+                    jinjaSyntaxHighlightButton.classList.remove('is-active')
+                } else {
+                    isJinjaActive = true
+                    proseMirror.classList.add('jinjaSyntaxHighlightActivated')
+                    jinjaSyntaxHighlightButton.classList.add('is-active')
+                }
+            },
+            canBeActive: false,
+            tooltip: '{{ widget.config.tooltips.jinjaHighlight }}'
+        }
     }
 
     const setToolTips = () => {
@@ -994,7 +1105,15 @@
             // {% endif %}
 
             // {% if 'indent' in widget.config.extensions%}
-            Indent
+            Indent,
+            // {% endif %}
+
+            // {% if 'jinjaSyntaxHighlight' in widget.config.extensions%}
+            Linter.configure({
+                plugins: [
+                    JinjaHighlight
+                ]
+            })
             // {% endif %}
         ],
         content: initialEditorContent,

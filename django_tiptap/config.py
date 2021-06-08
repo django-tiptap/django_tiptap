@@ -19,6 +19,7 @@ TIPTAP_DEFAULT_CONFIG = {
         "orderedList",
         "typography",
         "clearFormat",
+        "jinjaSyntaxHighlight",
     ],
     "placeholderText": "Begin typing here...",
     "unsavedChangesWarningText": None,
@@ -59,6 +60,7 @@ TIPTAP_DEFAULT_TOOLTIPS = {
         "toggleHeaderRow": "Toggle Header Row",
         "toggleHeaderCell": "Toggle Header Cell",
         "clearFormat": "Clear Format",
+        "jinjaHighlight": "Jinja Highlight",
     },
     "DE": {
         "bold": "Fett | (ctrl / ⌘) + B",
@@ -93,6 +95,7 @@ TIPTAP_DEFAULT_TOOLTIPS = {
         "toggleHeaderRow": "Kopfzeile ein/auschalten",
         "toggleHeaderCell": "Kopfzelle ein/auschalten",
         "clearFormat": "Formatierung entfernen",
+        "jinjaHighlight": "Jinja Markierungen",
     },
 }
 
@@ -107,7 +110,7 @@ def getUpdatedContextForProperty(context: dict, property: str) -> dict[str, any]
 
     if property in ctx["widget"]["config"]:
         return ctx
-    elif ctx["widget"]["config"].get("lang"):
+    elif "lang" in ctx["widget"]["config"]:
         langs: list = ["EN", "DE"]
         givenLang: str = ctx["widget"]["config"].get("lang")
 
