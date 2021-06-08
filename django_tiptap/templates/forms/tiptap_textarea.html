@@ -166,9 +166,15 @@
             <div class="{{ widget.name }}-table-config table-config display-flex">
                 <div class="inputs-container display-flex flex-align-center flex-direction-column">
                     <div class="display-flex flex-content-space-between">
-                        <label for="x" class="text-black">Zeilen</label>
-                        <span class="text-black">&nbsp;x&nbsp;</span>
-                        <label for="y" class="text-black">Spalten</label>
+                        <label for="x" class="text-black">
+                            {{ widget.config.translations.row }}
+                        </label>
+                        <span class="text-black">
+                            &nbsp;x&nbsp;
+                        </span>
+                        <label for="y" class="text-black">
+                            {{ widget.config.translations.column }}
+                        </label>
                     </div>
                     <div>
                         <input type="number" name="X" id="{{ widget.name }}-x" placeholder="Zeilen" min="0" max="10"
@@ -179,7 +185,7 @@
                     </div>
                 </div>
                 <div class="{{ widget.name }}-add-table-button add-table-button">
-                    Hinzufügen
+                    {{ widget.config.translations.add }}
                 </div>
             </div>
         </button>
@@ -240,7 +246,7 @@
             </svg>
         </button>
 
-        <button id="{{ widget.name }}-splitCells">
+        <button id="{{ widget.name }}-splitCell">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                 <path
                     d="M19 14H21V20H3V14H5V18H19V14M3 4V10H5V6H19V10H21V4H3M11 11V13H8V15L5 12L8 9V11H11M16 11V9L19 12L16 15V13H13V11H16Z" />
@@ -641,110 +647,110 @@
             isActiveCheck: ['bold'],
             command: (editor) => editor.chain().focus().toggleBold().run(),
             canBeActive: true,
-            tooltip: 'Fett | (ctrl / ⌘) + B',
+            tooltip: '{{ widget.config.tooltips.bold }}',
         },
         ['{{ widget.name }}-italic']: {
             isActiveCheck: ['italic'],
             command: (editor) => editor.chain().focus().toggleItalic().run(),
             canBeActive: true,
-            tooltip: 'Kursiv | (ctrl / ⌘) + I',
+            tooltip: '{{ widget.config.tooltips.italic }}',
         },
         ['{{ widget.name }}-underline']: {
             isActiveCheck: ['underline'],
             command: (editor) => editor.chain().focus().toggleUnderline().run(),
             canBeActive: true,
-            tooltip: 'Unterstrichen | (ctrl / ⌘) + U',
+            tooltip: '{{ widget.config.tooltips.underline }}',
         },
         ['{{ widget.name }}-strike']: {
             isActiveCheck: ['strike'],
             command: (editor) => editor.chain().focus().toggleStrike().run(),
             canBeActive: true,
-            tooltip: 'Durchstreichen | (ctrl / ⌘) + Umshalt + X',
+            tooltip: '{{ widget.config.tooltips.strike }}',
         },
 
         ['{{ widget.name }}-h1']: {
             isActiveCheck: ['heading', { level: 1 }],
             command: (editor) => onHeadingButtonClicked(1, editor),
             canBeActive: true,
-            tooltip: 'Überschrift 1 | (ctrl + alt) / (⌘ + ⌥) + 1',
+            tooltip: '{{ widget.config.tooltips.h1 }}',
         },
         ['{{ widget.name }}-h2']: {
             isActiveCheck: ['heading', { level: 2 }],
             command: (editor) => onHeadingButtonClicked(2, editor),
             canBeActive: true,
-            tooltip: 'Überschrift 2 | (ctrl + alt) / (⌘ + ⌥) + 2',
+            tooltip: '{{ widget.config.tooltips.h2 }}',
         },
         ['{{ widget.name }}-h3']: {
             isActiveCheck: ['heading', { level: 3 }],
             command: (editor) => onHeadingButtonClicked(3, editor),
             canBeActive: true,
-            tooltip: 'Überschrift 3 | (ctrl + alt) / (⌘ + ⌥) + 3',
+            tooltip: '{{ widget.config.tooltips.h3 }}',
         },
         ['{{ widget.name }}-h4']: {
             isActiveCheck: ['heading', { level: 4 }],
             command: (editor) => onHeadingButtonClicked(4, editor),
             canBeActive: true,
-            tooltip: 'Überschrift 4 | (ctrl + alt) / (⌘ + ⌥) + 4',
+            tooltip: '{{ widget.config.tooltips.h4 }}',
         },
         ['{{ widget.name }}-h5']: {
             isActiveCheck: ['heading', { level: 5 }],
             command: (editor) => onHeadingButtonClicked(5, editor),
             canBeActive: true,
-            tooltip: 'Überschrift 5 | (ctrl + alt) / (⌘ + ⌥) + 5',
+            tooltip: '{{ widget.config.tooltips.h5 }}',
         },
         ['{{ widget.name }}-h6']: {
             isActiveCheck: ['heading', { level: 6 }],
             command: (editor) => onHeadingButtonClicked(6, editor),
             canBeActive: true,
-            tooltip: 'Überschrift 6 | (ctrl + alt) / (⌘ + ⌥) + 6',
+            tooltip: '{{ widget.config.tooltips.h6 }}',
         },
 
         ['{{ widget.name }}-alignLeft']: {
             isActiveCheck: [{ textAlign: 'left' }],
             command: (editor) => editor.chain().focus().setTextAlign('left').run(),
             canBeActive: true,
-            tooltip: 'Linksbündig | (ctrl + Umschalt ⇧) / (⌘ + Umschalt ⇧) + L',
+            tooltip: '{{ widget.config.tooltips.alignLeft }}',
         },
         ['{{ widget.name }}-alignCenter']: {
             isActiveCheck: [{ textAlign: 'center' }],
             command: (editor) => editor.chain().focus().setTextAlign('center').run(),
             canBeActive: true,
-            tooltip: 'Zentriert | (ctrl + Umschalt ⇧) / (⌘ + Umschalt ⇧) + E',
+            tooltip: '{{ widget.config.tooltips.alignCenter }}',
         },
         ['{{ widget.name }}-alignRight']: {
             isActiveCheck: [{ textAlign: 'right' }],
             command: (editor) => editor.chain().focus().setTextAlign('right').run(),
             canBeActive: true,
-            tooltip: 'Rechtsbündig | (ctrl + Umschalt ⇧) / (⌘ + Umschalt ⇧) + R',
+            tooltip: '{{ widget.config.tooltips.alignRight }}',
         },
         ['{{ widget.name }}-alignJustify']: {
             isActiveCheck: [{ textAlign: 'justify' }],
             command: (editor) => editor.chain().focus().setTextAlign('justify').run(),
             canBeActive: true,
-            tooltip: 'Blocksatz | (ctrl + Umschalt ⇧) / (⌘ + Umschalt ⇧) + J',
+            tooltip: '{{ widget.config.tooltips.alignJustify }}',
         },
         ['{{ widget.name }}-indent']: {
             command: (editor) => editor.chain().focus().indent().run(),
             canBeActive: false,
-            tooltip: 'Einrücken (Tab ↹)',
+            tooltip: '{{ widget.config.tooltips.indent }}',
         },
         ['{{ widget.name }}-outdent']: {
             command: (editor) => editor.chain().focus().outdent().run(),
             canBeActive: false,
-            tooltip: 'Ausrücken (Umschalt ⇧ + Tab ↹)',
+            tooltip: '{{ widget.config.tooltips.outdent }}',
         },
 
         ['{{ widget.name }}-bulletList']: {
             isActiveCheck: ['bulletList'],
             command: (editor) => editor.chain().focus().toggleBulletList().run(),
             canBeActive: true,
-            tooltip: 'Aufzählungsliste | (ctrl + Umschalt ⇧) / (⌘ + Umschalt ⇧) + 8',
+            tooltip: '{{ widget.config.tooltips.bulletList }}',
         },
         ['{{ widget.name }}-orderedList']: {
             isActiveCheck: ['orderedList'],
             command: (editor) => editor.chain().focus().toggleOrderedList().run(),
             canBeActive: true,
-            tooltip: 'Nummerierte Liste | (ctrl + Umschalt ⇧) / (⌘ + Umschalt ⇧) + 7',
+            tooltip: '{{ widget.config.tooltips.orderedList }}',
         },
 
         ['{{ widget.name }}-addTable']: {
@@ -752,78 +758,78 @@
                 editor.chain().focus().insertTable(config).run()
             },
             canBeActive: false,
-            tooltip: 'Tabelle hinzufügen',
+            tooltip: '{{ widget.config.tooltips.addTable }}',
         },
         ['{{ widget.name }}-deleteTable']: {
             command: (editor) => editor.chain().focus().deleteTable().run(),
             canBeActive: false,
-            tooltip: 'Tabelle löschen',
+            tooltip: '{{ widget.config.tooltips.deleteTable }}',
             disabled: (editor) => !editor.can().deleteTable(),
         },
         ['{{ widget.name }}-addColumnBefore']: {
             command: (editor) => editor.chain().focus().addColumnBefore().run(),
             canBeActive: false,
-            tooltip: 'Spalte links einfügen',
+            tooltip: '{{ widget.config.tooltips.addColumnBefore }}',
             disabled: (editor) => !editor.can().addColumnBefore(),
         },
         ['{{ widget.name }}-addColumnAfter']: {
             command: (editor) => editor.chain().focus().addColumnAfter().run(),
             canBeActive: false,
-            tooltip: 'Spalte rechts einfügen',
+            tooltip: '{{ widget.config.tooltips.addColumnAfter }}',
             disabled: (editor) => !editor.can().addColumnAfter(),
         },
         ['{{ widget.name }}-deleteColumn']: {
             command: (editor) => editor.chain().focus().deleteColumn().run(),
             canBeActive: false,
-            tooltip: 'Spalte löschen',
+            tooltip: '{{ widget.config.tooltips.deleteColumn }}',
             disabled: (editor) => !editor.can().deleteColumn(),
         },
         ['{{ widget.name }}-addRowBefore']: {
             command: (editor) => editor.chain().focus().addRowBefore().run(),
             canBeActive: false,
-            tooltip: 'Zeile darüber einfügen',
+            tooltip: '{{ widget.config.tooltips.addRowBefore }}',
             disabled: (editor) => !editor.can().addRowBefore(),
         },
         ['{{ widget.name }}-addRowAfter']: {
             canBeActive: false,
             command: (editor) => editor.chain().focus().addRowAfter().run(),
-            tooltip: 'Zeile darunter einfügen',
+            tooltip: '{{ widget.config.tooltips.addRowAfter }}',
             disabled: (editor) => !editor.can().addRowAfter(),
         },
         ['{{ widget.name }}-deleteRow']: {
             command: (editor) => editor.chain().focus().deleteRow().run(),
             canBeActive: false,
-            tooltip: 'Zeile löschen',
+            tooltip: '{{ widget.config.tooltips.deleteRow }}',
             disabled: (editor) => !editor.can().deleteRow(),
         },
         ['{{ widget.name }}-mergeCells']: {
             command: (editor) => editor.chain().focus().mergeCells().run(),
             canBeActive: false,
-            tooltip: 'Zellen zusammenführen',
+            tooltip: '{{ widget.config.tooltips.mergeCells }}',
             disabled: (editor) => !editor.can().mergeCells(),
         },
-        ['{{ widget.name }}-splitCells']: {
+        ['{{ widget.name }}-splitCell']: {
             command: (editor) => editor.chain().focus().splitCell().run(),
             canBeActive: false,
-            tooltip: 'Zellen aufteilen',
+            tooltip: '{{ widget.config.tooltips.splitCell }}',
             disabled: (editor) => !editor.can().splitCell(),
         },
         ['{{ widget.name }}-toggleHeaderColumn']: {
             command: (editor) => editor.chain().focus().toggleHeaderColumn().run(),
             canBeActive: false,
-            tooltip: 'Kopfspalte ein/ausschalten',
+            tooltip: '{{ widget.config.tooltips.toggleHeaderColumn }}',
             disabled: (editor) => !editor.can().toggleHeaderColumn(),
         },
         ['{{ widget.name }}-toggleHeaderRow']: {
             command: (editor) => editor.chain().focus().toggleHeaderRow().run(),
             canBeActive: false,
-            tooltip: 'Kopfzeile ein/auschalten',
+            tooltip: '{{ widget.config.tooltips.toggleHeaderRow }}',
             disabled: (editor) => !editor.can().toggleHeaderRow(),
         },
         ['{{ widget.name }}-toggleHeaderCell']: {
             command: (editor) => editor.chain().focus().toggleHeaderCell().run(),
             canBeActive: false,
-            tooltip: 'Kopfzelle ein/auschalten',
+            tooltip: '{{ widget.config.tooltips.toggleHeaderCell }}',
             disabled: (editor) => !editor.can().toggleHeaderCell(),
         },
         ['{{ widget.name }}-clearFormat']: {
@@ -832,14 +838,14 @@
                 clearFormat()
             },
             canBeActive: false,
-            tooltip: 'Formatierung entfernen',
+            tooltip: '{{ widget.config.tooltips.clearFormat }}',
         },
     }
 
     const setToolTips = () => {
         for (const id in buttonsConfig) {
             const element = document.querySelector(`#${id}`)
-            if (element) {
+            if (element && buttonsConfig[id].tooltip) {
                 tippy(`#${id}`, {
                     content: buttonsConfig[id].tooltip,
                 })
