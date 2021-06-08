@@ -100,3 +100,27 @@ TIPTAP_DEFAULT_TRANSLATIONS = {
     "EN": {"row": "Row", "column": "Column", "add": "Add"},
     "DE": {"row": "Zeile", "column": "Spalte", "add": "Hinzufügen"},
 }
+
+
+def getUpdatedContextForProperty(context: dict, property: str) -> dict[str, any]:
+    ctx = context.copy()
+
+    if property in ctx["widget"]["config"]:
+        return ctx
+    elif ctx["widget"]["config"].get("lang"):
+        langs: list = ["EN", "DE"]
+        givenLang: str = ctx["widget"]["config"].get("lang")
+
+        if givenLang.upper() in langs:
+            ctx["widget"]["config"][property] = TIPTAP_DEFAULT_TOOLTIPS.copy()[
+                givenLang.upper()
+            ]
+        else:
+            ctx["widget"]["config"][property] = TIPTAP_DEFAULT_TOOLTIPS.copy()["EN"]
+            print(
+                "\n *** The language given to django_tiptap was not found, using english as default. *** \n"
+            )
+    else:
+        ctx["widget"]["config"][property] = TIPTAP_DEFAULT_TOOLTIPS.copy()["EN"]
+
+    return ctx
