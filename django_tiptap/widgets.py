@@ -3,12 +3,7 @@ from typing import Any, Dict
 from django import forms
 from django.conf import settings
 
-from .config import (
-    TIPTAP_DEFAULT_CONFIG,
-    TIPTAP_DEFAULT_TOOLTIPS,
-    TIPTAP_DEFAULT_TRANSLATIONS,
-    getUpdatedContextForProperty,
-)
+from .config import TIPTAP_DEFAULT_CONFIG, getUpdatedContextForProperty
 
 
 class TipTapWidget(forms.Textarea):

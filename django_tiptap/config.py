@@ -1,3 +1,5 @@
+from typing import Any, Dict
+
 TIPTAP_DEFAULT_CONFIG = {
     "width": "500px",
     "height": "500px",
@@ -105,7 +107,7 @@ TIPTAP_DEFAULT_TRANSLATIONS = {
 }
 
 
-def getUpdatedContextForProperty(context: dict, property: str) -> dict[str, any]:
+def getUpdatedContextForProperty(context: dict, property: str) -> Dict[str, Any]:
     ctx = context.copy()
 
     if property in ctx["widget"]["config"]:
@@ -121,7 +123,8 @@ def getUpdatedContextForProperty(context: dict, property: str) -> dict[str, any]
         else:
             ctx["widget"]["config"][property] = TIPTAP_DEFAULT_TOOLTIPS.copy()["EN"]
             print(
-                "\n *** The language given to django_tiptap was not found, using english as default. *** \n"
+                "\n *** The language given to django_tiptap was not found, "
+                "using english as default. *** \n"
             )
     else:
         ctx["widget"]["config"][property] = TIPTAP_DEFAULT_TOOLTIPS.copy()["EN"]
