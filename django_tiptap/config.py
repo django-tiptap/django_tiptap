@@ -26,6 +26,7 @@ TIPTAP_DEFAULT_CONFIG = {
     "placeholderText": "Begin typing here...",
     "unsavedChangesWarningText": None,
     "lang": "EN",
+    "custom_extensions": [],
 }
 
 TIPTAP_DEFAULT_TOOLTIPS = {
