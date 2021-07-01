@@ -8,23 +8,27 @@
   display: -ms-flexbox;
   display: flex;
 }
+
 .flex-align-center {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
 }
+
 .flex-direction-row {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
 }
+
 .flex-direction-column {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
 }
+
 .flex-content-space-between {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
@@ -91,6 +95,7 @@
   border-bottom: 2px solid grey;
   padding: 1rem 0.5rem;
 }
+
 .menubar button {
   margin: 0 4px 2px 2px;
   height: 30px;
@@ -114,15 +119,19 @@
   -webkit-transition: none;
   transition: none;
 }
+
 .menubar button.disabled:hover {
   cursor: not-allowed;
 }
+
 .menubar button.disabled svg {
   fill: #ced4da;
 }
+
 .menubar button.is-active {
   background-color: #586b84;
 }
+
 .menubar button.is-active svg {
   fill: white;
 }
@@ -141,6 +150,7 @@
   flex-direction: column;
   cursor: initial;
 }
+
 .menubar button[id$="-addTable"]:hover .table-config .add-table-button {
   font-size: 1.2rem;
   margin: 5px 0 5px 0;
@@ -150,6 +160,7 @@
   color: white;
   padding: 4px;
 }
+
 .menubar button[id$="-addTable"] .table-config {
   display: none;
   position: absolute;
@@ -159,6 +170,7 @@
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.3);
   padding: 1em;
 }
+
 .menubar button[id$="-addTable"] .table-config input {
   height: 1.5rem;
   border-radius: 6px;
@@ -167,17 +179,21 @@
   min-width: 100px;
   padding: 4px;
 }
+
 .menubar button[id$="-addTable"] .table-config input:first-of-type {
   margin-right: 4px;
 }
+
 .menubar button[id$="-addTable"] .table-config input:last-of-type {
   margin-left: 4px;
 }
+
 .menubar button[id$="-addTable"] .table-config .inputs-container {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
 }
+
 .menubar
   button[id$="-addTable"]
   .table-config
@@ -186,9 +202,11 @@
   color: black;
   background-color: white;
 }
+
 .not-saved-text {
   display: none;
 }
+
 .not-saved-text.show {
   display: inline;
   color: #ee0e29;
@@ -198,9 +216,11 @@
   align-self: center;
   margin: 0 0 0 0.5rem;
 }
+
 .not-saved-text-spacer {
   display: none;
 }
+
 .not-saved-text-spacer.show {
   display: block;
 }
@@ -231,6 +251,7 @@
   margin-inline-end: 0px !important;
   font-weight: bold !important;
 }
+
 .ProseMirror h2 {
   padding: 0;
   display: block !important;
@@ -242,6 +263,7 @@
   font-weight: bold !important;
   background: white !important;
 }
+
 .ProseMirror h3 {
   display: block !important;
   font-size: 1.17em !important;
@@ -252,9 +274,11 @@
   font-weight: bold !important;
   padding: 0 !important;
 }
+
 .ProseMirror > * + * {
   margin-top: 0.75em;
 }
+
 .ProseMirror p.is-editor-empty:first-child::before {
   content: attr(data-placeholder);
   float: left;
@@ -277,16 +301,19 @@
   margin-left: 10px !important;
   list-style-type: upper-roman !important;
 }
+
 .ProseMirror ol > li > ol > li > ol {
   padding-left: 10px !important;
   margin-left: 10px !important;
   list-style-type: decimal !important;
 }
+
 .ProseMirror ol > li > ol > li > ol > li > ol {
   padding-left: 10px !important;
   margin-left: 10px !important;
   list-style-type: lower-latin !important;
 }
+
 .ProseMirror ol > li > ol > li > ol > li > ol > li > ol {
   padding-left: 10px !important;
   margin-left: 10px !important;
@@ -349,10 +376,12 @@
   max-width: 100%;
   height: auto;
 }
+
 .ProseMirror blockquote {
   padding-left: 1rem;
   border-left: 2px solid rgba(13, 13, 13, 0.1);
 }
+
 .ProseMirror hr {
   border: none;
   border-top: 2px solid rgba(13, 13, 13, 0.1);
@@ -367,6 +396,7 @@
   margin: 0;
   overflow: hidden;
 }
+
 .ProseMirror table td,
 .ProseMirror table th {
   min-width: 1em;
@@ -376,15 +406,18 @@
   box-sizing: border-box;
   position: relative;
 }
+
 .ProseMirror table td > *,
 .ProseMirror table th > * {
   margin-bottom: 0;
 }
+
 .ProseMirror table th {
   font-weight: bold;
   text-align: left;
   background-color: #f1f3f5;
 }
+
 .ProseMirror tr {
   background-color: white !important;
 }
@@ -400,6 +433,7 @@
   background: rgba(200, 200, 255, 0.4);
   pointer-events: none;
 }
+
 .ProseMirror table .column-resize-handle {
   position: absolute;
   right: -2px;
@@ -423,6 +457,7 @@ div[data-tippy-root] {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
+
 .selectedCell:after {
   z-index: 2;
   position: absolute;
@@ -434,6 +469,7 @@ div[data-tippy-root] {
   background: rgba(200, 200, 255, 0.4);
   pointer-events: none;
 }
+
 .column-resize-handle {
   position: absolute;
   right: -2px;
@@ -444,14 +480,17 @@ div[data-tippy-root] {
   pointer-events: none;
   cursor: col-resize !important;
 }
+
 .tableWrapper {
   padding: 1rem 0;
   overflow-x: auto;
 }
+
 .ProseMirror.resize-cursor {
   cursor: ew-resize !important;
   cursor: col-resize !important;
 }
+
 .spacer {
   height: 30px;
   border-right: 2px solid grey;
