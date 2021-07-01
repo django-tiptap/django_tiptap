@@ -78,7 +78,7 @@ WSGI_APPLICATION = "django_tiptap_demo.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "NAME": str(BASE_DIR / "db.sqlite3"),
     }
 }
 
@@ -148,4 +148,13 @@ DJANGO_TIPTAP_CONFIG = {
     "placeholderText": "Begin typing here...",  # set None to skip display
     "unsavedChangesWarningText": "You have unsaved changes!",  # set None to skip display
     "lang": "EN",
+    "custom_extensions": [
+        {
+            "source_static": "my_custom_extension/my_custom_extension.js",
+            "module_name": "MyCustomExtension",
+            "toolbar_include": "my_custom_extension/my_custom_extension_toolbar_include.html",
+            "buttonsconfig_include": "my_custom_extension/my_custom_extension_button_config.js",
+            "css_include": "my_custom_extension/my_custom_extension.css",
+        }
+    ],
 }

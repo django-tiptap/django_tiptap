@@ -1,3 +1,5 @@
+{% load static %}
+
 <textarea style="display: none;" name="{{ widget.name }}" id="{{ widget.name }}-tiptap-editor-textarea" {%
     include "django/forms/widgets/attrs.html" %}>
     {% if widget.value %}{{ widget.value }}{% endif %}
@@ -315,6 +317,13 @@
         </button>
         {% endif %}
 
+        {% for custom_extension in widget.config.custom_extensions %}
+            <div class="spacer"></div>
+            {% if custom_extension.toolbar_include %}
+                {% include custom_extension.toolbar_include %}
+            {% endif %}
+        {% endfor %}
+
         <div class="spacer not-saved-text-spacer" id="{{ widget.name }}-not-saved-warning-spacer"></div>
 
         {% if widget.config.unsavedChangesWarningText %}
@@ -355,7 +364,7 @@
     // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     // SOFTWARE.
 
-    import { Editor, Extension } from 'https://cdn.skypack.dev/pin/@tiptap/core@v2.0.0-beta.29-ehyNSRjShPZE49ePTtXD/mode=imports,min/optimized/@tiptap/core.js'
+    import { Editor, Extension, Node } from 'https://cdn.skypack.dev/pin/@tiptap/core@v2.0.0-beta.29-ehyNSRjShPZE49ePTtXD/mode=imports,min/optimized/@tiptap/core.js'
     import Dropcursor from 'https://cdn.skypack.dev/pin/@tiptap/extension-dropcursor@v2.0.0-beta.5-C97NmfHRe5pOo6Aihjq9/mode=imports,min/optimized/@tiptap/extension-dropcursor.js';
     import Gapcursor from 'https://cdn.skypack.dev/pin/@tiptap/extension-gapcursor@v2.0.0-beta.9-BovFPBqWSl9imddHM7w2/mode=imports,min/optimized/@tiptap/extension-gapcursor.js'
     import History from 'https://cdn.skypack.dev/pin/@tiptap/extension-history@v2.0.0-beta.4-TOmiSTyfwfMT5fqb39Ef/mode=imports,min/optimized/@tiptap/extension-history.js'
@@ -432,6 +441,14 @@
     import { Decoration, DecorationSet } from "https://cdn.skypack.dev/pin/prosemirror-view@v1.18.7-Oooie68ouAI0drFC4VJg/mode=imports,min/optimized/prosemirror-view.js"
     // {% endif %}
     import marked from 'https://cdn.skypack.dev/pin/marked@v2.0.3-qfnC6uYDZMsP0gC4iyi0/mode=imports,min/optimized/marked.js'
+
+    // {% for custom_extension in widget.config.custom_extensions %}
+        // {% if custom_extension.source_static %}
+            import {{ '{' }} {{ custom_extension.module_name }} {{ '}' }} from '{% static custom_extension.source_static %}'
+        // {% else %}
+            import {{ '{' }}  {{ custom_extension.module_name }}  {{ '}' }} from '{{ custom_extension.source_url }}'
+        // {% endif %}
+    // {% endfor %}
 
     // {% if 'indent' in widget.config.extensions%}
     export const clamp = (val, min, max) => {
@@ -945,7 +962,12 @@
             },
             canBeActive: false,
             tooltip: '{{ widget.config.tooltips.jinjaHighlight }}'
-        }
+        },
+        // {% for custom_extension in widget.config.custom_extensions %}
+            // {% if custom_extension.buttonsconfig_include %}
+                {% include custom_extension.buttonsconfig_include %},
+            // {% endif %}
+        // {% endfor %}
     }
 
     const setToolTips = () => {
@@ -1110,8 +1132,16 @@
                 plugins: [
                     JinjaHighlight
                 ]
-            })
+            }),
             // {% endif %}
+
+            // {% for custom_extension in widget.config.custom_extensions %}
+            //      {% if custom_extension.configuration_statement %}
+                {{ custom_extension.configuration_statement }},
+            //      {% else %}
+                {{ custom_extension.module_name}},
+            //      {% endif %}
+            // {% endfor %}
         ],
         content: initialEditorContent,
         onUpdate({ editor }) {
@@ -1197,3 +1227,10 @@
 
 
 </script>
+<style>
+{% for custom_extension in widget.config.custom_extensions %}
+    {% if custom_extension.css_include %}
+        {% include custom_extension.css_include %},
+    {% endif %}
+{% endfor %}
+</style>
