@@ -387,7 +387,9 @@
     import Heading from 'https://cdn.skypack.dev/pin/@tiptap/extension-heading@v2.0.0-beta.5-OI4KQsaFGbY9F2uHIxTE/mode=imports,min/optimized/@tiptap/extension-heading.js'
     // {% endif %}
 
-    // import HardBreak from 'https://cdn.skypack.dev/pin/@tiptap/extension-hard-break@v2.0.0-beta.5-ufKRg62UW9emFfMAb39p/mode=imports,min/optimized/@tiptap/extension-hard-break.js'
+    // {% if 'hardBreak' in widget.config.extensions %}
+    import HardBreak from 'https://cdn.skypack.dev/pin/@tiptap/extension-hard-break@v2.0.0-beta.5-ufKRg62UW9emFfMAb39p/mode=imports,min/optimized/@tiptap/extension-hard-break.js'
+    // {% endif %}
 
     // {% if 'strikethrough' in widget.config.extensions %}
     import Strike from 'https://cdn.skypack.dev/pin/@tiptap/extension-strike@v2.0.0-beta.6-60bipnlRANz4oioT5ZHX/mode=imports,min/optimized/@tiptap/extension-strike.js'
@@ -596,13 +598,6 @@
 
                     return false
                 },
-            }
-        },
-
-        addKeyboardShortcuts() {
-            return {
-                Tab: () => this.editor.commands.indent(),
-                'Shift-Tab': () => this.editor.commands.outdent()
             }
         },
     })
@@ -1082,7 +1077,9 @@
             }),
             // {% endif %}
 
-            // HardBreak,
+            // {% if 'hardBreak' in widget.config.extensions %}
+            HardBreak,
+            // {% endif %}
 
             // Blockquote,
 

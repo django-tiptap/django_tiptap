@@ -100,7 +100,7 @@ DJANGO_TIPTAP_CONFIG = {
     "placeholderText": "Begin typing here...",  # set None to skip display
     "unsavedChangesWarningText": "You have unsaved changes",  # set None to skip display
     "lang": "EN" # if you want to use default tooltips and translations, use this. Valid Options => EN/DE(for now)
-    "tooltips": { 
+    "tooltips": {
         # if you want to use your custom tooltips(maybe because you don't prefer default or the language you want isn't there)
         "bold": "Bold | (ctrl / ⌘) + B",
         "italic": "Italic | (ctrl / ⌘) + I",
@@ -171,7 +171,7 @@ welcome to!
 1.  We use black and isort to auto-format the code base. Both are set up as pre-commit hooks and in the tox testmatrix.
 
     ```bash
-    pip install black isort pre-commit 
+    pip install black isort pre-commit
     pre-commit install
     ```
 
