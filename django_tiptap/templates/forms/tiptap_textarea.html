@@ -444,7 +444,7 @@
 
     // {% for custom_extension in widget.config.custom_extensions %}
         // {% if custom_extension.source_static %}
-            import {{ '{' }} {{ custom_extension.module_name }} {{ '}' }} from '{% static custom_extension.source_static %}'
+            import {{ '{' }} {{ custom_extension.module_name }} {{ '}' }} from '{% autoescape off %}{% static custom_extension.source_static %}{% endautoescape %}'
         // {% else %}
             import {{ '{' }}  {{ custom_extension.module_name }}  {{ '}' }} from '{{ custom_extension.source_url }}'
         // {% endif %}
