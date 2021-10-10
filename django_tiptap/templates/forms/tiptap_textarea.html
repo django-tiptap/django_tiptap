@@ -440,7 +440,10 @@
     // {% if 'jinjaSyntaxHighlight' in widget.config.extensions%}
     import { Decoration, DecorationSet } from "https://cdn.skypack.dev/pin/prosemirror-view@v1.18.7-Oooie68ouAI0drFC4VJg/mode=imports,min/optimized/prosemirror-view.js"
     // {% endif %}
+    // {% if widget.config.outputHtml %}
     import marked from 'https://cdn.skypack.dev/pin/marked@v2.0.3-qfnC6uYDZMsP0gC4iyi0/mode=imports,min/optimized/marked.js'
+    // {% endif %}
+    
 
     // {% for custom_extension in widget.config.custom_extensions %}
         // {% if custom_extension.source_static %}
@@ -1011,7 +1014,11 @@
     }
 
     const textArea = document.querySelector('#{{ widget.name }}-tiptap-editor-textarea')
+    // {% if widget.config.outputHtml %}
     let initialEditorContent = marked(textArea.value.trim())
+    // {% else %}
+    let initialEditorContent = JSON.parse(textArea.value)
+    // {% endif %}
 
     let showingMenubar = false
 
@@ -1146,7 +1153,11 @@
         content: initialEditorContent,
         onUpdate({ editor }) {
             checkIsActive(editor)
+             // {% if widget.config.outputHtml %}
             const currentEditorContent = editor.getHTML().trim()
+            // {% else %} 
+            const currentEditorContent = JSON.stringify(editor.getJSON());
+            // {% endif %}
             textArea.value = currentEditorContent
             const notSavedWarningSpan = document.querySelector('#{{ widget.name }}-not-saved-warning')
             const notSavedWarningSpacer = document.querySelector('#{{ widget.name }}-not-saved-warning-spacer')
