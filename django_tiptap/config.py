@@ -27,7 +27,7 @@ TIPTAP_DEFAULT_CONFIG = {
     "unsavedChangesWarningText": None,
     "lang": "EN",
     "custom_extensions": [],
-    "outputHtml": True,
+    "tiptapOutputFomat": "html",
 }
 
 TIPTAP_DEFAULT_TOOLTIPS = {

@@ -142,7 +142,7 @@ DJANGO_TIPTAP_CONFIG = {
         "add": "Add"
     },
     "custom_extensions": [],
-    "outputHtml": True  # True for HTML output of editor, False for JSON
+    "tiptapOutputFormat": "html",  # options : "html", "json"
 
 }
 ```
