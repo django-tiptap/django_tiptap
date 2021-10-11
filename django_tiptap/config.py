@@ -65,6 +65,8 @@ TIPTAP_DEFAULT_TOOLTIPS = {
         "toggleHeaderCell": "Toggle Header Cell",
         "clearFormat": "Clear Format",
         "jinjaHighlight": "Jinja Highlight",
+        "rows": "Rows",
+        "columns": "Columns",
     },
     "DE": {
         "bold": "Fett | (ctrl / ⌘) + B",
@@ -100,6 +102,8 @@ TIPTAP_DEFAULT_TOOLTIPS = {
         "toggleHeaderCell": "Kopfzelle ein/auschalten",
         "clearFormat": "Formatierung entfernen",
         "jinjaHighlight": "Jinja Markierungen",
+        "rows": "Zeilen",
+        "columns": "Column",
     },
 }
 

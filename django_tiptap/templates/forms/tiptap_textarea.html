@@ -169,13 +169,13 @@
                 <div class="inputs-container display-flex flex-align-center flex-direction-column">
                     <div class="display-flex flex-content-space-between">
                         <label for="x" class="text-black">
-                            {{ widget.config.translations.row }}
+                            {{ widget.config.translations.rows }}
                         </label>
-                        <span class="text-black">
-                            &nbsp;x&nbsp;
+                        <span class="text-black" style="transform: scale(1.5)">
+                            &nbsp; x &nbsp;
                         </span>
                         <label for="y" class="text-black">
-                            {{ widget.config.translations.column }}
+                            {{ widget.config.translations.columns }}
                         </label>
                     </div>
                     <div>
@@ -187,7 +187,7 @@
                     </div>
                 </div>
                 <div class="{{ widget.name }}-add-table-button add-table-button">
-                    {{ widget.config.translations.add }}
+                    {{ widget.config.translations.addTable }}
                 </div>
             </div>
         </button>
@@ -440,10 +440,6 @@
     // {% if 'jinjaSyntaxHighlight' in widget.config.extensions%}
     import { Decoration, DecorationSet } from "https://cdn.skypack.dev/pin/prosemirror-view@v1.18.7-Oooie68ouAI0drFC4VJg/mode=imports,min/optimized/prosemirror-view.js"
     // {% endif %}
-    // {% if widget.config.tiptapOutputFormat == "html" %}
-    import marked from 'https://cdn.skypack.dev/pin/marked@v2.0.3-qfnC6uYDZMsP0gC4iyi0/mode=imports,min/optimized/marked.js'
-    // {% endif %}
-
 
     // {% for custom_extension in widget.config.custom_extensions %}
         // {% if custom_extension.source_static %}
@@ -1015,7 +1011,7 @@
 
     const textArea = document.querySelector('#{{ widget.name }}-tiptap-editor-textarea')
     // {% if widget.config.tiptapOutputFormat == "html" %}
-    let initialEditorContent = marked(textArea.value.trim())
+    let initialEditorContent = textArea.value.trim()
     // {% elif widget.config.tiptapOutputFormat == "json" %}
     let initialEditorContent = JSON.parse(textArea.value)
     // {% endif %}
@@ -1172,15 +1168,13 @@
             }
         },
         onCreate({ editor }) {
-            setTimeout(() => {
-                checkIsActive(editor)
-            }, 100)
+            setTimeout(() => checkIsActive(editor), 100)
         },
         onFocus() {
             if (!showingMenubar) {
-
                 const menubar = document.querySelector('#{{ widget.name }}-menubar')
                 if (menubar) menubar.classList.add('show')
+                showingMenubar = true
             }
         }
     })
