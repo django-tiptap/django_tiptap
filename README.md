@@ -141,7 +141,8 @@ DJANGO_TIPTAP_CONFIG = {
         "column": "Column",
         "add": "Add"
     },
-    "custom_extensions": []
+    "custom_extensions": [],
+    "tiptapOutputFormat": "html",  # options : "html", "json"
 
 }
 ```
