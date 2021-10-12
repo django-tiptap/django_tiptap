@@ -5,7 +5,7 @@ allow you to use TipTap in your Django forms and admin pages.
 
 For more information about TipTap, check out [tiptap.dev](https://www.tiptap.dev/).
 
-https://user-images.githubusercontent.com/45892659/115373320-0d17dc80-a1cc-11eb-89da-c5f723a19c63.mov
+https://user-images.githubusercontent.com/45892659/136865410-f13de924-8bb5-4729-b469-6e061a507ab5.mp4
 
 # Installation
 

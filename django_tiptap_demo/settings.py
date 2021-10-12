@@ -157,4 +157,5 @@ DJANGO_TIPTAP_CONFIG = {
             "css_include": "my_custom_extension/my_custom_extension.css",
         }
     ],
+    "tiptapOutputFormat": "html",
 }
