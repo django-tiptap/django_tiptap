@@ -832,10 +832,12 @@
     const Indent = Extension.create({
         name: 'indent',
 
-        defaultOptions: {
-            types: ['heading', 'paragraph'],
-            indentLevels: [0, 30, 60, 90, 120, 150, 180, 210],
-            defaultIndentLevel: 0,
+        addOptions() {
+            return {
+                types: ['heading', 'paragraph'],
+                indentLevels: [0, 30, 60, 90, 120, 150, 180, 210],
+                defaultIndentLevel: 0,
+            }
         },
 
         addGlobalAttributes() {
@@ -902,8 +904,10 @@
 
     const Linter = Extension.create({
         name: 'linter',
-        defaultOptions: {
-            plugins: [],
+        addOptions() {
+            return {
+                plugins: [],
+            }
         },
         addProseMirrorPlugins() {
             const { plugins } = this.options;
