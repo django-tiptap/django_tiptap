@@ -537,13 +537,15 @@
     }
     class TableView {
         constructor(node, cellMinWidth) {
+            debugger
+
             this.node = node;
             this.cellMinWidth = cellMinWidth;
             this.dom = document.createElement('div');
             this.dom.className = 'tableWrapper';
 
             this.node.attrs.uuid = node.attrs.uuid || uuidv4()
-            this.node.attrs.show_borders = ['true', 'false'].includes(node.attrs.show_borders.trim()) ? node.attrs.show_borders.trim() : 'true'
+            this.node.attrs.show_borders = ['true', 'false'].includes(node.attrs.show_borders?.trim()) ? node.attrs.show_borders?.trim() : 'true'
 
             const tableElementToAppend = document.createElement('table');
             for (const [key, value] of Object.entries(this.node.attrs)) {
