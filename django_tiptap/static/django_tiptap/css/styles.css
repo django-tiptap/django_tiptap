@@ -414,6 +414,12 @@
   position: relative;
 }
 
+.ProseMirror table[show_borders="false"] td,
+.ProseMirror table[show_borders="false"] th {
+  border: none;
+  box-sizing: border-box;
+}
+
 .ProseMirror table td > *,
 .ProseMirror table th > * {
   margin-bottom: 0;
