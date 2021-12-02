@@ -271,8 +271,13 @@
 
         <button id="{{ widget.name }}-toggleHeaderCell">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                <path
-                    d="M21,19A1,1 0 0,1 20,20H19V18H21V19M15,20V18H17V20H15M11,20V18H13V20H11M7,20V18H9V20H7M4,20A1,1 0 0,1 3,19V18H5V20H4M19,4H5A2,2 0 0,0 3,6V8H5L11,8H13L19,8H21V6C21,4.89 20.11,4 19,4M5,14H3V16H5V14M5,10H3V12H5V10M21,10H19V12H21V10M21,14H19V16H21V14M11,16V14H13V16H11M11,12V10H13V12H11" />
+                <path d="M3,5H15A2,2 0 0,1 17,7V17A2,2 0 0,1 15,19H3A2,2 0 0,1 1,17V7A2,2 0 0,1 3,5M3,9V12H8V9H3M10,9V12H15V9H10M3,14V17H8V14H3M10,14V17H15V14H10M23,14V7H19V9H21V12H19V14H23Z" />
+            </svg>
+        </button>
+
+        <button id="{{ widget.name }}-toggleTableBorders">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path d="M21,19A1,1 0 0,1 20,20H19V18H21V19M15,20V18H17V20H15M11,20V18H13V20H11M7,20V18H9V20H7M4,20A1,1 0 0,1 3,19V18H5V20H4M19,4H5A2,2 0 0,0 3,6V8H5L11,8H13L19,8H21V6C21,4.89 20.11,4 19,4M5,14H3V16H5V14M5,10H3V12H5V10M21,10H19V12H21V10M21,14H19V16H21V14M11,16V14H13V16H11M11,12V10H13V12H11" />
             </svg>
         </button>
 
@@ -364,81 +369,368 @@
     // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     // SOFTWARE.
 
-    import { Editor, Extension, Node } from 'https://cdn.skypack.dev/pin/@tiptap/core@v2.0.0-beta.140-sXTODYnWUf3807serrKu/mode=imports,min/optimized/@tiptap/core.js'
-    import Dropcursor from 'https://cdn.skypack.dev/pin/@tiptap/extension-dropcursor@v2.0.0-beta.25-KDvJ4Vm3RhVjPZUrIOCX/mode=imports,min/optimized/@tiptap/extension-dropcursor.js';
-    import Gapcursor from 'https://cdn.skypack.dev/pin/@tiptap/extension-gapcursor@v2.0.0-beta.33-omyrYeBY2BQRmpuES4Gp/mode=imports,min/optimized/@tiptap/extension-gapcursor.js'
-    import History from 'https://cdn.skypack.dev/pin/@tiptap/extension-history@v2.0.0-beta.21-7Oc5MIV3u2UGd0A5kyww/mode=imports,min/optimized/@tiptap/extension-history.js'
-    import Document from 'https://cdn.skypack.dev/pin/@tiptap/extension-document@v2.0.0-beta.15-LIP3DXbsBRWAQEaBckqI/mode=imports,min/optimized/@tiptap/extension-document.js'
-    import Paragraph from 'https://cdn.skypack.dev/pin/@tiptap/extension-paragraph@v2.0.0-beta.22-7d3PLULhL1nxMdb8AJdh/mode=imports,min/optimized/@tiptap/extension-paragraph.js'
-    import Text from 'https://cdn.skypack.dev/pin/@tiptap/extension-text@v2.0.0-beta.15-lWb3A3l2l6WlZg1Eg6Lk/mode=imports,min/optimized/@tiptap/extension-text.js'
+    import { TextSelection, AllSelection, Plugin, PluginKey } from 'https://cdn.skypack.dev/pin/prosemirror-state@v1.3.4-VDZSfZg19RtsX2tM1mcd/mode=imports,min/optimized/prosemirror-state.js'
+    import { Editor, Extension, Node, mergeAttributes, getExtensionField, callOrReturn, findParentNodeClosestToPos } from 'https://cdn.skypack.dev/pin/@tiptap/core@v2.0.0-beta.143-mMu8yOWMSaFlg0O17i9B/mode=imports,min/optimized/@tiptap/core.js'
+    import Dropcursor from 'https://cdn.skypack.dev/pin/@tiptap/extension-dropcursor@v2.0.0-beta.25-eIscsGuvvl6diZ59tpc3/mode=imports,min/optimized/@tiptap/extension-dropcursor.js';
+    import Gapcursor from 'https://cdn.skypack.dev/pin/@tiptap/extension-gapcursor@v2.0.0-beta.33-H2EQP6MVNDONfK3DBSHw/mode=imports,min/optimized/@tiptap/extension-gapcursor.js'
+    import History from 'https://cdn.skypack.dev/pin/@tiptap/extension-history@v2.0.0-beta.21-noN5tZqeHaDmo0OPkP9B/mode=imports,min/optimized/@tiptap/extension-history.js'
+    import Document from 'https://cdn.skypack.dev/pin/@tiptap/extension-document@v2.0.0-beta.15-S5We65iG5WsPWsk393Nn/mode=imports,min/optimized/@tiptap/extension-document.js'
+    import Paragraph from 'https://cdn.skypack.dev/pin/@tiptap/extension-paragraph@v2.0.0-beta.22-2V9wHOS6TMLGfLzfDAZT/mode=imports,min/optimized/@tiptap/extension-paragraph.js'
+    import Text from 'https://cdn.skypack.dev/pin/@tiptap/extension-text@v2.0.0-beta.15-FFZjbOtTInx9Tx2emVEB/mode=imports,min/optimized/@tiptap/extension-text.js'
+
 
     // {% if 'bold' in widget.config.extensions %}
-    import Bold from 'https://cdn.skypack.dev/pin/@tiptap/extension-bold@v2.0.0-beta.24-goF4Xi0ursIOLLZMhieY/mode=imports,min/optimized/@tiptap/extension-bold.js'
+    import Bold from 'https://cdn.skypack.dev/pin/@tiptap/extension-bold@v2.0.0-beta.24-Np8cBXeypIwxMh2yaYiN/mode=imports,min/optimized/@tiptap/extension-bold.js'
     // {% endif %}
 
     // {% if 'italic' in widget.config.extensions %}
-    import Italic from 'https://cdn.skypack.dev/pin/@tiptap/extension-italic@v2.0.0-beta.24-TQsk1LsLjRhnDXyC5jNa/mode=imports,min/optimized/@tiptap/extension-italic.js'
+    import Italic from 'https://cdn.skypack.dev/pin/@tiptap/extension-italic@v2.0.0-beta.24-4rKAUIasl2IN9ydkmUV9/mode=imports,min/optimized/@tiptap/extension-italic.js'
     // {% endif %}
 
     // import Code from 'https://cdn.skypack.dev/pin/@tiptap/extension-code@v2.0.0-beta.5-hyttgnc1tFe8F5m0ahjW/mode=imports,min/optimized/@tiptap/extension-code.js'
     // import CodeBlock from 'https://cdn.skypack.dev/pin/@tiptap/extension-code-block@v2.0.0-beta.7-x2YOXBIEn8LMoz5Gfubj/mode=imports,min/optimized/@tiptap/extension-code-block.js'
 
     // {% if 'h1' in widget.config.extensions or 'h2' in widget.config.extensions or 'h3' in widget.config.extensions or 'h4' in widget.config.extensions or 'h5' in widget.config.extensions or 'h6' in widget.config.extensions %}
-    import Heading from 'https://cdn.skypack.dev/pin/@tiptap/extension-heading@v2.0.0-beta.23-8gT2boyFURjySu4gyRDg/mode=imports,min/optimized/@tiptap/extension-heading.js'
+    import Heading from 'https://cdn.skypack.dev/pin/@tiptap/extension-heading@v2.0.0-beta.23-Zd90Q7pRXnm39zfGIWQK/mode=imports,min/optimized/@tiptap/extension-heading.js'
     // {% endif %}
 
     // {% if 'hardBreak' in widget.config.extensions %}
-    import HardBreak from 'https://cdn.skypack.dev/pin/@tiptap/extension-hard-break@v2.0.0-beta.30-6hJj6zTRTDxwF9WPSNhz/mode=imports,min/optimized/@tiptap/extension-hard-break.js'
+    import HardBreak from 'https://cdn.skypack.dev/pin/@tiptap/extension-hard-break@v2.0.0-beta.30-9OKPCmgGoqJ9q0r3fATt/mode=imports,min/optimized/@tiptap/extension-hard-break.js'
     // {% endif %}
 
     // {% if 'strikethrough' in widget.config.extensions %}
-    import Strike from 'https://cdn.skypack.dev/pin/@tiptap/extension-strike@v2.0.0-beta.26-aRGajrR6p4D4mcU4ZkE2/mode=imports,min/optimized/@tiptap/extension-strike.js'
+    import Strike from 'https://cdn.skypack.dev/pin/@tiptap/extension-strike@v2.0.0-beta.26-zHUAfR5TpSQUgRxu71n9/mode=imports,min/optimized/@tiptap/extension-strike.js'
     // {% endif %}
 
     // import Blockquote from 'https://cdn.skypack.dev/pin/@tiptap/extension-blockquote@v2.0.0-beta.5-iGwAq7KloHyiqTrmoBFu/mode=imports,min/optimized/@tiptap/extension-blockquote.js'
     // import HorizontalRule from 'https://cdn.skypack.dev/pin/@tiptap/extension-horizontal-rule@v2.0.0-beta.6-VhsEhfu8PSpAnUEbsQN0/mode=imports,min/optimized/@tiptap/extension-horizontal-rule.js'
 
     // {% if 'bulletList' in widget.config.extensions or 'orderedList' in widget.config.extensions %}
-    import ListItem from 'https://cdn.skypack.dev/pin/@tiptap/extension-list-item@v2.0.0-beta.19-XeRwo2ysUONeGtMnHs5S/mode=imports,min/optimized/@tiptap/extension-list-item.js'
+    import ListItem from 'https://cdn.skypack.dev/pin/@tiptap/extension-list-item@v2.0.0-beta.19-XkGH672R2GOvKfRbqJ05/mode=imports,min/optimized/@tiptap/extension-list-item.js'
     // {% endif %}
 
     // {% if 'bulletList' in widget.config.extensions %}
-    import BulletList from 'https://cdn.skypack.dev/pin/@tiptap/extension-bullet-list@v2.0.0-beta.23-f0EvDR68pL61mvnA8lvG/mode=imports,min/optimized/@tiptap/extension-bullet-list.js'
+    import BulletList from 'https://cdn.skypack.dev/pin/@tiptap/extension-bullet-list@v2.0.0-beta.23-gtJ906awHIlABGh5psCy/mode=imports,min/optimized/@tiptap/extension-bullet-list.js'
     // {% endif %}
 
     // {% if 'orderedList' in widget.config.extensions %}
-    import OrderedList from 'https://cdn.skypack.dev/pin/@tiptap/extension-ordered-list@v2.0.0-beta.24-wzrxzYxvTnTAPBI7mg1c/mode=imports,min/optimized/@tiptap/extension-ordered-list.js'
+    import OrderedList from 'https://cdn.skypack.dev/pin/@tiptap/extension-ordered-list@v2.0.0-beta.24-k2zu8qMVQDMkwaXLUgtb/mode=imports,min/optimized/@tiptap/extension-ordered-list.js'
     // {% endif %}
 
     // {% if 'underline' in widget.config.extensions %}
-    import Underline from 'https://cdn.skypack.dev/pin/@tiptap/extension-underline@v2.0.0-beta.21-zNZimqzoBk6gDuLp5Vxy/mode=imports,min/optimized/@tiptap/extension-underline.js'
+    import Underline from 'https://cdn.skypack.dev/pin/@tiptap/extension-underline@v2.0.0-beta.21-TelOzr1LfEFqxgPLpA14/mode=imports,min/optimized/@tiptap/extension-underline.js'
     // {% endif %}
 
     // {% if 'textAlign' in widget.config.extensions %}
-    import TextAlign from 'https://cdn.skypack.dev/pin/@tiptap/extension-text-align@v2.0.0-beta.28-f8W7valz870OIfKXcffW/mode=imports,min/optimized/@tiptap/extension-text-align.js'
+    import TextAlign from 'https://cdn.skypack.dev/pin/@tiptap/extension-text-align@v2.0.0-beta.28-ePEBgZQKvgNKyyeTU4Df/mode=imports,min/optimized/@tiptap/extension-text-align.js'
     // {% endif %}
 
     // {% if 'table' in widget.config.extensions%}
-    import Table from 'https://cdn.skypack.dev/pin/@tiptap/extension-table@v2.0.0-beta.43-8ChcbHOfjU5UlHolzdyq/mode=imports,min/optimized/@tiptap/extension-table.js'
-    import TableHeader from 'https://cdn.skypack.dev/pin/@tiptap/extension-table-header@v2.0.0-beta.22-xPERmvulY4cvH4HUiQvw/mode=imports,min/optimized/@tiptap/extension-table-header.js'
-    import TableRow from 'https://cdn.skypack.dev/pin/@tiptap/extension-table-row@v2.0.0-beta.19-lXGa2c53Mn3x0rZk3sHs/mode=imports,min/optimized/@tiptap/extension-table-row.js'
-    import TableCell from 'https://cdn.skypack.dev/pin/@tiptap/extension-table-cell@v2.0.0-beta.20-vHYbE9k0ayLLlHSmXLH0/mode=imports,min/optimized/@tiptap/extension-table-cell.js'
+    import { tableEditing, columnResizing, goToNextCell, addColumnBefore, addColumnAfter, deleteColumn, addRowBefore, addRowAfter, deleteRow, deleteTable, mergeCells, splitCell, toggleHeaderColumn, toggleHeaderRow, toggleHeaderCell, setCellAttr, fixTables, CellSelection, } from 'https://cdn.skypack.dev/pin/prosemirror-tables@v1.1.1-9EhmoOn2V5XWW8VRE0Hp/mode=imports,min/optimized/prosemirror-tables.js';
+    import { v4 as uuidv4 } from 'https://cdn.skypack.dev/pin/uuid@v8.3.2-XAQ9X05vJqvKpZccxFGc/mode=imports,min/optimized/uuid.js'
+
+    function updateColumns(node, colgroup, table, cellMinWidth, overrideCol, overrideValue) {
+        let totalWidth = 0;
+        let fixedWidth = true;
+        let nextDOM = colgroup.firstChild;
+        const row = node.firstChild;
+        for (let i = 0, col = 0; i < row.childCount; i += 1) {
+            const { colspan, colwidth } = row.child(i).attrs;
+            for (let j = 0; j < colspan; j += 1, col += 1) {
+                const hasWidth = overrideCol === col ? overrideValue : colwidth && colwidth[j];
+                const cssWidth = hasWidth ? `${hasWidth}px` : '';
+                totalWidth += hasWidth || cellMinWidth;
+                if (!hasWidth) {
+                    fixedWidth = false;
+                }
+                if (!nextDOM) {
+                    colgroup.appendChild(document.createElement('col')).style.width = cssWidth;
+                }
+                else {
+                    if (nextDOM.style.width !== cssWidth) {
+                        nextDOM.style.width = cssWidth;
+                    }
+                    nextDOM = nextDOM.nextSibling;
+                }
+            }
+        }
+        while (nextDOM) {
+            const after = nextDOM.nextSibling;
+            nextDOM.parentNode.removeChild(nextDOM);
+            nextDOM = after;
+        }
+        if (fixedWidth) {
+            table.style.width = `${totalWidth}px`;
+            table.style.minWidth = '';
+        }
+        else {
+            table.style.width = '';
+            table.style.minWidth = `${totalWidth}px`;
+        }
+    }
+    function isCellSelection(value) {
+        return value instanceof CellSelection;
+    }
+    const deleteTableWhenAllCellsSelected = ({ editor }) => {
+        const { selection } = editor.state;
+        if (!isCellSelection(selection)) {
+            return false;
+        }
+        let cellCount = 0;
+        const table = findParentNodeClosestToPos(selection.ranges[0].$from, node => node.type.name === 'table');
+        table === null || table === void 0 ? void 0 : table.node.descendants(node => {
+            if (node.type.name === 'table') {
+                return false;
+            }
+            if (['tableCell', 'tableHeader'].includes(node.type.name)) {
+                cellCount += 1;
+            }
+        });
+        const allCellsSelected = cellCount === selection.ranges.length;
+        if (!allCellsSelected) {
+            return false;
+        }
+        editor.commands.deleteTable();
+        return true;
+    };
+    function createCell(cellType, cellContent) {
+        if (cellContent) {
+            return cellType.createChecked(null, cellContent);
+        }
+        return cellType.createAndFill();
+    }
+    function getTableNodeTypes(schema) {
+        if (schema.cached.tableNodeTypes) {
+            return schema.cached.tableNodeTypes;
+        }
+        const roles = {};
+        Object.keys(schema.nodes).forEach(type => {
+            const nodeType = schema.nodes[type];
+            if (nodeType.spec.tableRole) {
+                roles[nodeType.spec.tableRole] = nodeType;
+            }
+        });
+        schema.cached.tableNodeTypes = roles;
+        return roles;
+    }
+    function createTable(schema, rowsCount, colsCount, withHeaderRow, cellContent) {
+        const types = getTableNodeTypes(schema);
+        const headerCells = [];
+        const cells = [];
+        for (let index = 0; index < colsCount; index += 1) {
+            const cell = createCell(types.cell, cellContent);
+            if (cell) {
+                cells.push(cell);
+            }
+            if (withHeaderRow) {
+                const headerCell = createCell(types.header_cell, cellContent);
+                if (headerCell) {
+                    headerCells.push(headerCell);
+                }
+            }
+        }
+        const rows = [];
+        for (let index = 0; index < rowsCount; index += 1) {
+            rows.push(types.row.createChecked(null, withHeaderRow && index === 0 ? headerCells : cells));
+        }
+        return types.table.createChecked(null, rows);
+    }
+    class TableView {
+        constructor(node, cellMinWidth) {
+            this.node = node;
+            this.cellMinWidth = cellMinWidth;
+            this.dom = document.createElement('div');
+            this.dom.className = 'tableWrapper';
+
+            this.node.attrs.uuid = node.attrs.uuid || uuidv4()
+            this.node.attrs.show_borders = node.attrs.show_borders || 'true'
+
+            const tableElementToAppend = document.createElement('table');
+            for (const [key, value] of Object.entries(this.node.attrs)) {
+                tableElementToAppend.setAttribute(key, value);
+            }
+
+            this.table = this.dom.appendChild(tableElementToAppend);
+            this.colgroup = this.table.appendChild(document.createElement('colgroup'));
+            updateColumns(node, this.colgroup, this.table, cellMinWidth);
+            this.contentDOM = this.table.appendChild(document.createElement('tbody'));
+        }
+
+        update(node) {
+            if (node.type !== this.node.type) return false
+            this.node = node;
+
+            updateColumns(node, this.colgroup, this.table, this.cellMinWidth);
+
+            const tableElement = document.querySelector(`.ProseMirror [uuid="${this.node.attrs.uuid}"`)
+
+            if (tableElement) {
+                for (const [key, value] of Object.entries(node.attrs)) {
+                    tableElement.setAttribute(key, value)
+                }
+            }
+
+            return true;
+        }
+
+        ignoreMutation(mutation) {
+            return mutation.type === 'attributes' && (mutation.target === this.table || this.colgroup.contains(mutation.target));
+        }
+    }
+    const Table = Node.create({
+        name: 'table',
+        addAttributes() {
+            return {
+                show_borders: {
+                    parseHTML: element => {
+                        const val = element.getAttribute('show_borders')
+                        return ['true', 'false'].includes(val) ? val : 'true'
+                    }
+                },
+                uuid: {
+                    parseHTML: element => element.getAttribute('uuid') || uuidv4()
+                },
+            };
+        },
+        addOptions() {
+            return {
+                HTMLAttributes: {},
+                resizable: false,
+                handleWidth: 5,
+                cellMinWidth: 25,
+                // TODO: fix
+                View: TableView,
+                lastColumnResizable: true,
+                allowTableNodeSelection: false,
+            };
+        },
+        content: 'tableRow+',
+        tableRole: 'table',
+        isolating: true,
+        group: 'block',
+        parseHTML() {
+            return [
+                { tag: 'table' },
+            ];
+        },
+        renderHTML({ HTMLAttributes }) {
+            return ['table', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), ['tbody', 0]];
+        },
+        addCommands() {
+            return {
+                insertTable: ({ rows = 3, cols = 3, withHeaderRow = true } = {}) => ({ tr, dispatch, editor }) => {
+                    const node = createTable(editor.schema, rows, cols, withHeaderRow);
+                    if (dispatch) {
+                        const offset = tr.selection.anchor + 1;
+                        tr.replaceSelectionWith(node)
+                            .scrollIntoView()
+                            .setSelection(TextSelection.near(tr.doc.resolve(offset)));
+                    }
+                    return true;
+                },
+                addColumnBefore: () => ({ state, dispatch }) => addColumnBefore(state, dispatch),
+                addColumnAfter: () => ({ state, dispatch }) => addColumnAfter(state, dispatch),
+                deleteColumn: () => ({ state, dispatch }) => deleteColumn(state, dispatch),
+                addRowBefore: () => ({ state, dispatch }) => addRowBefore(state, dispatch),
+                addRowAfter: () => ({ state, dispatch }) => addRowAfter(state, dispatch),
+                deleteRow: () => ({ state, dispatch }) => deleteRow(state, dispatch),
+                deleteTable: () => ({ state, dispatch }) => deleteTable(state, dispatch),
+                mergeCells: () => ({ state, dispatch }) => mergeCells(state, dispatch),
+                splitCell: () => ({ state, dispatch }) => splitCell(state, dispatch),
+                toggleHeaderColumn: () => ({ state, dispatch }) => toggleHeaderColumn(state, dispatch),
+                toggleHeaderRow: () => ({ state, dispatch }) => toggleHeaderRow(state, dispatch),
+                toggleHeaderCell: () => ({ state, dispatch }) => toggleHeaderCell(state, dispatch),
+                mergeOrSplit: () => ({ state, dispatch }) => {
+                    if (mergeCells(state, dispatch)) {
+                        return true;
+                    }
+                    return splitCell(state, dispatch);
+                },
+                setCellAttribute: (name, value) => ({ state, dispatch }) => setCellAttr(name, value)(state, dispatch),
+                goToNextCell: () => ({ state, dispatch }) => goToNextCell(1)(state, dispatch),
+                goToPreviousCell: () => ({ state, dispatch }) => goToNextCell(-1)(state, dispatch),
+                fixTables: () => ({ state, dispatch }) => {
+                    if (dispatch) {
+                        fixTables(state);
+                    }
+                    return true;
+                },
+                setCellSelection: position => ({ tr, dispatch }) => {
+                    if (dispatch) {
+                        const selection = CellSelection.create(tr.doc, position.anchorCell, position.headCell);
+                        // @ts-ignore
+                        tr.setSelection(selection);
+                    }
+                    return true;
+                },
+            };
+        },
+        addKeyboardShortcuts() {
+            return {
+                Tab: () => {
+                    if (this.editor.commands.goToNextCell()) {
+                        return true;
+                    }
+                    if (!this.editor.can().addRowAfter()) {
+                        return false;
+                    }
+                    return this.editor
+                        .chain()
+                        .addRowAfter()
+                        .goToNextCell()
+                        .run();
+                },
+                'Shift-Tab': () => this.editor.commands.goToPreviousCell(),
+                Backspace: deleteTableWhenAllCellsSelected,
+                'Mod-Backspace': deleteTableWhenAllCellsSelected,
+                Delete: deleteTableWhenAllCellsSelected,
+                'Mod-Delete': deleteTableWhenAllCellsSelected,
+            };
+        },
+        addProseMirrorPlugins() {
+            const isResizable = this.options.resizable && this.editor.isEditable;
+            return [
+                ...(isResizable ? [columnResizing({
+                        handleWidth: this.options.handleWidth,
+                        cellMinWidth: this.options.cellMinWidth,
+                        View: this.options.View,
+                        // TODO: PR for @types/prosemirror-tables
+                        // @ts-ignore (incorrect type)
+                        lastColumnResizable: this.options.lastColumnResizable,
+                    })] : []),
+                tableEditing({
+                    allowTableNodeSelection: this.options.allowTableNodeSelection,
+                }),
+            ];
+        },
+        extendNodeSchema(extension) {
+            const context = {
+                name: extension.name,
+                options: extension.options,
+                storage: extension.storage,
+            };
+            return {
+                tableRole: callOrReturn(getExtensionField(extension, 'tableRole', context)),
+            };
+        },
+    });
+    import TableHeader from 'https://cdn.skypack.dev/pin/@tiptap/extension-table-header@v2.0.0-beta.22-zW4KauhgzQM61HhIBB3a/mode=imports,min/optimized/@tiptap/extension-table-header.js'
+    import TableRow from 'https://cdn.skypack.dev/pin/@tiptap/extension-table-row@v2.0.0-beta.19-8JrFuUDS1x7cXNGYrolS/mode=imports,min/optimized/@tiptap/extension-table-row.js'
+    import TableCell from 'https://cdn.skypack.dev/pin/@tiptap/extension-table-cell@v2.0.0-beta.20-eSpTzE6MzpCSkRahk3Rm/mode=imports,min/optimized/@tiptap/extension-table-cell.js'
     // {% endif %}
 
     import { liftTarget } from 'https://cdn.skypack.dev/pin/prosemirror-transform@v1.3.3-ZkJUQnVF0lYwd5WGUW6w/mode=imports,min/optimized/prosemirror-transform.js'
 
     // {% if 'typography' in widget.config.extensions%}
-    import Typography from 'https://cdn.skypack.dev/pin/@tiptap/extension-typography@v2.0.0-beta.19-4m9DxALe6xM7FawF0gFq/mode=imports,min/optimized/@tiptap/extension-typography.js'
+    import Typography from 'https://cdn.skypack.dev/pin/@tiptap/extension-typography@v2.0.0-beta.19-F2MNPGRShAh7UPy7qWHD/mode=imports,min/optimized/@tiptap/extension-typography.js'
     // {% endif %}
 
     // {% if widget.config.placeholderText %}
-    import Placeholder from 'https://cdn.skypack.dev/pin/@tiptap/extension-placeholder@v2.0.0-beta.44-Eq5FPlpVg4YQbhBGY9iP/mode=imports,min/optimized/@tiptap/extension-placeholder.js'
+    import Placeholder from 'https://cdn.skypack.dev/pin/@tiptap/extension-placeholder@v2.0.0-beta.44-SCJ5TXx3f10TbTD5bT8a/mode=imports,min/optimized/@tiptap/extension-placeholder.js'
     // {% endif %}
 
-    import { TextSelection, AllSelection, Plugin, PluginKey } from 'https://cdn.skypack.dev/pin/prosemirror-state@v1.3.4-VDZSfZg19RtsX2tM1mcd/mode=imports,min/optimized/prosemirror-state.js'
-
     // {% if 'jinjaSyntaxHighlight' in widget.config.extensions%}
-    import { Decoration, DecorationSet } from 'https://cdn.skypack.dev/pin/prosemirror-view@v1.23.2-CZdWPjO1CCilMlcW4Znx/mode=imports,min/optimized/prosemirror-view.js'
+    import { Decoration, DecorationSet } from 'https://cdn.skypack.dev/pin/prosemirror-view@v1.23.3-eulK2kyPufxkfFMd3aJg/mode=imports,min/optimized/prosemirror-view.js'
     // {% endif %}
 
     // {% for custom_extension in widget.config.custom_extensions %}
@@ -450,7 +742,7 @@
     // {% endfor %}
 
     // {% if 'indent' in widget.config.extensions%}
-    export const clamp = (val, min, max) => {
+    const clamp = (val, min, max) => {
         if (val < min) {
             return min
         }
@@ -468,19 +760,19 @@
         less: -30
     }
 
-    export function isBulletListNode(node) {
+    function isBulletListNode(node) {
         return node.type.name === 'bullet_list'
     }
 
-    export function isOrderedListNode(node) {
+    function isOrderedListNode(node) {
         return node.type.name === 'order_list'
     }
 
-    export function isTodoListNode(node) {
+    function isTodoListNode(node) {
         return node.type.name === 'todo_list'
     }
 
-    export function isListNode(node) {
+    function isListNode(node) {
         return isBulletListNode(node) ||
             isOrderedListNode(node) ||
             isTodoListNode(node)
@@ -537,7 +829,7 @@
         return tr
     }
 
-    export const Indent = Extension.create({
+    const Indent = Extension.create({
         name: 'indent',
 
         defaultOptions: {
@@ -936,6 +1228,16 @@
             tooltip: '{{ widget.config.tooltips.toggleHeaderCell }}',
             disabled: (editor) => !editor.can().toggleHeaderCell(),
         },
+        ['{{ widget.name }}-toggleTableBorders']: {
+            command: (editor) => {
+                const newState = editor.getAttributes('table').show_borders === 'true' ? 'false' : 'true'
+                editor.commands.updateAttributes('table', {'show_borders' : newState})
+                editor.commands.focus()
+            },
+            canBeActive: false,
+            tooltip: '{{ widget.config.tooltips.toggleTableBorders }}',
+            disabled: (editor) => !editor.can().deleteTable(),
+        },
         ['{{ widget.name }}-clearFormat']: {
             command: (editor) => {
                 editor.chain().focus().unsetAllMarks().run()
@@ -1105,9 +1407,7 @@
             // {% endif %}
 
             // {% if 'table' in widget.config.extensions%}
-            Table.configure({
-                resizable: true,
-            }),
+            Table.configure({ resizable: true }),
 
             TableRow,
 
@@ -1121,9 +1421,7 @@
             // {% endif %}
 
             // {% if widget.config.placeholderText %}
-            Placeholder.configure({
-                placeholder: "{{ widget.config.placeholderText}}",
-            }),
+            Placeholder.configure({ placeholder: "{{ widget.config.placeholderText}}" }),
             // {% endif %}
 
             // {% if 'indent' in widget.config.extensions%}
