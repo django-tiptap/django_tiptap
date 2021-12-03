@@ -422,7 +422,7 @@
     // {% endif %}
 
     // {% if 'textAlign' in widget.config.extensions %}
-    import TextAlign from 'https://cdn.skypack.dev/pin/@tiptap/extension-text-align@v2.0.0-beta.28-ePEBgZQKvgNKyyeTU4Df/mode=imports,min/optimized/@tiptap/extension-text-align.js'
+    import TextAlign from 'https://cdn.skypack.dev/pin/@tiptap/extension-text-align@v2.0.0-beta.29-xuv3G2F6rDXU80BGCqGu/mode=imports,min/optimized/@tiptap/extension-text-align.js'
     // {% endif %}
 
     // {% if 'table' in widget.config.extensions%}
@@ -1031,10 +1031,7 @@
         }
     }
 
-    const onHeadingButtonClicked = (level) => {
-        clearFormat(editor)
-        editor.chain().focus().toggleHeading({ level }).run()
-    }
+    const onHeadingButtonClicked = (level) => editor.chain().toggleHeading({ level }).focus().run()
 
     let isJinjaActive = true
 
@@ -1103,127 +1100,127 @@
 
         ['{{ widget.name }}-alignLeft']: {
             isActiveCheck: [{ textAlign: 'left' }],
-            command: (editor) => editor.chain().focus().setTextAlign('left').run(),
+            command: (editor) => editor.chain().setTextAlign('left').focus().run(),
             canBeActive: true,
             tooltip: '{{ widget.config.tooltips.alignLeft }}',
         },
         ['{{ widget.name }}-alignCenter']: {
             isActiveCheck: [{ textAlign: 'center' }],
-            command: (editor) => editor.chain().focus().setTextAlign('center').run(),
+            command: (editor) => editor.chain().setTextAlign('center').focus().run(),
             canBeActive: true,
             tooltip: '{{ widget.config.tooltips.alignCenter }}',
         },
         ['{{ widget.name }}-alignRight']: {
             isActiveCheck: [{ textAlign: 'right' }],
-            command: (editor) => editor.chain().focus().setTextAlign('right').run(),
+            command: (editor) => editor.chain().setTextAlign('right').focus().run(),
             canBeActive: true,
             tooltip: '{{ widget.config.tooltips.alignRight }}',
         },
         ['{{ widget.name }}-alignJustify']: {
             isActiveCheck: [{ textAlign: 'justify' }],
-            command: (editor) => editor.chain().focus().setTextAlign('justify').run(),
+            command: (editor) => editor.chain().setTextAlign('justify').focus().run(),
             canBeActive: true,
             tooltip: '{{ widget.config.tooltips.alignJustify }}',
         },
         ['{{ widget.name }}-indent']: {
-            command: (editor) => editor.chain().focus().indent().run(),
+            command: (editor) => editor.chain().indent().focus().run(),
             canBeActive: false,
             tooltip: '{{ widget.config.tooltips.indent }}',
         },
         ['{{ widget.name }}-outdent']: {
-            command: (editor) => editor.chain().focus().outdent().run(),
+            command: (editor) => editor.chain().outdent().focus().run(),
             canBeActive: false,
             tooltip: '{{ widget.config.tooltips.outdent }}',
         },
 
         ['{{ widget.name }}-bulletList']: {
             isActiveCheck: ['bulletList'],
-            command: (editor) => editor.chain().focus().toggleBulletList().run(),
+            command: (editor) => editor.chain().toggleBulletList().focus().run(),
             canBeActive: true,
             tooltip: '{{ widget.config.tooltips.bulletList }}',
         },
         ['{{ widget.name }}-orderedList']: {
             isActiveCheck: ['orderedList'],
-            command: (editor) => editor.chain().focus().toggleOrderedList().run(),
+            command: (editor) => editor.chain().toggleOrderedList().focus().run(),
             canBeActive: true,
             tooltip: '{{ widget.config.tooltips.orderedList }}',
         },
 
         ['{{ widget.name }}-addTable']: {
             command: (editor, config = { rows: 3, cols: 3, withHeaderRow: true }) => {
-                editor.chain().focus().insertTable(config).run()
+                editor.chain().insertTable(config).focus().run()
             },
             canBeActive: false,
             tooltip: '{{ widget.config.tooltips.addTable }}',
         },
         ['{{ widget.name }}-deleteTable']: {
-            command: (editor) => editor.chain().focus().deleteTable().run(),
+            command: (editor) => editor.chain().deleteTable().focus().run(),
             canBeActive: false,
             tooltip: '{{ widget.config.tooltips.deleteTable }}',
             disabled: (editor) => !editor.can().deleteTable(),
         },
         ['{{ widget.name }}-addColumnBefore']: {
-            command: (editor) => editor.chain().focus().addColumnBefore().run(),
+            command: (editor) => editor.chain().addColumnBefore().focus().run(),
             canBeActive: false,
             tooltip: '{{ widget.config.tooltips.addColumnBefore }}',
             disabled: (editor) => !editor.can().addColumnBefore(),
         },
         ['{{ widget.name }}-addColumnAfter']: {
-            command: (editor) => editor.chain().focus().addColumnAfter().run(),
+            command: (editor) => editor.chain().addColumnAfter().focus().run(),
             canBeActive: false,
             tooltip: '{{ widget.config.tooltips.addColumnAfter }}',
             disabled: (editor) => !editor.can().addColumnAfter(),
         },
         ['{{ widget.name }}-deleteColumn']: {
-            command: (editor) => editor.chain().focus().deleteColumn().run(),
+            command: (editor) => editor.chain().deleteColumn().focus().run(),
             canBeActive: false,
             tooltip: '{{ widget.config.tooltips.deleteColumn }}',
             disabled: (editor) => !editor.can().deleteColumn(),
         },
         ['{{ widget.name }}-addRowBefore']: {
-            command: (editor) => editor.chain().focus().addRowBefore().run(),
+            command: (editor) => editor.chain().addRowBefore().focus().run(),
             canBeActive: false,
             tooltip: '{{ widget.config.tooltips.addRowBefore }}',
             disabled: (editor) => !editor.can().addRowBefore(),
         },
         ['{{ widget.name }}-addRowAfter']: {
             canBeActive: false,
-            command: (editor) => editor.chain().focus().addRowAfter().run(),
+            command: (editor) => editor.chain().addRowAfter().focus().run(),
             tooltip: '{{ widget.config.tooltips.addRowAfter }}',
             disabled: (editor) => !editor.can().addRowAfter(),
         },
         ['{{ widget.name }}-deleteRow']: {
-            command: (editor) => editor.chain().focus().deleteRow().run(),
+            command: (editor) => editor.chain().deleteRow().focus().run(),
             canBeActive: false,
             tooltip: '{{ widget.config.tooltips.deleteRow }}',
             disabled: (editor) => !editor.can().deleteRow(),
         },
         ['{{ widget.name }}-mergeCells']: {
-            command: (editor) => editor.chain().focus().mergeCells().run(),
+            command: (editor) => editor.chain().mergeCells().focus().run(),
             canBeActive: false,
             tooltip: '{{ widget.config.tooltips.mergeCells }}',
             disabled: (editor) => !editor.can().mergeCells(),
         },
         ['{{ widget.name }}-splitCell']: {
-            command: (editor) => editor.chain().focus().splitCell().run(),
+            command: (editor) => editor.chain().splitCell().focus().run(),
             canBeActive: false,
             tooltip: '{{ widget.config.tooltips.splitCell }}',
             disabled: (editor) => !editor.can().splitCell(),
         },
         ['{{ widget.name }}-toggleHeaderColumn']: {
-            command: (editor) => editor.chain().focus().toggleHeaderColumn().run(),
+            command: (editor) => editor.chain().toggleHeaderColumn().focus().run(),
             canBeActive: false,
             tooltip: '{{ widget.config.tooltips.toggleHeaderColumn }}',
             disabled: (editor) => !editor.can().toggleHeaderColumn(),
         },
         ['{{ widget.name }}-toggleHeaderRow']: {
-            command: (editor) => editor.chain().focus().toggleHeaderRow().run(),
+            command: (editor) => editor.chain().toggleHeaderRow().focus().run(),
             canBeActive: false,
             tooltip: '{{ widget.config.tooltips.toggleHeaderRow }}',
             disabled: (editor) => !editor.can().toggleHeaderRow(),
         },
         ['{{ widget.name }}-toggleHeaderCell']: {
-            command: (editor) => editor.chain().focus().toggleHeaderCell().run(),
+            command: (editor) => editor.chain().toggleHeaderCell().focus().run(),
             canBeActive: false,
             tooltip: '{{ widget.config.tooltips.toggleHeaderCell }}',
             disabled: (editor) => !editor.can().toggleHeaderCell(),
@@ -1240,7 +1237,7 @@
         },
         ['{{ widget.name }}-clearFormat']: {
             command: (editor) => {
-                editor.chain().focus().unsetAllMarks().run()
+                editor.chain().unsetAllMarks().focus().run()
                 clearFormat()
             },
             canBeActive: false,
@@ -1403,7 +1400,7 @@
             // {% endif %}
 
             // {% if 'textAlign' in widget.config.extensions %}
-            TextAlign,
+            TextAlign.configure({ types: ['heading', 'paragraph'] }),
             // {% endif %}
 
             // {% if 'table' in widget.config.extensions%}
