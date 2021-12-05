@@ -1349,6 +1349,11 @@
 
     const editor = new Editor({
         element: document.querySelector('#{{ widget.name }}-tiptap-editor-div'),
+        editorProps: {
+            attributes: {
+                spellcheck: "false"
+            }
+        },
         extensions: [
             Document,
 
