@@ -271,13 +271,15 @@
 
         <button id="{{ widget.name }}-toggleHeaderCell">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                <path d="M3,5H15A2,2 0 0,1 17,7V17A2,2 0 0,1 15,19H3A2,2 0 0,1 1,17V7A2,2 0 0,1 3,5M3,9V12H8V9H3M10,9V12H15V9H10M3,14V17H8V14H3M10,14V17H15V14H10M23,14V7H19V9H21V12H19V14H23Z" />
+                <path
+                    d="M3,5H15A2,2 0 0,1 17,7V17A2,2 0 0,1 15,19H3A2,2 0 0,1 1,17V7A2,2 0 0,1 3,5M3,9V12H8V9H3M10,9V12H15V9H10M3,14V17H8V14H3M10,14V17H15V14H10M23,14V7H19V9H21V12H19V14H23Z" />
             </svg>
         </button>
 
         <button id="{{ widget.name }}-toggleTableBorders">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                <path d="M21,19A1,1 0 0,1 20,20H19V18H21V19M15,20V18H17V20H15M11,20V18H13V20H11M7,20V18H9V20H7M4,20A1,1 0 0,1 3,19V18H5V20H4M19,4H5A2,2 0 0,0 3,6V8H5L11,8H13L19,8H21V6C21,4.89 20.11,4 19,4M5,14H3V16H5V14M5,10H3V12H5V10M21,10H19V12H21V10M21,14H19V16H21V14M11,16V14H13V16H11M11,12V10H13V12H11" />
+                <path
+                    d="M21,19A1,1 0 0,1 20,20H19V18H21V19M15,20V18H17V20H15M11,20V18H13V20H11M7,20V18H9V20H7M4,20A1,1 0 0,1 3,19V18H5V20H4M19,4H5A2,2 0 0,0 3,6V8H5L11,8H13L19,8H21V6C21,4.89 20.11,4 19,4M5,14H3V16H5V14M5,10H3V12H5V10M21,10H19V12H21V10M21,14H19V16H21V14M11,16V14H13V16H11M11,12V10H13V12H11" />
             </svg>
         </button>
 
@@ -309,7 +311,8 @@
         {% if 'clearFormat' in widget.config.extensions %}
         <button id="{{ widget.name }}-clearFormat">
             <svg style="width:18px;height:18px" viewBox="0 0 24 24">
-                <path d="M6,5V5.18L8.82,8H11.22L10.5,9.68L12.6,11.78L14.21,8H20V5H6M3.27,5L2,6.27L8.97,13.24L6.5,19H9.5L11.07,15.34L16.73,21L18,19.73L3.55,5.27L3.27,5Z" />
+                <path
+                    d="M6,5V5.18L8.82,8H11.22L10.5,9.68L12.6,11.78L14.21,8H20V5H6M3.27,5L2,6.27L8.97,13.24L6.5,19H9.5L11.07,15.34L16.73,21L18,19.73L3.55,5.27L3.27,5Z" />
             </svg>
         </button>
         {% endif %}
@@ -317,16 +320,17 @@
         {% if 'jinjaSyntaxHighlight' in widget.config.extensions %}
         <button id="{{ widget.name }}-jinja-highlight" class="is-active">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                <path d="M8,3A2,2 0 0,0 6,5V9A2,2 0 0,1 4,11H3V13H4A2,2 0 0,1 6,15V19A2,2 0 0,0 8,21H10V19H8V14A2,2 0 0,0 6,12A2,2 0 0,0 8,10V5H10V3M16,3A2,2 0 0,1 18,5V9A2,2 0 0,0 20,11H21V13H20A2,2 0 0,0 18,15V19A2,2 0 0,1 16,21H14V19H16V14A2,2 0 0,1 18,12A2,2 0 0,1 16,10V5H14V3H16Z" />
+                <path
+                    d="M8,3A2,2 0 0,0 6,5V9A2,2 0 0,1 4,11H3V13H4A2,2 0 0,1 6,15V19A2,2 0 0,0 8,21H10V19H8V14A2,2 0 0,0 6,12A2,2 0 0,0 8,10V5H10V3M16,3A2,2 0 0,1 18,5V9A2,2 0 0,0 20,11H21V13H20A2,2 0 0,0 18,15V19A2,2 0 0,1 16,21H14V19H16V14A2,2 0 0,1 18,12A2,2 0 0,1 16,10V5H14V3H16Z" />
             </svg>
         </button>
         {% endif %}
 
         {% for custom_extension in widget.config.custom_extensions %}
-            <div class="spacer"></div>
-            {% if custom_extension.toolbar_include %}
-                {% include custom_extension.toolbar_include %}
-            {% endif %}
+        <div class="spacer"></div>
+        {% if custom_extension.toolbar_include %}
+        {% include custom_extension.toolbar_include %}
+        {% endif %}
         {% endfor %}
 
         <div class="spacer not-saved-text-spacer" id="{{ widget.name }}-not-saved-warning-spacer"></div>
@@ -339,8 +343,8 @@
 
     </div>
 
-    <div class="editor-content-rendered {% if 'jinjaSyntaxHighlight' in widget.config.extensions %} jinjaSyntaxHighlightActivated {% endif %}" name="{{ widget.name }}" id="{{ widget.name }}-tiptap-editor-div"
-        data-tiptap="{{ widget.value }}">
+    <div class="editor-content-rendered {% if 'jinjaSyntaxHighlight' in widget.config.extensions %} jinjaSyntaxHighlightActivated {% endif %}"
+        name="{{ widget.name }}" id="{{ widget.name }}-tiptap-editor-div" data-tiptap="{{ widget.value }}">
     </div>
 </div>
 
@@ -370,59 +374,59 @@
     // SOFTWARE.
 
     import { TextSelection, AllSelection, Plugin, PluginKey } from 'https://cdn.skypack.dev/pin/prosemirror-state@v1.3.4-VDZSfZg19RtsX2tM1mcd/mode=imports,min/optimized/prosemirror-state.js'
-    import { Editor, Extension, Node, mergeAttributes, getExtensionField, callOrReturn, findParentNodeClosestToPos } from 'https://cdn.skypack.dev/pin/@tiptap/core@v2.0.0-beta.143-mMu8yOWMSaFlg0O17i9B/mode=imports,min/optimized/@tiptap/core.js'
-    import Dropcursor from 'https://cdn.skypack.dev/pin/@tiptap/extension-dropcursor@v2.0.0-beta.25-eIscsGuvvl6diZ59tpc3/mode=imports,min/optimized/@tiptap/extension-dropcursor.js';
-    import Gapcursor from 'https://cdn.skypack.dev/pin/@tiptap/extension-gapcursor@v2.0.0-beta.33-H2EQP6MVNDONfK3DBSHw/mode=imports,min/optimized/@tiptap/extension-gapcursor.js'
-    import History from 'https://cdn.skypack.dev/pin/@tiptap/extension-history@v2.0.0-beta.21-noN5tZqeHaDmo0OPkP9B/mode=imports,min/optimized/@tiptap/extension-history.js'
-    import Document from 'https://cdn.skypack.dev/pin/@tiptap/extension-document@v2.0.0-beta.15-S5We65iG5WsPWsk393Nn/mode=imports,min/optimized/@tiptap/extension-document.js'
-    import Paragraph from 'https://cdn.skypack.dev/pin/@tiptap/extension-paragraph@v2.0.0-beta.22-2V9wHOS6TMLGfLzfDAZT/mode=imports,min/optimized/@tiptap/extension-paragraph.js'
-    import Text from 'https://cdn.skypack.dev/pin/@tiptap/extension-text@v2.0.0-beta.15-FFZjbOtTInx9Tx2emVEB/mode=imports,min/optimized/@tiptap/extension-text.js'
+    import { Editor, Extension, Node, mergeAttributes, getExtensionField, callOrReturn, findParentNodeClosestToPos } from 'https://cdn.skypack.dev/pin/@tiptap/core@v2.0.0-beta.148-pxKBHddysyqguSNYcFxn/mode=imports,min/optimized/@tiptap/core.js'
+    import Dropcursor from 'https://cdn.skypack.dev/pin/@tiptap/extension-dropcursor@v2.0.0-beta.25-ken8w7fmDq09fPuRWobA/mode=imports,min/optimized/@tiptap/extension-dropcursor.js';
+    import Gapcursor from 'https://cdn.skypack.dev/pin/@tiptap/extension-gapcursor@v2.0.0-beta.33-SP5NFQbfJEzyBOhnW1SW/mode=imports,min/optimized/@tiptap/extension-gapcursor.js'
+    import History from 'https://cdn.skypack.dev/pin/@tiptap/extension-history@v2.0.0-beta.21-j9qDO11PsZlBJs5KFEQq/mode=imports,min/optimized/@tiptap/extension-history.js'
+    import Document from 'https://cdn.skypack.dev/pin/@tiptap/extension-document@v2.0.0-beta.15-kBTzKI6FG6CccwZERHvC/mode=imports,min/optimized/@tiptap/extension-document.js'
+    import Paragraph from 'https://cdn.skypack.dev/pin/@tiptap/extension-paragraph@v2.0.0-beta.23-iu25QM9KArWKyfy56CPg/mode=imports,min/optimized/@tiptap/extension-paragraph.js'
+    import Text from 'https://cdn.skypack.dev/pin/@tiptap/extension-text@v2.0.0-beta.15-0hycf2RsAWOMmdQya34K/mode=imports,min/optimized/@tiptap/extension-text.js'
 
 
     // {% if 'bold' in widget.config.extensions %}
-    import Bold from 'https://cdn.skypack.dev/pin/@tiptap/extension-bold@v2.0.0-beta.24-Np8cBXeypIwxMh2yaYiN/mode=imports,min/optimized/@tiptap/extension-bold.js'
+    import Bold from 'https://cdn.skypack.dev/pin/@tiptap/extension-bold@v2.0.0-beta.25-tmmuMfxFNdlfwMvKcKtB/mode=imports,min/optimized/@tiptap/extension-bold.js'
     // {% endif %}
 
     // {% if 'italic' in widget.config.extensions %}
-    import Italic from 'https://cdn.skypack.dev/pin/@tiptap/extension-italic@v2.0.0-beta.24-4rKAUIasl2IN9ydkmUV9/mode=imports,min/optimized/@tiptap/extension-italic.js'
+    import Italic from 'https://cdn.skypack.dev/pin/@tiptap/extension-italic@v2.0.0-beta.25-8NSLiRHUKsBNOmzpEIrx/mode=imports,min/optimized/@tiptap/extension-italic.js'
     // {% endif %}
 
     // import Code from 'https://cdn.skypack.dev/pin/@tiptap/extension-code@v2.0.0-beta.5-hyttgnc1tFe8F5m0ahjW/mode=imports,min/optimized/@tiptap/extension-code.js'
     // import CodeBlock from 'https://cdn.skypack.dev/pin/@tiptap/extension-code-block@v2.0.0-beta.7-x2YOXBIEn8LMoz5Gfubj/mode=imports,min/optimized/@tiptap/extension-code-block.js'
 
     // {% if 'h1' in widget.config.extensions or 'h2' in widget.config.extensions or 'h3' in widget.config.extensions or 'h4' in widget.config.extensions or 'h5' in widget.config.extensions or 'h6' in widget.config.extensions %}
-    import Heading from 'https://cdn.skypack.dev/pin/@tiptap/extension-heading@v2.0.0-beta.23-Zd90Q7pRXnm39zfGIWQK/mode=imports,min/optimized/@tiptap/extension-heading.js'
+    import Heading from 'https://cdn.skypack.dev/pin/@tiptap/extension-heading@v2.0.0-beta.24-a2cORcPZ1OJX1Tby4Ltk/mode=imports,min/optimized/@tiptap/extension-heading.js'
     // {% endif %}
 
     // {% if 'hardBreak' in widget.config.extensions %}
-    import HardBreak from 'https://cdn.skypack.dev/pin/@tiptap/extension-hard-break@v2.0.0-beta.30-9OKPCmgGoqJ9q0r3fATt/mode=imports,min/optimized/@tiptap/extension-hard-break.js'
+    import HardBreak from 'https://cdn.skypack.dev/pin/@tiptap/extension-hard-break@v2.0.0-beta.30-HnQMtKpwFgTd0P58H1M2/mode=imports,min/optimized/@tiptap/extension-hard-break.js'
     // {% endif %}
 
     // {% if 'strikethrough' in widget.config.extensions %}
-    import Strike from 'https://cdn.skypack.dev/pin/@tiptap/extension-strike@v2.0.0-beta.26-zHUAfR5TpSQUgRxu71n9/mode=imports,min/optimized/@tiptap/extension-strike.js'
+    import Strike from 'https://cdn.skypack.dev/pin/@tiptap/extension-strike@v2.0.0-beta.27-ch3Liyq0k2fEbMviboiJ/mode=imports,min/optimized/@tiptap/extension-strike.js'
     // {% endif %}
 
     // import Blockquote from 'https://cdn.skypack.dev/pin/@tiptap/extension-blockquote@v2.0.0-beta.5-iGwAq7KloHyiqTrmoBFu/mode=imports,min/optimized/@tiptap/extension-blockquote.js'
     // import HorizontalRule from 'https://cdn.skypack.dev/pin/@tiptap/extension-horizontal-rule@v2.0.0-beta.6-VhsEhfu8PSpAnUEbsQN0/mode=imports,min/optimized/@tiptap/extension-horizontal-rule.js'
 
     // {% if 'bulletList' in widget.config.extensions or 'orderedList' in widget.config.extensions %}
-    import ListItem from 'https://cdn.skypack.dev/pin/@tiptap/extension-list-item@v2.0.0-beta.19-XkGH672R2GOvKfRbqJ05/mode=imports,min/optimized/@tiptap/extension-list-item.js'
+    import ListItem from 'https://cdn.skypack.dev/pin/@tiptap/extension-list-item@v2.0.0-beta.20-Hcj2zEOJ9awr2jRjQDHR/mode=imports,min/optimized/@tiptap/extension-list-item.js'
     // {% endif %}
 
     // {% if 'bulletList' in widget.config.extensions %}
-    import BulletList from 'https://cdn.skypack.dev/pin/@tiptap/extension-bullet-list@v2.0.0-beta.23-gtJ906awHIlABGh5psCy/mode=imports,min/optimized/@tiptap/extension-bullet-list.js'
+    import BulletList from 'https://cdn.skypack.dev/pin/@tiptap/extension-bullet-list@v2.0.0-beta.24-KKVhNB66Hygj2jn7i1kK/mode=imports,min/optimized/@tiptap/extension-bullet-list.js'
     // {% endif %}
 
     // {% if 'orderedList' in widget.config.extensions %}
-    import OrderedList from 'https://cdn.skypack.dev/pin/@tiptap/extension-ordered-list@v2.0.0-beta.24-k2zu8qMVQDMkwaXLUgtb/mode=imports,min/optimized/@tiptap/extension-ordered-list.js'
+    import OrderedList from 'https://cdn.skypack.dev/pin/@tiptap/extension-ordered-list@v2.0.0-beta.25-Tw7ZTr5yd5YljCaXTWgy/mode=imports,min/optimized/@tiptap/extension-ordered-list.js'
     // {% endif %}
 
     // {% if 'underline' in widget.config.extensions %}
-    import Underline from 'https://cdn.skypack.dev/pin/@tiptap/extension-underline@v2.0.0-beta.21-TelOzr1LfEFqxgPLpA14/mode=imports,min/optimized/@tiptap/extension-underline.js'
+    import Underline from 'https://cdn.skypack.dev/pin/@tiptap/extension-underline@v2.0.0-beta.22-XpKhuwWUfPVGhARQEOG7/mode=imports,min/optimized/@tiptap/extension-underline.js'
     // {% endif %}
 
     // {% if 'textAlign' in widget.config.extensions %}
-    import TextAlign from 'https://cdn.skypack.dev/pin/@tiptap/extension-text-align@v2.0.0-beta.29-xuv3G2F6rDXU80BGCqGu/mode=imports,min/optimized/@tiptap/extension-text-align.js'
+    import TextAlign from 'https://cdn.skypack.dev/pin/@tiptap/extension-text-align@v2.0.0-beta.29-TOZrJp9I64KDnGrljDn0/mode=imports,min/optimized/@tiptap/extension-text-align.js'
     // {% endif %}
 
     // {% if 'table' in widget.config.extensions%}
@@ -430,139 +434,142 @@
     import { v4 as uuidv4 } from 'https://cdn.skypack.dev/pin/uuid@v8.3.2-XAQ9X05vJqvKpZccxFGc/mode=imports,min/optimized/uuid.js'
 
     function updateColumns(node, colgroup, table, cellMinWidth, overrideCol, overrideValue) {
-        let totalWidth = 0;
-        let fixedWidth = true;
-        let nextDOM = colgroup.firstChild;
-        const row = node.firstChild;
+        let totalWidth = 0
+        let fixedWidth = true
+        let nextDOM = colgroup.firstChild
+        const row = node.firstChild
         for (let i = 0, col = 0; i < row.childCount; i += 1) {
-            const { colspan, colwidth } = row.child(i).attrs;
+            const { colspan, colwidth } = row.child(i).attrs
             for (let j = 0; j < colspan; j += 1, col += 1) {
-                const hasWidth = overrideCol === col ? overrideValue : colwidth && colwidth[j];
-                const cssWidth = hasWidth ? `${hasWidth}px` : '';
-                totalWidth += hasWidth || cellMinWidth;
+                const hasWidth = overrideCol === col ? overrideValue : colwidth && colwidth[j]
+                const cssWidth = hasWidth ? `${hasWidth}px` : ''
+                totalWidth += hasWidth || cellMinWidth
                 if (!hasWidth) {
-                    fixedWidth = false;
+                    fixedWidth = false
                 }
                 if (!nextDOM) {
-                    colgroup.appendChild(document.createElement('col')).style.width = cssWidth;
+                    colgroup.appendChild(document.createElement('col')).style.width = cssWidth
                 }
                 else {
                     if (nextDOM.style.width !== cssWidth) {
-                        nextDOM.style.width = cssWidth;
+                        nextDOM.style.width = cssWidth
                     }
-                    nextDOM = nextDOM.nextSibling;
+                    nextDOM = nextDOM.nextSibling
                 }
             }
         }
         while (nextDOM) {
-            const after = nextDOM.nextSibling;
-            nextDOM.parentNode.removeChild(nextDOM);
-            nextDOM = after;
+            const after = nextDOM.nextSibling
+            nextDOM.parentNode.removeChild(nextDOM)
+            nextDOM = after
         }
         if (fixedWidth) {
-            table.style.width = `${totalWidth}px`;
-            table.style.minWidth = '';
+            table.style.width = `${totalWidth}px`
+            table.style.minWidth = ''
         }
         else {
-            table.style.width = '';
-            table.style.minWidth = `${totalWidth}px`;
+            table.style.width = ''
+            table.style.minWidth = `${totalWidth}px`
         }
     }
-    function isCellSelection(value) {
-        return value instanceof CellSelection;
+    function isCellSelection(v) {
+        return v instanceof CellSelection
     }
     const deleteTableWhenAllCellsSelected = ({ editor }) => {
-        const { selection } = editor.state;
-        if (!isCellSelection(selection)) {
-            return false;
-        }
-        let cellCount = 0;
-        const table = findParentNodeClosestToPos(selection.ranges[0].$from, node => node.type.name === 'table');
+        const { selection } = editor.state
+
+        if (!isCellSelection(selection)) return false
+
+        let cellCount = 0
+
+        const table = findParentNodeClosestToPos(selection.ranges[0].$from, node => node.type.name === 'table')
+
         table === null || table === void 0 ? void 0 : table.node.descendants(node => {
-            if (node.type.name === 'table') {
-                return false;
-            }
-            if (['tableCell', 'tableHeader'].includes(node.type.name)) {
-                cellCount += 1;
-            }
-        });
-        const allCellsSelected = cellCount === selection.ranges.length;
-        if (!allCellsSelected) {
-            return false;
-        }
-        editor.commands.deleteTable();
-        return true;
-    };
+            if (node.type.name === 'table') return false
+
+            if (['tableCell', 'tableHeader'].includes(node.type.name)) cellCount += 1
+        })
+
+        const allCellsSelected = cellCount === selection.ranges.length
+        if (!allCellsSelected) return false
+
+        editor.commands.deleteTable()
+
+        return true
+    }
+
     function createCell(cellType, cellContent) {
-        if (cellContent) {
-            return cellType.createChecked(null, cellContent);
-        }
-        return cellType.createAndFill();
+        if (cellContent) return cellType.createChecked(null, cellContent)
+
+        return cellType.createAndFill()
     }
+
     function getTableNodeTypes(schema) {
-        if (schema.cached.tableNodeTypes) {
-            return schema.cached.tableNodeTypes;
-        }
-        const roles = {};
+        if (schema.cached.tableNodeTypes) return schema.cached.tableNodeTypes
+
+        const roles = {}
         Object.keys(schema.nodes).forEach(type => {
-            const nodeType = schema.nodes[type];
+            const nodeType = schema.nodes[type]
             if (nodeType.spec.tableRole) {
-                roles[nodeType.spec.tableRole] = nodeType;
+                roles[nodeType.spec.tableRole] = nodeType
             }
-        });
-        schema.cached.tableNodeTypes = roles;
-        return roles;
+        })
+
+        schema.cached.tableNodeTypes = roles
+        return roles
     }
+
     function createTable(schema, rowsCount, colsCount, withHeaderRow, cellContent) {
-        const types = getTableNodeTypes(schema);
-        const headerCells = [];
-        const cells = [];
+        const types = getTableNodeTypes(schema)
+        const headerCells = []
+        const cells = []
+
         for (let index = 0; index < colsCount; index += 1) {
-            const cell = createCell(types.cell, cellContent);
-            if (cell) {
-                cells.push(cell);
-            }
+            const cell = createCell(types.cell, cellContent)
+
+            if (cell) cells.push(cell)
+
             if (withHeaderRow) {
-                const headerCell = createCell(types.header_cell, cellContent);
-                if (headerCell) {
-                    headerCells.push(headerCell);
-                }
+                const headerCell = createCell(types.header_cell, cellContent)
+
+                if (headerCell) headerCells.push(headerCell)
             }
         }
-        const rows = [];
+
+        const rows = []
+
         for (let index = 0; index < rowsCount; index += 1) {
-            rows.push(types.row.createChecked(null, withHeaderRow && index === 0 ? headerCells : cells));
+            rows.push(types.row.createChecked(null, withHeaderRow && index === 0 ? headerCells : cells))
         }
-        return types.table.createChecked(null, rows);
+
+        return types.table.createChecked(null, rows)
     }
+
     class TableView {
         constructor(node, cellMinWidth) {
-            this.node = node;
-            this.cellMinWidth = cellMinWidth;
-            this.dom = document.createElement('div');
-            this.dom.className = 'tableWrapper';
+            this.node = node
+            this.cellMinWidth = cellMinWidth
+            this.dom = document.createElement('div')
+            this.dom.className = 'tableWrapper'
 
-            this.node.attrs.uuid = node.attrs.uuid || uuidv4()
-            this.node.attrs.show_borders = ['true', 'false'].includes(node.attrs.show_borders?.trim()) ? node.attrs.show_borders?.trim() : 'true'
-
-            const tableElementToAppend = document.createElement('table');
+            const tableElementToAppend = document.createElement('table')
             for (const [key, value] of Object.entries(this.node.attrs)) {
-                tableElementToAppend.setAttribute(key, value);
+                tableElementToAppend.setAttribute(key, value)
             }
 
-            this.table = this.dom.appendChild(tableElementToAppend);
-            this.colgroup = this.table.appendChild(document.createElement('colgroup'));
-            updateColumns(node, this.colgroup, this.table, cellMinWidth);
-            this.contentDOM = this.table.appendChild(document.createElement('tbody'));
+            this.table = this.dom.appendChild(tableElementToAppend)
+            this.colgroup = this.table.appendChild(document.createElement('colgroup'))
+            updateColumns(node, this.colgroup, this.table, cellMinWidth)
+            this.contentDOM = this.table.appendChild(document.createElement('tbody'))
         }
 
         update(node) {
             if (node.type !== this.node.type) return false
-            this.node = node;
+            this.node = node
 
-            updateColumns(node, this.colgroup, this.table, this.cellMinWidth);
+            updateColumns(node, this.colgroup, this.table, this.cellMinWidth)
 
-            const tableElement = document.querySelector(`.ProseMirror [uuid="${this.node.attrs.uuid}"`)
+            const tableElement = document.querySelector(`.ProseMirror [uuid="${this.node.attrs.uuid}"]`)
 
             if (tableElement) {
                 for (const [key, value] of Object.entries(node.attrs)) {
@@ -570,11 +577,11 @@
                 }
             }
 
-            return true;
+            return true
         }
 
         ignoreMutation(mutation) {
-            return mutation.type === 'attributes' && (mutation.target === this.table || this.colgroup.contains(mutation.target));
+            return mutation.type === 'attributes' && (mutation.target === this.table || this.colgroup.contains(mutation.target))
         }
     }
     const Table = Node.create({
@@ -590,7 +597,7 @@
                 uuid: {
                     parseHTML: element => element.getAttribute('uuid') || uuidv4()
                 },
-            };
+            }
         },
         addOptions() {
             return {
@@ -602,7 +609,7 @@
                 View: TableView,
                 lastColumnResizable: true,
                 allowTableNodeSelection: false,
-            };
+            }
         },
         content: 'tableRow+',
         tableRole: 'table',
@@ -611,22 +618,24 @@
         parseHTML() {
             return [
                 { tag: 'table' },
-            ];
+            ]
         },
         renderHTML({ HTMLAttributes }) {
-            return ['table', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), ['tbody', 0]];
+            return ['table', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), ['tbody', 0]]
         },
         addCommands() {
             return {
                 insertTable: ({ rows = 3, cols = 3, withHeaderRow = true } = {}) => ({ tr, dispatch, editor }) => {
-                    const node = createTable(editor.schema, rows, cols, withHeaderRow);
+                    const node = createTable(editor.schema, rows, cols, withHeaderRow)
+
+                    node.attrs = { ...node.attrs, show_borders: 'true', uuid: uuidv4() }
                     if (dispatch) {
-                        const offset = tr.selection.anchor + 1;
+                        const offset = tr.selection.anchor + 1
                         tr.replaceSelectionWith(node)
                             .scrollIntoView()
-                            .setSelection(TextSelection.near(tr.doc.resolve(offset)));
+                            .setSelection(TextSelection.near(tr.doc.resolve(offset)))
                     }
-                    return true;
+                    return true
                 },
                 addColumnBefore: () => ({ state, dispatch }) => addColumnBefore(state, dispatch),
                 addColumnAfter: () => ({ state, dispatch }) => addColumnAfter(state, dispatch),
@@ -642,91 +651,91 @@
                 toggleHeaderCell: () => ({ state, dispatch }) => toggleHeaderCell(state, dispatch),
                 mergeOrSplit: () => ({ state, dispatch }) => {
                     if (mergeCells(state, dispatch)) {
-                        return true;
+                        return true
                     }
-                    return splitCell(state, dispatch);
+                    return splitCell(state, dispatch)
                 },
                 setCellAttribute: (name, value) => ({ state, dispatch }) => setCellAttr(name, value)(state, dispatch),
                 goToNextCell: () => ({ state, dispatch }) => goToNextCell(1)(state, dispatch),
                 goToPreviousCell: () => ({ state, dispatch }) => goToNextCell(-1)(state, dispatch),
                 fixTables: () => ({ state, dispatch }) => {
                     if (dispatch) {
-                        fixTables(state);
+                        fixTables(state)
                     }
-                    return true;
+                    return true
                 },
                 setCellSelection: position => ({ tr, dispatch }) => {
                     if (dispatch) {
-                        const selection = CellSelection.create(tr.doc, position.anchorCell, position.headCell);
+                        const selection = CellSelection.create(tr.doc, position.anchorCell, position.headCell)
                         // @ts-ignore
-                        tr.setSelection(selection);
+                        tr.setSelection(selection)
                     }
-                    return true;
+                    return true
                 },
-            };
+            }
         },
         addKeyboardShortcuts() {
             return {
                 Tab: () => {
                     if (this.editor.commands.goToNextCell()) {
-                        return true;
+                        return true
                     }
                     if (!this.editor.can().addRowAfter()) {
-                        return false;
+                        return false
                     }
                     return this.editor
                         .chain()
                         .addRowAfter()
                         .goToNextCell()
-                        .run();
+                        .run()
                 },
                 'Shift-Tab': () => this.editor.commands.goToPreviousCell(),
                 Backspace: deleteTableWhenAllCellsSelected,
                 'Mod-Backspace': deleteTableWhenAllCellsSelected,
                 Delete: deleteTableWhenAllCellsSelected,
                 'Mod-Delete': deleteTableWhenAllCellsSelected,
-            };
+            }
         },
         addProseMirrorPlugins() {
-            const isResizable = this.options.resizable && this.editor.isEditable;
+            const isResizable = this.options.resizable && this.editor.isEditable
             return [
                 ...(isResizable ? [columnResizing({
-                        handleWidth: this.options.handleWidth,
-                        cellMinWidth: this.options.cellMinWidth,
-                        View: this.options.View,
-                        // TODO: PR for @types/prosemirror-tables
-                        // @ts-ignore (incorrect type)
-                        lastColumnResizable: this.options.lastColumnResizable,
-                    })] : []),
+                    handleWidth: this.options.handleWidth,
+                    cellMinWidth: this.options.cellMinWidth,
+                    View: this.options.View,
+                    // TODO: PR for @types/prosemirror-tables
+                    // @ts-ignore (incorrect type)
+                    lastColumnResizable: this.options.lastColumnResizable,
+                })] : []),
                 tableEditing({
                     allowTableNodeSelection: this.options.allowTableNodeSelection,
                 }),
-            ];
+            ]
         },
         extendNodeSchema(extension) {
             const context = {
                 name: extension.name,
                 options: extension.options,
                 storage: extension.storage,
-            };
+            }
             return {
                 tableRole: callOrReturn(getExtensionField(extension, 'tableRole', context)),
-            };
+            }
         },
-    });
-    import TableHeader from 'https://cdn.skypack.dev/pin/@tiptap/extension-table-header@v2.0.0-beta.22-zW4KauhgzQM61HhIBB3a/mode=imports,min/optimized/@tiptap/extension-table-header.js'
-    import TableRow from 'https://cdn.skypack.dev/pin/@tiptap/extension-table-row@v2.0.0-beta.19-8JrFuUDS1x7cXNGYrolS/mode=imports,min/optimized/@tiptap/extension-table-row.js'
-    import TableCell from 'https://cdn.skypack.dev/pin/@tiptap/extension-table-cell@v2.0.0-beta.20-eSpTzE6MzpCSkRahk3Rm/mode=imports,min/optimized/@tiptap/extension-table-cell.js'
+    })
+    import TableHeader from 'https://cdn.skypack.dev/pin/@tiptap/extension-table-header@v2.0.0-beta.22-jC9kPecbfRWV6EHIF3AV/mode=imports,min/optimized/@tiptap/extension-table-header.js'
+    import TableRow from 'https://cdn.skypack.dev/pin/@tiptap/extension-table-row@v2.0.0-beta.19-GJQPTbYEVxdiP5KGkYjt/mode=imports,min/optimized/@tiptap/extension-table-row.js'
+    import TableCell from 'https://cdn.skypack.dev/pin/@tiptap/extension-table-cell@v2.0.0-beta.20-AFi7zSKxv3vYgk0CYO17/mode=imports,min/optimized/@tiptap/extension-table-cell.js'
     // {% endif %}
 
     import { liftTarget } from 'https://cdn.skypack.dev/pin/prosemirror-transform@v1.3.3-ZkJUQnVF0lYwd5WGUW6w/mode=imports,min/optimized/prosemirror-transform.js'
 
     // {% if 'typography' in widget.config.extensions%}
-    import Typography from 'https://cdn.skypack.dev/pin/@tiptap/extension-typography@v2.0.0-beta.19-F2MNPGRShAh7UPy7qWHD/mode=imports,min/optimized/@tiptap/extension-typography.js'
+    import Typography from 'https://cdn.skypack.dev/pin/@tiptap/extension-typography@v2.0.0-beta.19-N8DtyOHKN6GDlJORq9hx/mode=imports,min/optimized/@tiptap/extension-typography.js'
     // {% endif %}
 
     // {% if widget.config.placeholderText %}
-    import Placeholder from 'https://cdn.skypack.dev/pin/@tiptap/extension-placeholder@v2.0.0-beta.44-SCJ5TXx3f10TbTD5bT8a/mode=imports,min/optimized/@tiptap/extension-placeholder.js'
+    import Placeholder from 'https://cdn.skypack.dev/pin/@tiptap/extension-placeholder@v2.0.0-beta.45-TZNJ7iOkjv6YGWGdF3Ki/mode=imports,min/optimized/@tiptap/extension-placeholder.js'
     // {% endif %}
 
     // {% if 'jinjaSyntaxHighlight' in widget.config.extensions%}
@@ -1228,7 +1237,7 @@
         ['{{ widget.name }}-toggleTableBorders']: {
             command: (editor) => {
                 const newState = editor.getAttributes('table').show_borders === 'true' ? 'false' : 'true'
-                editor.commands.updateAttributes('table', {'show_borders' : newState})
+                editor.commands.updateAttributes('table', { 'show_borders': newState })
                 editor.commands.focus()
             },
             canBeActive: false,
@@ -1340,6 +1349,11 @@
 
     const editor = new Editor({
         element: document.querySelector('#{{ widget.name }}-tiptap-editor-div'),
+        editorProps: {
+            attributes: {
+                spellcheck: "false"
+            }
+        },
         extensions: [
             Document,
 
@@ -1444,7 +1458,7 @@
         content: initialEditorContent,
         onUpdate({ editor }) {
             checkIsActive(editor)
-             // {% if widget.config.tiptapOutputFormat == "html" %}
+            // {% if widget.config.tiptapOutputFormat == "html" %}
             const currentEditorContent = editor.getHTML().trim()
             // {% elif widget.config.tiptapOutputFormat == "json" %}
             const currentEditorContent = JSON.stringify(editor.getJSON());
