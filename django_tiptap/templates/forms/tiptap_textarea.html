@@ -327,10 +327,10 @@
         {% endif %}
 
         {% for custom_extension in widget.config.custom_extensions %}
-        <div class="spacer"></div>
-        {% if custom_extension.toolbar_include %}
-        {% include custom_extension.toolbar_include %}
-        {% endif %}
+            <div class="spacer"></div>
+            {% if custom_extension.toolbar_include %}
+                {% include custom_extension.toolbar_include %}
+            {% endif %}
         {% endfor %}
 
         <div class="spacer not-saved-text-spacer" id="{{ widget.name }}-not-saved-warning-spacer"></div>
@@ -343,9 +343,7 @@
 
     </div>
 
-    <div class="editor-content-rendered {% if 'jinjaSyntaxHighlight' in widget.config.extensions %} jinjaSyntaxHighlightActivated {% endif %}"
-        name="{{ widget.name }}" id="{{ widget.name }}-tiptap-editor-div" data-tiptap="{{ widget.value }}">
-    </div>
+    <div class="editor-content-rendered {% if 'jinjaSyntaxHighlight' in widget.config.extensions %} jinjaSyntaxHighlightActivated {% endif %}" name="{{ widget.name }}" id="{{ widget.name }}-tiptap-editor-div" data-tiptap="{{ widget.value }}"></div>
 </div>
 
 <script src="https://unpkg.com/@popperjs/core@2"></script>
