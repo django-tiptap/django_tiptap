@@ -68,6 +68,7 @@ TIPTAP_DEFAULT_TOOLTIPS = {
         "jinjaHighlight": "Jinja Highlight",
         "rows": "Rows",
         "columns": "Columns",
+        "spellcheck": "Toggle Spellcheck",
     },
     "DE": {
         "bold": "Fett | (ctrl / ⌘) + B",
@@ -106,6 +107,7 @@ TIPTAP_DEFAULT_TOOLTIPS = {
         "jinjaHighlight": "Jinja Markierungen",
         "rows": "Zeilen",
         "columns": "Column",
+        "spellcheck": "Rechtschreibprüfung ein/ausschalten",
     },
 }
 
