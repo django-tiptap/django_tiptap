@@ -152,12 +152,12 @@ DJANGO_TIPTAP_CONFIG = {
 You can specify custom tiptap extensions that should be loaded using the `custom_extensions` config list.
 This list contains dictionaries with the following options:
 
-* `source_static` or `source_url`: where to load the extension from (**mandatory**)
-* `module_name` the name of the extension (**mandatory**)
-* `configuration_statement` how to configure the extension. Defaults to the `module_name` if not set
-* `toolbar_include` path of a html-template to include into the toolbar
-* `buttonsconfig_include` path of a js-template to include into the tiptap buttonsconfig
-* `css_include` path of a css-template to include into the textarea
+- `source_static` or `source_url`: where to load the extension from (**mandatory**)
+- `module_name` the name of the extension (**mandatory**)
+- `configuration_statement` how to configure the extension. Defaults to the `module_name` if not set
+- `toolbar_include` path of a html-template to include into the toolbar
+- `buttonsconfig_include` path of a js-template to include into the tiptap buttonsconfig
+- `css_include` path of a css-template to include into the textarea
 
 `django_tiptap_demo` contains an example of a custom extension
 
@@ -187,3 +187,12 @@ welcome to!
         "PYTHONPATH": "${workspaceFolder}"
     },
     ```
+
+3.  Use `make demo-app` to start a Django development server running a demo application.
+    This is a quick way to check out the `TipTapTextField` on the Django admin page.
+
+- runs all migrations
+- creates a superuser, user: admin, password: admin
+- runs the django development server
+
+Go to http://127.0.0.1:8000/admin/demo_app/note/add/ to interact with the `TipTapTextField`
