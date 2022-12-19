@@ -144,6 +144,7 @@ DJANGO_TIPTAP_CONFIG = {
         "clearFormat",
         "jinjaSyntaxHighlight",
         "hardBreak",
+        "link",
     ],
     "placeholderText": "Begin typing here...",  # set None to skip display
     "unsavedChangesWarningText": "You have unsaved changes!",  # set None to skip display

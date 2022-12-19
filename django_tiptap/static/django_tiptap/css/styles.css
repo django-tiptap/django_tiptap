@@ -395,6 +395,10 @@
   margin: 2rem 0;
 }
 
+.ProseMirror a {
+  text-decoration: underline;
+}
+
 /* Table-specific styling */
 .ProseMirror table {
   border-collapse: collapse;

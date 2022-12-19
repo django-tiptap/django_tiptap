@@ -22,6 +22,7 @@ TIPTAP_DEFAULT_CONFIG = {
         "typography",
         "clearFormat",
         "jinjaSyntaxHighlight",
+        "link",
     ],
     "placeholderText": "Begin typing here...",
     "unsavedChangesWarningText": None,
@@ -69,6 +70,7 @@ TIPTAP_DEFAULT_TOOLTIPS = {
         "rows": "Rows",
         "columns": "Columns",
         "spellcheck": "Toggle Spellcheck",
+        "link": "Add Link",
     },
     "DE": {
         "bold": "Fett | (ctrl / ⌘) + B",
@@ -108,6 +110,7 @@ TIPTAP_DEFAULT_TOOLTIPS = {
         "rows": "Zeilen",
         "columns": "Column",
         "spellcheck": "Rechtschreibprüfung ein/ausschalten",
+        "link": "Link einfügen",
     },
 }
 
