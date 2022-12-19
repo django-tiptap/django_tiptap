@@ -331,6 +331,11 @@
                 <path d="M21.59,11.59L13.5,19.68L9.83,16L8.42,17.41L13.5,22.5L23,13M6.43,11L8.5,5.5L10.57,11M12.45,16H14.54L9.43,3H7.57L2.46,16H4.55L5.67,13H11.31L12.45,16Z" />
             </svg>
         </button>
+        <button id="{{ widget.name }}-link">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path d="M9.43985456,13.1003936 L8.58605684,13.9541913 C7.09643172,15.4440745 4.67282624,15.4435799 3.18313662,13.9539394 C2.46170797,13.2325107 2.06434272,12.273136 2.06434272,11.2525868 C2.06434272,10.2320591 2.46170797,9.27302835 3.18313662,8.55123416 L6.08403194,5.65033884 C6.80569711,4.92867366 7.76532988,4.53128691 8.78559956,4.53128691 C9.80586924,4.53128691 10.765158,4.92865216 11.4869522,5.65033884 C12.5554303,6.718817 12.8940294,8.32051289 12.3498239,9.73064346 C12.1444583,10.262399 12.4088718,10.8600166 12.9409692,11.0651284 C13.4724883,11.2702424 14.0703423,11.0060805 14.2754542,10.4739831 C15.1137916,8.30245083 14.5922713,5.83611999 12.9468394,4.19075263 C11.8352703,3.07918356 10.3577296,2.46711637 8.78590059,2.46711637 C7.21407161,2.46711637 5.73642335,3.07918356 4.62496179,4.19075263 L1.72363642,7.09164796 C0.612067351,8.20321703 7.76960949e-08,9.68075777 7.76960949e-08,11.2523717 C-0.000251831753,12.8243082 0.612067351,14.302064 1.72363642,15.4133105 C2.87083505,16.5605092 4.37768364,17.134087 5.88479025,17.134087 C7.3913808,17.134087 8.89857342,16.5604877 10.045514,15.4135471 L10.8993117,14.5597493 C11.3026547,14.1564064 11.3026547,13.5030975 10.8993117,13.1000986 C10.4965709,12.6973578 9.84250941,12.6973578 9.43966104,13.1003506 L9.43985456,13.1003936 Z M22.2793966,1.7206528 C19.9848703,-0.573658446 16.2518302,-0.573443421 13.9570889,1.7206528 L13.1032912,2.57445053 C12.6999483,2.97779345 12.6999483,3.63110235 13.1032912,4.03410123 C13.5060321,4.43710012 14.1601796,4.43710012 14.5626839,4.03410123 L15.4164816,3.18030351 C16.9058702,1.69117295 19.3299272,1.69067839 20.8194018,3.18030351 C22.309027,4.66992863 22.3087904,7.09374913 20.8194018,8.58322374 L17.9189366,11.483904 C16.429806,12.9735292 14.005921,12.9735292 12.5162314,11.483904 C11.4474952,10.4151678 11.1091541,8.81351496 11.6533596,7.40359941 C11.8587252,6.87184386 11.5943117,6.27422631 11.0622143,6.06911446 C10.5298567,5.86324572 9.9328412,6.12874935 9.72772934,6.66025977 C8.88939188,8.83157702 9.41091226,11.2979079 11.0563441,12.9437053 C12.2032847,14.0909039 13.7101763,14.6642452 15.2172829,14.6642452 C16.7241315,14.6642452 18.2310661,14.0906459 19.3782217,12.9437053 L22.278902,10.0428099 C24.5736433,7.74849869 24.5736433,4.01524359 22.279238,1.72050229 L22.2793966,1.7206528 Z" id="Shape"></path>
+            </svg>
+        </button>
 
         {% for custom_extension in widget.config.custom_extensions %}
             <div class="spacer"></div>
@@ -431,6 +436,10 @@
 
     // {% if 'textAlign' in widget.config.extensions %}
     import TextAlign from 'https://cdn.skypack.dev/pin/@tiptap/extension-text-align@v2.0.0-beta.29-ZDt0rpAmbxTao4Fy0FDa/mode=imports,min/optimized/@tiptap/extension-text-align.js'
+    // {% endif %}
+
+    // {% if 'link' in widget.config.extensions %}
+    import Link from 'https://cdn.skypack.dev/-/@tiptap/extension-link@v2.0.0-beta.207-JZ3Wf8z1ySmIsEx0rUVM/dist=es2019,mode=imports/optimized/@tiptap/extension-link.js'
     // {% endif %}
 
     // {% if 'table' in widget.config.extensions%}
@@ -1276,6 +1285,33 @@
             canBeActive: false,
             tooltip: '{{ widget.config.tooltips.jinjaHighlight }}'
         },
+        ['{{ widget.name }}-link']: {
+            command: (editor) => {
+                const proseMirror = document.querySelector('#{{ widget.name }}-tiptap-editor-div')
+                const link = document.querySelector('#{{ widget.name }}-link')
+                const previousUrl = editor.getAttributes('link').href
+                const url = window.prompt('URL', previousUrl)
+
+                // cancelled
+                if (url === null) {
+                  return
+                }
+
+                // empty
+                if (url === '') {
+                  editor.chain().focus().extendMarkRange('link').unsetLink()
+                    .run()
+
+                  return
+                }
+
+                // update link
+                editor.chain().focus().extendMarkRange('link').setLink({ href: url })
+                  .run()
+            },
+            canBeActive: false,
+            tooltip: '{{ widget.config.tooltips.link }}'
+        },
         ['{{ widget.name }}-spellcheck']: {
             command: (editor) => {
                 const state = JSON.parse(document.querySelector('.ProseMirror')?.getAttribute('spellcheck') || '')
@@ -1446,6 +1482,10 @@
             TextAlign.configure({ types: ['heading', 'paragraph'] }),
             // {% endif %}
 
+            // {% if 'link' in widget.config.extensions %}
+            Link.configure({openOnClick: false }),
+            // {% endif %}
+
             // {% if 'table' in widget.config.extensions%}
             Table.configure({ resizable: true }),
 
@@ -1555,6 +1595,7 @@
         }
         const tableConfig = document.querySelector('.{{ widget.name }}-table-config')
         if (tableConfig) tableConfig.addEventListener('click', tableConfigListener)
+
 
         const addTableButtonListener = () => {
             const xInput = document.querySelector('#{{ widget.name }}-x').value
