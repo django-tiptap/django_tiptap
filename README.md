@@ -57,7 +57,7 @@ from django_tiptap.widgets import TipTapWidget
 from demo_app.models import Note
 
 class NoteAdminForm(forms.ModelForm):
-    content = forms.TextField(widget=TipTapWidget())
+    content = forms.CharField(widget=TipTapWidget())
 
     class Meta:
         model = Note
@@ -66,7 +66,7 @@ class NoteAdminForm(forms.ModelForm):
 class NoteAdmin(admin.ModelAdmin):
     form = NoteAdminForm
 
-admin.site.register(Note, NoteAdminForm)
+admin.site.register(Note, NoteAdmin)
 ```
 
 ## Configuration
@@ -99,7 +99,7 @@ DJANGO_TIPTAP_CONFIG = {
     ],
     "placeholderText": "Begin typing here...",  # set None to skip display
     "unsavedChangesWarningText": "You have unsaved changes",  # set None to skip display
-    "lang": "EN" # if you want to use default tooltips and translations, use this. Valid Options => EN/DE(for now)
+    "lang": "EN",  # if you want to use default tooltips and translations, use this. Valid Options => EN/DE(for now)
     "tooltips": {
         # if you want to use your custom tooltips(maybe because you don't prefer default or the language you want isn't there)
         "bold": "Bold | (ctrl / ⌘) + B",
